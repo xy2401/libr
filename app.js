@@ -164,6 +164,29 @@
     }
   }
 
+  // Subject Chinese Translations Map
+  const SUBJECT_ZH = {
+    'adventure': '冒险 Adventure',
+    'autobiography': '自传 Autobiography',
+    'biography': '传记 Biography',
+    'childrens': '儿童文学 Children\'s',
+    'comedy': '喜剧 Comedy',
+    'drama': '戏剧 Drama',
+    'fantasy': '奇幻 Fantasy',
+    'fiction': '虚构小说 Fiction',
+    'horror': '恐怖小说 Horror',
+    'memoir': '回忆录 Memoir',
+    'mystery': '悬疑/侦探 Mystery',
+    'nonfiction': '非虚构 Non-fiction',
+    'philosophy': '哲学 Philosophy',
+    'poetry': '诗歌 Poetry',
+    'satire': '讽刺 Satire',
+    'science-fiction': '科幻 Sci-Fi',
+    'shorts': '短篇合集 Shorts',
+    'spirituality': '灵性/宗教 Spirituality',
+    'travel': '游记 Travel'
+  };
+
   /* ==========================================================
      Bookshelf UI Rendering
      ========================================================== */
@@ -174,7 +197,8 @@
     let html = `<button class="pill active" data-subject="all">🌟 全部集合 (${state.allBooks.length})</button>`;
     subjects.forEach(sub => {
       const count = (state.subjectCatalog[sub] || []).length;
-      html += `<button class="pill" data-subject="${sub}">${sub} (${count})</button>`;
+      const label = SUBJECT_ZH[sub] || sub;
+      html += `<button class="pill" data-subject="${sub}">${label} (${count})</button>`;
     });
 
     container.innerHTML = html;
@@ -258,7 +282,7 @@
         <div class="book-card" data-repo="${b.repo_name}" data-subject="${b.subject}">
           <div class="book-cover-container">
             <img class="book-cover-img" loading="lazy" src="${coverUrl}" alt="${escapeHtml(b.title)}" onerror="this.onerror=null; this.src='./${b.subject}/${b.repo_name}/src/epub/images/cover.jpg';">
-            <span class="cover-subject-tag">${b.subject}</span>
+            <span class="cover-subject-tag">${SUBJECT_ZH[b.subject] || b.subject}</span>
           </div>
           <div class="book-info">
             <h3>${escapeHtml(b.title)}</h3>
