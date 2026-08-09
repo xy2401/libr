@@ -276,18 +276,17 @@
     books.forEach(b => {
       const prog = state.userData.bookProgress[b.repo_name];
       const pct = prog && prog.scrollPercent ? Math.round(prog.scrollPercent * 100) : 0;
-      const timeMin = prog && prog.timeSpent ? Math.round(prog.timeSpent / 60) : 0;
       const coverUrl = `./${b.subject}/${b.repo_name}/src/epub/images/cover.svg`;
 
       html += `
         <div class="book-card" data-repo="${b.repo_name}" data-subject="${b.subject}">
+          <div class="book-info">
+            <h3 title="${escapeHtml(b.title)}">${escapeHtml(b.title)}</h3>
+            <p class="author" title="${escapeHtml(b.author)}">${escapeHtml(b.author)}</p>
+          </div>
           <div class="book-cover-container">
             <img class="book-cover-img" loading="lazy" src="${coverUrl}" alt="${escapeHtml(b.title)}" onerror="this.onerror=null; this.src='./${b.subject}/${b.repo_name}/src/epub/images/cover.jpg';">
             <span class="cover-subject-tag">${SUBJECT_ZH[b.subject] || b.subject}</span>
-          </div>
-          <div class="book-info">
-            <h3>${escapeHtml(b.title)}</h3>
-            <p class="author">${escapeHtml(b.author)}</p>
           </div>
           <div class="book-meta-footer">
             <div class="footer-progress-bar">
@@ -377,17 +376,18 @@
       html += `
         <div class="book-card recent-card-item" data-repo="${item.repo_name}" data-subject="${item.subject}">
           <button class="delete-recent-btn" data-repo="${item.repo_name}" title="从最近阅读彻底删除">✕</button>
+          <div class="book-info">
+            <h3 title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</h3>
+            <p class="author" title="${escapeHtml(item.author)}">${escapeHtml(item.author)}</p>
+          </div>
           <div class="book-cover-container">
             <img class="book-cover-img" loading="lazy" src="${coverUrl}" alt="${escapeHtml(item.title)}" onerror="this.onerror=null; this.src='./${item.subject}/${item.repo_name}/src/epub/images/cover.jpg';">
             <span class="cover-subject-tag">${SUBJECT_ZH[item.subject] || item.subject}</span>
           </div>
-          <div class="book-info">
-            <h3>${escapeHtml(item.title)}</h3>
-            <p class="author">${escapeHtml(item.author)}</p>
-          </div>
           <div class="book-meta-footer">
-            <span>进度 ${pct}%</span>
-            <span>⏱️ ${timeMin} 分钟</span>
+            <div class="footer-progress-bar">
+              <div class="footer-progress-fill" style="width: ${pct}%;"></div>
+            </div>
           </div>
         </div>
       `;

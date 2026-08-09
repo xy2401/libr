@@ -582,27 +582,23 @@ body {
 }
 
 .book-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  margin-bottom: 0.35rem;
 }
 
 .book-info h3 {
   font-size: 0.88rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   margin-bottom: 0.1rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .book-info p.author {
   font-size: 0.74rem;
   color: var(--text-sub);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.1rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
