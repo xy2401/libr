@@ -1194,28 +1194,36 @@ body {
 /* Lightbox Modal Styling */
 .lightbox-card {
   position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
   animation: zoomInPop 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1rem;
 }
 
 @keyframes zoomInPop {
-  from { opacity: 0; transform: scale(0.9); }
+  from { opacity: 0; transform: scale(0.85); }
   to { opacity: 1; transform: scale(1); }
 }
 
 .lightbox-card img {
-  max-width: 85vw;
-  max-height: 85vh;
+  height: 82vh;
+  width: auto;
+  max-width: 90vw;
   aspect-ratio: 2 / 3;
   object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.85);
+  border-radius: 14px;
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.9);
   border: 1px solid var(--border-color);
   background: var(--bg-card);
+}
+
+.lightbox-card .close-modal-btn {
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .book-detail-right {
