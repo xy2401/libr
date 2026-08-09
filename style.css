@@ -411,35 +411,53 @@ body {
   box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.3);
 }
 
-.book-cover-mock {
+.book-cover-container {
   width: 100%;
-  height: 160px;
+  height: 240px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #93c5fd 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1rem;
-  color: white;
-  margin-bottom: 1rem;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15), 0 8px 16px -4px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
   position: relative;
+  margin-bottom: 1rem;
+  background: var(--bg-body);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.25);
 }
 
-.book-cover-mock.theme-2 { background: linear-gradient(135deg, #581c87 0%, #a855f7 100%); }
-.book-cover-mock.theme-3 { background: linear-gradient(135deg, #064e3b 0%, #10b981 100%); }
-.book-cover-mock.theme-4 { background: linear-gradient(135deg, #78350f 0%, #f59e0b 100%); }
-.book-cover-mock.theme-5 { background: linear-gradient(135deg, #831843 0%, #ec4899 100%); }
+.book-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-cover-img {
+  transform: scale(1.04);
+}
+
+.recent-cover-img {
+  width: 50px;
+  height: 72px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+}
 
 .cover-subject-tag {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.15rem 0.5rem;
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  padding: 0.2rem 0.5rem;
   border-radius: 4px;
-  align-self: flex-start;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
+  z-index: 2;
 }
 
 .cover-title-text {

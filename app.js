@@ -234,12 +234,13 @@
     books.forEach(b => {
       const prog = state.userData.bookProgress[b.repo_name];
       const pct = prog && prog.scrollPercent ? Math.round(prog.scrollPercent * 100) : 0;
+      const coverUrl = `./${b.subject}/${b.repo_name}/src/epub/images/cover.svg`;
 
       html += `
         <div class="book-card" data-repo="${b.repo_name}" data-subject="${b.subject}">
-          <div class="book-cover-mock ${getThemeClass(b.repo_name)}">
+          <div class="book-cover-container">
+            <img class="book-cover-img" src="${coverUrl}" alt="${escapeHtml(b.title)}" onerror="this.onerror=null; this.src='./${b.subject}/${b.repo_name}/src/epub/images/cover.jpg';">
             <span class="cover-subject-tag">${b.subject}</span>
-            <div class="cover-title-text">${escapeHtml(b.title)}</div>
           </div>
           <div class="book-info">
             <h3>${escapeHtml(b.title)}</h3>
@@ -285,11 +286,12 @@
     recentList.forEach(item => {
       const pct = Math.round((item.scrollPercent || 0) * 100);
       const timeMin = Math.round((item.timeSpent || 0) / 60);
+      const coverUrl = `./${item.subject}/${item.repo_name}/src/epub/images/cover.svg`;
 
       html += `
         <div class="recent-card" data-repo="${item.repo_name}" data-subject="${item.subject}">
           <div class="recent-card-top">
-            <div class="recent-cover">📖</div>
+            <img class="recent-cover-img" src="${coverUrl}" alt="${escapeHtml(item.title)}" onerror="this.onerror=null; this.src='./${item.subject}/${item.repo_name}/src/epub/images/cover.jpg';">
             <div class="recent-details">
               <h4>${escapeHtml(item.title)}</h4>
               <p>${escapeHtml(item.author)}</p>
