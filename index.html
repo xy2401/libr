@@ -244,7 +244,9 @@
             <img id="detailCoverImg" src="" alt="Book Cover">
           </div>
           <div class="book-detail-info">
-            <span id="detailSubjectTag" class="detail-subject-badge">Subject</span>
+            <div id="detailSubjectsList" class="detail-subjects-badges">
+              <span id="detailSubjectTag" class="detail-subject-badge">Subject</span>
+            </div>
             <h2 id="detailBookTitle">Book Title</h2>
             <p id="detailAuthorName" class="detail-author">Author Name</p>
             
@@ -258,8 +260,24 @@
                 <span id="detailTimeText" class="meta-value">0 分钟</span>
               </div>
               <div class="meta-item">
+                <span class="meta-label">上架/发布日期</span>
+                <span id="detailDateText" class="meta-value">-</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">图书语言</span>
+                <span id="detailLangText" class="meta-value">en-US</span>
+              </div>
+              <div class="meta-item">
                 <span class="meta-label">GitHub 仓库</span>
                 <a id="detailGithubLink" href="#" target="_blank" class="meta-link">查看源码 ↗</a>
+              </div>
+            </div>
+
+            <!-- Book Synopsis / Description -->
+            <div class="detail-description-section">
+              <h3>内容梗概 / Synopsis</h3>
+              <div id="detailDescriptionText" class="detail-description-body">
+                正在读取详细图书简介...
               </div>
             </div>
 

@@ -311,7 +311,7 @@
     });
   }
 
-  function openBookDetailModal(bookObj, subjectSlug) {
+  async function openBookDetailModal(bookObj, subjectSlug) {
     const modal = document.getElementById('bookDetailModal');
     const repoName = bookObj.repo_name;
     const subject = subjectSlug || bookObj.subject || 'fiction';
@@ -342,6 +342,16 @@
     document.getElementById('detailGithubLink').href = githubUrl;
     document.getElementById('detailWebLink').href = webUrl;
 
+    // Default loading text for description
+    const descElem = document.getElementById('detailDescriptionText');
+    const dateElem = document.getElementById('detailDateText');
+    const langElem = document.getElementById('detailLangText');
+    const subjectsContainer = document.getElementById('detailSubjectsList');
+
+    descElem.innerHTML = '<p class="desc-loading">正在载入图书完整梗概与元数据...</p>';
+    dateElem.textContent = '-';
+    langElem.textContent = 'en-US';
+
     // Start Reading button handler
     const startBtn = document.getElementById('startReadingBtn');
     startBtn.onclick = function() {
@@ -350,6 +360,55 @@
     };
 
     modal.classList.remove('hidden');
+
+    // Dynamically fetch & parse OPF metadata
+    const opfUrl = `./${subject}/${repoName}/src/epub/content.opf`;
+    try {
+      const resp = await fetch(opfUrl);
+      if (resp.ok) {
+        const xmlText = await resp.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(xmlText, 'application/xml');
+
+        // Extract description
+        const descNode = doc.querySelector('description, dc\\:description');
+        if (descNode && descNode.textContent.trim()) {
+          descElem.innerHTML = descNode.textContent.trim();
+        } else {
+          descElem.innerHTML = '<p>暂无该图书英文梗概信息。</p>';
+        }
+
+        // Extract release date
+        const dateNode = doc.querySelector('date, dc\\:date');
+        if (dateNode && dateNode.textContent) {
+          dateElem.textContent = dateNode.textContent.split('T')[0];
+        }
+
+        // Extract language
+        const langNode = doc.querySelector('language, dc\\:language');
+        if (langNode && langNode.textContent) {
+          langElem.textContent = langNode.textContent.trim();
+        }
+
+        // Extract subjects
+        const subjectNodes = doc.querySelectorAll('subject, dc\\:subject');
+        if (subjectNodes && subjectNodes.length > 0) {
+          let tagsHtml = `<span class="detail-subject-badge">${SUBJECT_ZH[subject] || subject}</span>`;
+          subjectNodes.forEach(node => {
+            const text = node.textContent.trim();
+            if (text) {
+              tagsHtml += `<span class="detail-tag-badge">${escapeHtml(text)}</span>`;
+            }
+          });
+          subjectsContainer.innerHTML = tagsHtml;
+        }
+      } else {
+        descElem.innerHTML = '<p>无法调取 OPF 文件元数据。</p>';
+      }
+    } catch (e) {
+      console.warn('OPF metadata parse warning:', e);
+      descElem.innerHTML = '<p>无全量 OPF 元数据简介。</p>';
+    }
   }
 
   function closeBookDetailModal() {
