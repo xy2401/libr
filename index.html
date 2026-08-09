@@ -47,41 +47,62 @@
     <!-- Main Content Grid -->
     <main class="main-body">
       
-      <!-- Recently Read Hero Section -->
-      <section id="recentSection" class="recent-section hidden">
-        <div class="section-title-row">
-          <h2>最近阅读</h2>
-          <span class="badge" id="recentCountBadge">0 本</span>
-        </div>
-        <div class="recent-scroll-container" id="recentContainer">
-          <!-- Dynamically populated recent book cards -->
-        </div>
-      </section>
+      <!-- Main Mode Tabs Switcher -->
+      <div class="main-tabs-bar">
+        <button id="tabBrowseBtn" class="main-tab-btn active" data-tab="browse">
+          <span>📚 分类浏览</span>
+        </button>
+        <button id="tabRecentBtn" class="main-tab-btn" data-tab="recent">
+          <span>⏱️ 最近阅读</span>
+          <span class="tab-badge" id="recentTabBadge">0</span>
+        </button>
+      </div>
 
-      <!-- Subject Categories Pills Filter -->
-      <section class="filter-section">
-        <div class="filter-header">
-          <h2>分类浏览</h2>
-          <span class="book-total-counter" id="booksCounter">全站加载中...</span>
-        </div>
-        <div class="subject-pills-grid" id="subjectPills">
-          <button class="pill active" data-subject="all">🌟 全部集合</button>
-          <!-- Dynamically populated subject pills -->
-        </div>
-      </section>
+      <!-- Tab View 1: Category Browse View -->
+      <div id="viewBrowse" class="tab-view-content">
+        <!-- Subject Categories Pills Filter -->
+        <section class="filter-section">
+          <div class="filter-header">
+            <h2>分类筛选</h2>
+            <span class="book-total-counter" id="booksCounter">全站加载中...</span>
+          </div>
+          <div class="subject-pills-grid" id="subjectPills">
+            <button class="pill active" data-subject="all">🌟 全部集合</button>
+            <!-- Dynamically populated subject pills -->
+          </div>
+        </section>
 
-      <!-- Book Grid Container -->
-      <section class="shelf-section">
-        <div id="booksGrid" class="books-grid">
-          <!-- Dynamically populated book cards -->
-        </div>
-        <div id="paginationBar" class="pagination-bar hidden"></div>
-        <div id="emptyState" class="empty-state hidden">
-          <div class="empty-icon">📖</div>
-          <h3>未找到匹配的图书</h3>
-          <p>尝试更换关键词或切换分类标签</p>
-        </div>
-      </section>
+        <!-- Book Grid Container -->
+        <section class="shelf-section">
+          <div id="booksGrid" class="books-grid">
+            <!-- Dynamically populated book cards -->
+          </div>
+          <div id="paginationBar" class="pagination-bar hidden"></div>
+          <div id="emptyState" class="empty-state hidden">
+            <div class="empty-icon">📖</div>
+            <h3>未找到匹配的图书</h3>
+            <p>尝试更换关键词或切换分类标签</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- Tab View 2: Recently Read View -->
+      <div id="viewRecent" class="tab-view-content hidden">
+        <section class="shelf-section">
+          <div class="filter-header">
+            <h2>最近阅读历史</h2>
+            <span class="book-total-counter" id="recentSubtext">按最近打开时间排序</span>
+          </div>
+          <div id="recentGrid" class="books-grid">
+            <!-- Dynamically populated recent book cards -->
+          </div>
+          <div id="recentEmptyState" class="empty-state hidden">
+            <div class="empty-icon">🔖</div>
+            <h3>暂无最近阅读记录</h3>
+            <p>去“分类浏览”中挑选一本书开始阅读吧！记录会自动保存在这里。</p>
+          </div>
+        </section>
+      </div>
 
     </main>
 

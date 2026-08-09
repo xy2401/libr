@@ -341,19 +341,30 @@
     });
   }
 
-  function renderRecentSection() {
-    const section = document.getElementById('recentSection');
-    const container = document.getElementById('recentContainer');
-    const badge = document.getElementById('recentCountBadge');
+  function removeRecentBook(repoName) {
+    const idx = state.userData.recent.findIndex(b => b.repo_name === repoName);
+    if (idx >= 0) {
+      state.userData.recent.splice(idx, 1);
+      saveUserData();
+      renderRecentSection();
+    }
+  }
 
-    const recentList = state.userData.recent;
-    if (!recentList || recentList.length === 0) {
-      section.classList.add('hidden');
+  function renderRecentSection() {
+    const grid = document.getElementById('recentGrid');
+    const emptyState = document.getElementById('recentEmptyState');
+    const badge = document.getElementById('recentTabBadge');
+
+    const recentList = state.userData.recent || [];
+    badge.textContent = recentList.length;
+
+    if (recentList.length === 0) {
+      grid.innerHTML = '';
+      emptyState.classList.remove('hidden');
       return;
     }
 
-    section.classList.remove('hidden');
-    badge.textContent = `${recentList.length} 本`;
+    emptyState.classList.add('hidden');
 
     let html = '';
     recentList.forEach(item => {
@@ -362,36 +373,44 @@
       const coverUrl = `./${item.subject}/${item.repo_name}/src/epub/images/cover.svg`;
 
       html += `
-        <div class="recent-card" data-repo="${item.repo_name}" data-subject="${item.subject}">
-          <div class="recent-card-top">
-            <img class="recent-cover-img" src="${coverUrl}" alt="${escapeHtml(item.title)}" onerror="this.onerror=null; this.src='./${item.subject}/${item.repo_name}/src/epub/images/cover.jpg';">
-            <div class="recent-details">
-              <h4>${escapeHtml(item.title)}</h4>
-              <p>${escapeHtml(item.author)}</p>
-            </div>
+        <div class="book-card recent-card-item" data-repo="${item.repo_name}" data-subject="${item.subject}">
+          <button class="delete-recent-btn" data-repo="${item.repo_name}" title="从最近阅读彻底删除">✕</button>
+          <div class="book-cover-container">
+            <img class="book-cover-img" loading="lazy" src="${coverUrl}" alt="${escapeHtml(item.title)}" onerror="this.onerror=null; this.src='./${item.subject}/${item.repo_name}/src/epub/images/cover.jpg';">
+            <span class="cover-subject-tag">${SUBJECT_ZH[item.subject] || item.subject}</span>
           </div>
-          <div class="recent-card-bottom">
-            <div class="progress-info-row">
-              <span>进度 ${pct}%</span>
-              <span>已读 ${timeMin} 分钟</span>
-            </div>
-            <div class="mini-progress-track">
-              <div class="mini-progress-fill" style="width: ${pct}%;"></div>
-            </div>
+          <div class="book-info">
+            <h3>${escapeHtml(item.title)}</h3>
+            <p class="author">${escapeHtml(item.author)}</p>
+          </div>
+          <div class="book-meta-footer">
+            <span>进度 ${pct}%</span>
+            <span>⏱️ ${timeMin} 分钟</span>
           </div>
         </div>
       `;
     });
 
-    container.innerHTML = html;
+    grid.innerHTML = html;
 
-    container.querySelectorAll('.recent-card').forEach(card => {
-      card.addEventListener('click', () => {
+    // Delete buttons event listener
+    grid.querySelectorAll('.delete-recent-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const repo = btn.getAttribute('data-repo');
+        removeRecentBook(repo);
+      });
+    });
+
+    // Card click event listener to open reader
+    grid.querySelectorAll('.recent-card-item').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.classList.contains('delete-recent-btn')) return;
         const repo = card.getAttribute('data-repo');
         const subject = card.getAttribute('data-subject');
         let bookObj = state.allBooks.find(b => b.repo_name === repo);
         if (!bookObj) {
-          bookObj = { repo_name: repo, title: card.querySelector('h4').textContent, author: card.querySelector('p').textContent, subject: subject };
+          bookObj = { repo_name: repo, title: card.querySelector('h3').textContent, author: card.querySelector('p').textContent, subject: subject };
         }
         openReader(bookObj, subject);
       });
@@ -640,6 +659,27 @@
      Modal & Toolbar Controls
      ========================================================== */
   function setupEventListeners() {
+    // Main Navigation Mode Tabs
+    const tabBrowseBtn = document.getElementById('tabBrowseBtn');
+    const tabRecentBtn = document.getElementById('tabRecentBtn');
+    const viewBrowse = document.getElementById('viewBrowse');
+    const viewRecent = document.getElementById('viewRecent');
+
+    tabBrowseBtn.addEventListener('click', () => {
+      tabBrowseBtn.classList.add('active');
+      tabRecentBtn.classList.remove('active');
+      viewBrowse.classList.remove('hidden');
+      viewRecent.classList.add('hidden');
+    });
+
+    tabRecentBtn.addEventListener('click', () => {
+      tabRecentBtn.classList.add('active');
+      tabBrowseBtn.classList.remove('active');
+      viewRecent.classList.remove('hidden');
+      viewBrowse.classList.add('hidden');
+      renderRecentSection();
+    });
+
     // Search input
     const searchInput = document.getElementById('searchInput');
     const clearBtn = document.getElementById('clearSearchBtn');
