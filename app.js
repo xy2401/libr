@@ -290,10 +290,6 @@
             <p class="author">${escapeHtml(b.author)}</p>
           </div>
           <div class="book-meta-footer">
-            <div class="footer-progress-info">
-              <span>${pct > 0 ? `已读 ${pct}%` : '未读'}</span>
-              ${timeMin > 0 ? `<span>⏱️ ${timeMin}分钟</span>` : ''}
-            </div>
             <div class="footer-progress-bar">
               <div class="footer-progress-fill" style="width: ${pct}%;"></div>
             </div>
