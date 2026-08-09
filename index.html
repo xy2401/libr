@@ -240,15 +240,11 @@
       <div class="book-detail-card">
         <button id="closeBookDetailBtn" class="close-modal-btn">✕</button>
         <div class="book-detail-body">
-          <div class="book-detail-cover">
-            <img id="detailCoverImg" src="" alt="Book Cover">
-          </div>
-          <div class="book-detail-info">
-            <div id="detailSubjectsList" class="detail-subjects-badges">
-              <span id="detailSubjectTag" class="detail-subject-badge">Subject</span>
+          <!-- Left Side: Cover & Meta Information & Action Buttons -->
+          <div class="book-detail-left">
+            <div class="book-detail-cover">
+              <img id="detailCoverImg" src="" alt="Book Cover">
             </div>
-            <h2 id="detailBookTitle">Book Title</h2>
-            <p id="detailAuthorName" class="detail-author">Author Name</p>
             
             <div class="detail-meta-list">
               <div class="meta-item">
@@ -260,7 +256,7 @@
                 <span id="detailTimeText" class="meta-value">0 分钟</span>
               </div>
               <div class="meta-item">
-                <span class="meta-label">上架/发布日期</span>
+                <span class="meta-label">发布日期</span>
                 <span id="detailDateText" class="meta-value">-</span>
               </div>
               <div class="meta-item">
@@ -268,16 +264,8 @@
                 <span id="detailLangText" class="meta-value">en-US</span>
               </div>
               <div class="meta-item">
-                <span class="meta-label">GitHub 仓库</span>
-                <a id="detailGithubLink" href="#" target="_blank" class="meta-link">查看源码 ↗</a>
-              </div>
-            </div>
-
-            <!-- Book Synopsis / Description -->
-            <div class="detail-description-section">
-              <h3>内容梗概 / Synopsis</h3>
-              <div id="detailDescriptionText" class="detail-description-body">
-                正在读取详细图书简介...
+                <span class="meta-label">GitHub 源码</span>
+                <a id="detailGithubLink" href="#" target="_blank" class="meta-link">查看 Repo ↗</a>
               </div>
             </div>
 
@@ -286,8 +274,25 @@
                 <span>📖 开始/继续阅读</span>
               </button>
               <a id="detailWebLink" href="#" target="_blank" class="secondary-action-btn">
-                <span>🌐 访问官网页面 ↗</span>
+                <span>🌐 访问官网 ↗</span>
               </a>
+            </div>
+          </div>
+
+          <!-- Right Side: Header Info & Large Synopsis -->
+          <div class="book-detail-right">
+            <div id="detailSubjectsList" class="detail-subjects-badges">
+              <span id="detailSubjectTag" class="detail-subject-badge">Subject</span>
+            </div>
+            <h2 id="detailBookTitle">Book Title</h2>
+            <p id="detailAuthorName" class="detail-author">Author Name</p>
+
+            <!-- Book Synopsis / Description -->
+            <div class="detail-description-section">
+              <h3>内容梗概 / Synopsis</h3>
+              <div id="detailDescriptionText" class="detail-description-body">
+                正在读取详细图书简介...
+              </div>
             </div>
           </div>
         </div>
