@@ -305,10 +305,55 @@
         const subject = card.getAttribute('data-subject');
         const bookObj = state.allBooks.find(b => b.repo_name === repo);
         if (bookObj) {
-          openReader(bookObj, subject);
+          openBookDetailModal(bookObj, subject);
         }
       });
     });
+  }
+
+  function openBookDetailModal(bookObj, subjectSlug) {
+    const modal = document.getElementById('bookDetailModal');
+    const repoName = bookObj.repo_name;
+    const subject = subjectSlug || bookObj.subject || 'fiction';
+    const coverUrl = `./${subject}/${repoName}/src/epub/images/cover.svg`;
+
+    const img = document.getElementById('detailCoverImg');
+    img.src = coverUrl;
+    img.onerror = function() {
+      this.onerror = null;
+      this.src = `./${subject}/${repoName}/src/epub/images/cover.jpg`;
+    };
+
+    document.getElementById('detailSubjectTag').textContent = SUBJECT_ZH[subject] || subject;
+    document.getElementById('detailBookTitle').textContent = bookObj.title;
+    document.getElementById('detailAuthorName').textContent = bookObj.author;
+
+    // Progress & Time
+    const prog = state.userData.bookProgress[repoName];
+    const pct = prog && prog.scrollPercent ? Math.round(prog.scrollPercent * 100) : 0;
+    const mins = prog && prog.timeSpent ? Math.round(prog.timeSpent / 60) : 0;
+
+    document.getElementById('detailProgressText').textContent = `${pct}%`;
+    document.getElementById('detailTimeText').textContent = `${mins} 分钟`;
+
+    // Links
+    const githubUrl = bookObj.github_url || `https://github.com/standardebooks/${repoName}.git`;
+    const webUrl = bookObj.web_url || `https://standardebooks.org/ebooks/${repoName.replace('_', '/', 1)}`;
+    document.getElementById('detailGithubLink').href = githubUrl;
+    document.getElementById('detailWebLink').href = webUrl;
+
+    // Start Reading button handler
+    const startBtn = document.getElementById('startReadingBtn');
+    startBtn.onclick = function() {
+      closeBookDetailModal();
+      openReader(bookObj, subject);
+    };
+
+    modal.classList.remove('hidden');
+  }
+
+  function closeBookDetailModal() {
+    document.getElementById('bookDetailModal').classList.add('hidden');
   }
 
   function renderPaginationBar(totalPages) {
@@ -414,7 +459,7 @@
         if (!bookObj) {
           bookObj = { repo_name: repo, title: card.querySelector('h3').textContent, author: card.querySelector('p').textContent, subject: subject };
         }
-        openReader(bookObj, subject);
+        openBookDetailModal(bookObj, subject);
       });
     });
   }
@@ -791,6 +836,7 @@
     // Stats Modal Controls
     document.getElementById('statsModalBtn').addEventListener('click', openStatsModal);
     document.getElementById('closeStatsBtn').addEventListener('click', closeStatsModal);
+    document.getElementById('closeBookDetailBtn').addEventListener('click', closeBookDetailModal);
     document.getElementById('resetStatsBtn').addEventListener('click', () => {
       if (confirm('确认重置所有最近阅读与时间统计数据？此操作不可撤销。')) {
         localStorage.removeItem(STORAGE_KEY);
