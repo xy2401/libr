@@ -1154,6 +1154,34 @@ body {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
   border: 1px solid var(--border-color);
   background: rgba(0, 0, 0, 0.3);
+  cursor: zoom-in;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.book-detail-cover:hover {
+  transform: scale(1.02);
+  border-color: var(--accent-primary);
+}
+
+.book-detail-cover::after {
+  content: '🔍 点击放大';
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.65rem;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.book-detail-cover:hover::after {
+  opacity: 1;
+  background: var(--accent-primary);
 }
 
 .book-detail-cover img {
@@ -1161,6 +1189,33 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Lightbox Modal Styling */
+.lightbox-card {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: zoomInPop 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes zoomInPop {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.lightbox-card img {
+  max-width: 85vw;
+  max-height: 85vh;
+  aspect-ratio: 2 / 3;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.85);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
 }
 
 .book-detail-right {

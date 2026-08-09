@@ -326,6 +326,13 @@
         this.onerror = null;
         this.src = `./${subject}/${repoName}/src/epub/images/cover.jpg`;
       };
+      
+      const coverContainer = img.closest('.book-detail-cover');
+      if (coverContainer) {
+        coverContainer.onclick = function() {
+          openCoverLightbox(img.src);
+        };
+      }
     }
 
     const subjectsContainer = document.getElementById('detailSubjectsList');
@@ -431,6 +438,22 @@
 
   function closeBookDetailModal() {
     document.getElementById('bookDetailModal').classList.add('hidden');
+  }
+
+  function openCoverLightbox(imgSrc) {
+    const modal = document.getElementById('coverLightboxModal');
+    const img = document.getElementById('lightboxCoverImg');
+    if (modal && img) {
+      img.src = imgSrc;
+      modal.classList.remove('hidden');
+    }
+  }
+
+  function closeCoverLightbox() {
+    const modal = document.getElementById('coverLightboxModal');
+    if (modal) {
+      modal.classList.add('hidden');
+    }
   }
 
   function renderPaginationBar(totalPages) {
@@ -910,10 +933,28 @@
     const canvas = document.getElementById('readerCanvas');
     canvas.addEventListener('scroll', throttle(updateReaderProgress, 200));
 
-    // Stats Modal Controls
+    // Stats & Detail Modal Controls
     document.getElementById('statsModalBtn').addEventListener('click', openStatsModal);
     document.getElementById('closeStatsBtn').addEventListener('click', closeStatsModal);
     document.getElementById('closeBookDetailBtn').addEventListener('click', closeBookDetailModal);
+    
+    // Cover Lightbox Controls
+    const closeLightboxBtn = document.getElementById('closeCoverLightboxBtn');
+    if (closeLightboxBtn) closeLightboxBtn.addEventListener('click', closeCoverLightbox);
+
+    const lightboxModal = document.getElementById('coverLightboxModal');
+    if (lightboxModal) {
+      lightboxModal.addEventListener('click', (e) => {
+        if (e.target === lightboxModal) closeCoverLightbox();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeCoverLightbox();
+      }
+    });
+
     document.getElementById('resetStatsBtn').addEventListener('click', () => {
       if (confirm('确认重置所有最近阅读与时间统计数据？此操作不可撤销。')) {
         localStorage.removeItem(STORAGE_KEY);
