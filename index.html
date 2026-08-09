@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standard Ebooks - 典藏电子书架与阅读器</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- App Container -->
+  <div id="app" class="app-container">
+    
+    <!-- Top Header -->
+    <header class="main-header">
+      <div class="logo-group">
+        <div class="logo-icon">📚</div>
+        <div class="logo-text">
+          <h1>Standard Ebooks</h1>
+          <span class="subtitle">精美公有领域典藏书架</span>
+        </div>
+      </div>
+      
+      <div class="header-actions">
+        <!-- Search Input -->
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="搜索书名或作者..." autocomplete="off">
+          <button id="clearSearchBtn" class="clear-btn hidden">✕</button>
+        </div>
+        
+        <!-- Stats Summary Badge -->
+        <button id="statsModalBtn" class="action-btn pill-btn" title="查看阅读统计">
+          <span class="icon">⏱️</span>
+          <span id="headerTotalTime">0 分钟</span>
+        </button>
+        
+        <!-- Theme Toggle -->
+        <button id="globalThemeToggle" class="action-btn circle-btn" title="切换暗色/亮色模式">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="main-body">
+      
+      <!-- Recently Read Hero Section -->
+      <section id="recentSection" class="recent-section hidden">
+        <div class="section-title-row">
+          <h2>最近阅读</h2>
+          <span class="badge" id="recentCountBadge">0 本</span>
+        </div>
+        <div class="recent-scroll-container" id="recentContainer">
+          <!-- Dynamically populated recent book cards -->
+        </div>
+      </section>
+
+      <!-- Subject Categories Pills Filter -->
+      <section class="filter-section">
+        <div class="filter-header">
+          <h2>分类浏览</h2>
+          <span class="book-total-counter" id="booksCounter">全站加载中...</span>
+        </div>
+        <div class="subject-pills-scroll" id="subjectPills">
+          <button class="pill active" data-subject="all">🌟 全部集合</button>
+          <!-- Dynamically populated subject pills -->
+        </div>
+      </section>
+
+      <!-- Book Grid Container -->
+      <section class="shelf-section">
+        <div id="booksGrid" class="books-grid">
+          <!-- Dynamically populated book cards -->
+        </div>
+        <div id="emptyState" class="empty-state hidden">
+          <div class="empty-icon">📖</div>
+          <h3>未找到匹配的图书</h3>
+          <p>尝试更换关键词或切换分类标签</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Reader View Overlay / Modal -->
+    <div id="readerOverlay" class="reader-overlay hidden">
+      
+      <!-- Reader Header Bar -->
+      <div class="reader-header">
+        <button id="closeReaderBtn" class="reader-btn icon-btn" title="返回书架">
+          <span>← 返回书架</span>
+        </button>
+        
+        <div class="reader-book-info">
+          <span id="readerBookTitle" class="reader-title">书名</span>
+          <span id="readerAuthorName" class="reader-author">作者</span>
+        </div>
+        
+        <div class="reader-tools">
+          <!-- Reader Timer -->
+          <div class="reader-timer-badge">
+            <span class="timer-dot"></span>
+            <span id="readerTimerText">00:00</span>
+          </div>
+
+          <!-- TOC Toggle -->
+          <button id="toggleTocBtn" class="reader-btn circle-btn" title="目录">
+            <span>📜</span>
+          </button>
+          
+          <!-- Reader Settings Dropdown Toggle -->
+          <button id="toggleSettingsBtn" class="reader-btn circle-btn" title="阅读设置">
+            <span>⚙️</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Reader Settings Toolbar Drawer -->
+      <div id="readerSettingsDrawer" class="settings-drawer hidden">
+        <div class="setting-item">
+          <label>阅读主题</label>
+          <div class="theme-options">
+            <button class="theme-opt active" data-reader-theme="dark">深色</button>
+            <button class="theme-opt" data-reader-theme="sepia">羊皮纸</button>
+            <button class="theme-opt" data-reader-theme="light">亮色</button>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <label>字体风格</label>
+          <div class="font-options">
+            <button class="font-opt active" data-font="serif">衬线体 (Merriweather)</button>
+            <button class="font-opt" data-font="sans">无衬线 (Inter)</button>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <label>字号调节</label>
+          <div class="size-controls">
+            <button id="fontDecBtn" class="size-btn">A-</button>
+            <span id="fontSizeDisplay">18px</span>
+            <button id="fontIncBtn" class="size-btn">A+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reader Body (TOC Drawer + Content Canvas) -->
+      <div class="reader-body">
+        
+        <!-- Table of Contents Sidebar -->
+        <aside id="tocSidebar" class="toc-sidebar">
+          <div class="toc-header">
+            <h3>图书目录</h3>
+            <button id="closeTocBtn" class="close-toc-btn">✕</button>
+          </div>
+          <nav id="tocNav" class="toc-nav">
+            <!-- Dynamically populated TOC items -->
+          </nav>
+        </aside>
+
+        <!-- Chapter Render Area -->
+        <main id="readerCanvas" class="reader-canvas">
+          <div id="chapterContainer" class="chapter-container serif-mode">
+            <div class="loading-spinner">
+              <div class="spinner"></div>
+              <p>正在载入章节内容...</p>
+            </div>
+          </div>
+          
+          <!-- Bottom Navigation inside Reader -->
+          <div class="chapter-nav-bar">
+            <button id="prevChapterBtn" class="nav-chapter-btn">← 上一章</button>
+            <span id="chapterProgressText">章节 1 / 1</span>
+            <button id="nextChapterBtn" class="nav-chapter-btn">下一章 →</button>
+          </div>
+        </main>
+      </div>
+
+      <!-- Top Reading Progress Indicator -->
+      <div class="reader-progress-track">
+        <div id="readerProgressBar" class="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Reading Statistics Modal -->
+    <div id="statsModal" class="stats-modal-overlay hidden">
+      <div class="stats-modal-card">
+        <div class="stats-header">
+          <h2>阅读统计中心</h2>
+          <button id="closeStatsBtn" class="close-modal-btn">✕</button>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-number" id="statTotalBooks">0</span>
+            <span class="stat-label">已读图书总数</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number" id="statTotalTime">0 分钟</span>
+            <span class="stat-label">累计阅读总时长</span>
+          </div>
+        </div>
+        <div class="stats-detail-list">
+          <h3>各图书累计时长</h3>
+          <div id="bookTimeList" class="book-time-list">
+            <!-- Dynamic list of book time breakdown -->
+          </div>
+        </div>
+        <div class="stats-footer">
+          <button id="resetStatsBtn" class="danger-btn">重置阅读进度与时间数据</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
