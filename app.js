@@ -183,12 +183,14 @@
         container.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
         btn.classList.add('active');
         state.activeSubject = btn.getAttribute('data-subject');
-        filterAndRenderBooks();
+        filterAndRenderBooks(true);
       });
     });
   }
 
-  function filterAndRenderBooks() {
+  function filterAndRenderBooks(resetPage = false) {
+    if (resetPage) state.currentPage = 1;
+
     let result = state.allBooks;
 
     // Filter by subject
@@ -207,16 +209,29 @@
     }
 
     state.displayedBooks = result;
-    renderBooksGrid(result);
+
+    // Calculate pagination bounds
+    const pageSize = 24;
+    const totalPages = Math.ceil(result.length / pageSize) || 1;
+    if (state.currentPage > totalPages) state.currentPage = totalPages;
+    if (state.currentPage < 1) state.currentPage = 1;
+
+    const startIdx = (state.currentPage - 1) * pageSize;
+    const endIdx = startIdx + pageSize;
+    const pageBooks = result.slice(startIdx, endIdx);
+
+    renderBooksGrid(pageBooks, result.length);
+    renderPaginationBar(totalPages);
   }
 
-  function renderBooksGrid(books) {
+  function renderBooksGrid(books, totalFilteredCount) {
     const grid = document.getElementById('booksGrid');
     const emptyState = document.getElementById('emptyState');
 
     if (!books || books.length === 0) {
       grid.innerHTML = '';
       emptyState.classList.remove('hidden');
+      document.getElementById('paginationBar').classList.add('hidden');
       return;
     }
 
@@ -239,7 +254,7 @@
       html += `
         <div class="book-card" data-repo="${b.repo_name}" data-subject="${b.subject}">
           <div class="book-cover-container">
-            <img class="book-cover-img" src="${coverUrl}" alt="${escapeHtml(b.title)}" onerror="this.onerror=null; this.src='./${b.subject}/${b.repo_name}/src/epub/images/cover.jpg';">
+            <img class="book-cover-img" loading="lazy" src="${coverUrl}" alt="${escapeHtml(b.title)}" onerror="this.onerror=null; this.src='./${b.subject}/${b.repo_name}/src/epub/images/cover.jpg';">
             <span class="cover-subject-tag">${b.subject}</span>
           </div>
           <div class="book-info">
@@ -265,6 +280,37 @@
           openReader(bookObj, subject);
         }
       });
+    });
+  }
+
+  function renderPaginationBar(totalPages) {
+    const container = document.getElementById('paginationBar');
+    if (totalPages <= 1) {
+      container.classList.add('hidden');
+      return;
+    }
+
+    container.classList.remove('hidden');
+    container.innerHTML = `
+      <button id="prevPageBtn" class="page-nav-btn" ${state.currentPage === 1 ? 'disabled' : ''}>← 上一页</button>
+      <span class="page-indicator">第 ${state.currentPage} / ${totalPages} 页</span>
+      <button id="nextPageBtn" class="page-nav-btn" ${state.currentPage === totalPages ? 'disabled' : ''}>下一页 →</button>
+    `;
+
+    document.getElementById('prevPageBtn').addEventListener('click', () => {
+      if (state.currentPage > 1) {
+        state.currentPage--;
+        filterAndRenderBooks(false);
+        window.scrollTo({ top: 300, behavior: 'smooth' });
+      }
+    });
+
+    document.getElementById('nextPageBtn').addEventListener('click', () => {
+      if (state.currentPage < totalPages) {
+        state.currentPage++;
+        filterAndRenderBooks(false);
+        window.scrollTo({ top: 300, behavior: 'smooth' });
+      }
     });
   }
 
