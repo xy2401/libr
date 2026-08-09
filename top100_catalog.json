@@ -1,0 +1,1353 @@
+[
+  {
+    "rank": 1,
+    "title": "The Odyssey",
+    "author": "Homer",
+    "web_url": "https://standardebooks.org/ebooks/homer/the-odyssey/william-cullen-bryant",
+    "href": "/ebooks/homer/the-odyssey/william-cullen-bryant",
+    "repo_name": "homer_the-odyssey_william-cullen-bryant",
+    "github_url": "https://github.com/standardebooks/homer_the-odyssey_william-cullen-bryant.git",
+    "subject": "poetry",
+    "all_subjects": [
+      "poetry"
+    ]
+  },
+  {
+    "rank": 2,
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "web_url": "https://standardebooks.org/ebooks/mary-shelley/frankenstein",
+    "href": "/ebooks/mary-shelley/frankenstein",
+    "repo_name": "mary-shelley_frankenstein",
+    "github_url": "https://github.com/standardebooks/mary-shelley_frankenstein.git",
+    "subject": "horror",
+    "all_subjects": [
+      "horror",
+      "science-fiction"
+    ]
+  },
+  {
+    "rank": 3,
+    "title": "The Count of Monte Cristo",
+    "author": "Alexandre Dumas",
+    "web_url": "https://standardebooks.org/ebooks/alexandre-dumas/the-count-of-monte-cristo/chapman-and-hall",
+    "href": "/ebooks/alexandre-dumas/the-count-of-monte-cristo/chapman-and-hall",
+    "repo_name": "alexandre-dumas_the-count-of-monte-cristo_chapman-and-hall",
+    "github_url": "https://github.com/standardebooks/alexandre-dumas_the-count-of-monte-cristo_chapman-and-hall.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 4,
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "web_url": "https://standardebooks.org/ebooks/jane-austen/pride-and-prejudice",
+    "href": "/ebooks/jane-austen/pride-and-prejudice",
+    "repo_name": "jane-austen_pride-and-prejudice",
+    "github_url": "https://github.com/standardebooks/jane-austen_pride-and-prejudice.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 5,
+    "title": "The Mystery of Edwin Drood",
+    "author": "Charles Dickens",
+    "web_url": "https://standardebooks.org/ebooks/charles-dickens/the-mystery-of-edwin-drood",
+    "href": "/ebooks/charles-dickens/the-mystery-of-edwin-drood",
+    "repo_name": "charles-dickens_the-mystery-of-edwin-drood",
+    "github_url": "https://github.com/standardebooks/charles-dickens_the-mystery-of-edwin-drood.git",
+    "subject": "mystery",
+    "all_subjects": [
+      "mystery"
+    ]
+  },
+  {
+    "rank": 6,
+    "title": "Meditations",
+    "author": "Marcus Aurelius",
+    "web_url": "https://standardebooks.org/ebooks/marcus-aurelius/meditations/george-long",
+    "href": "/ebooks/marcus-aurelius/meditations/george-long",
+    "repo_name": "marcus-aurelius_meditations_george-long",
+    "github_url": "https://github.com/standardebooks/marcus-aurelius_meditations_george-long.git",
+    "subject": "philosophy",
+    "all_subjects": [
+      "philosophy"
+    ]
+  },
+  {
+    "rank": 7,
+    "title": "Memoirs of an Infantry Officer",
+    "author": "Siegfried Sassoon",
+    "web_url": "https://standardebooks.org/ebooks/siegfried-sassoon/memoirs-of-an-infantry-officer",
+    "href": "/ebooks/siegfried-sassoon/memoirs-of-an-infantry-officer",
+    "repo_name": "siegfried-sassoon_memoirs-of-an-infantry-officer",
+    "github_url": "https://github.com/standardebooks/siegfried-sassoon_memoirs-of-an-infantry-officer.git",
+    "subject": "autobiography",
+    "all_subjects": [
+      "autobiography",
+      "fiction"
+    ]
+  },
+  {
+    "rank": 8,
+    "title": "Dracula",
+    "author": "Bram Stoker",
+    "web_url": "https://standardebooks.org/ebooks/bram-stoker/dracula",
+    "href": "/ebooks/bram-stoker/dracula",
+    "repo_name": "bram-stoker_dracula",
+    "github_url": "https://github.com/standardebooks/bram-stoker_dracula.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "horror"
+    ]
+  },
+  {
+    "rank": 9,
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "web_url": "https://standardebooks.org/ebooks/oscar-wilde/the-picture-of-dorian-gray",
+    "href": "/ebooks/oscar-wilde/the-picture-of-dorian-gray",
+    "repo_name": "oscar-wilde_the-picture-of-dorian-gray",
+    "github_url": "https://github.com/standardebooks/oscar-wilde_the-picture-of-dorian-gray.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 10,
+    "title": "Moby Dick",
+    "author": "Herman Melville",
+    "web_url": "https://standardebooks.org/ebooks/herman-melville/moby-dick",
+    "href": "/ebooks/herman-melville/moby-dick",
+    "repo_name": "herman-melville_moby-dick",
+    "github_url": "https://github.com/standardebooks/herman-melville_moby-dick.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 11,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "web_url": "https://standardebooks.org/ebooks/f-scott-fitzgerald/the-great-gatsby",
+    "href": "/ebooks/f-scott-fitzgerald/the-great-gatsby",
+    "repo_name": "f-scott-fitzgerald_the-great-gatsby",
+    "github_url": "https://github.com/standardebooks/f-scott-fitzgerald_the-great-gatsby.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 12,
+    "title": "The Iliad",
+    "author": "Homer",
+    "web_url": "https://standardebooks.org/ebooks/homer/the-iliad/william-cullen-bryant",
+    "href": "/ebooks/homer/the-iliad/william-cullen-bryant",
+    "repo_name": "homer_the-iliad_william-cullen-bryant",
+    "github_url": "https://github.com/standardebooks/homer_the-iliad_william-cullen-bryant.git",
+    "subject": "poetry",
+    "all_subjects": [
+      "poetry"
+    ]
+  },
+  {
+    "rank": 13,
+    "title": "Crime and Punishment",
+    "author": "Fyodor Dostoevsky",
+    "web_url": "https://standardebooks.org/ebooks/fyodor-dostoevsky/crime-and-punishment/constance-garnett",
+    "href": "/ebooks/fyodor-dostoevsky/crime-and-punishment/constance-garnett",
+    "repo_name": "fyodor-dostoevsky_crime-and-punishment_constance-garnett",
+    "github_url": "https://github.com/standardebooks/fyodor-dostoevsky_crime-and-punishment_constance-garnett.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 14,
+    "title": "Pirates of Venus",
+    "author": "Edgar Rice Burroughs",
+    "web_url": "https://standardebooks.org/ebooks/edgar-rice-burroughs/pirates-of-venus",
+    "href": "/ebooks/edgar-rice-burroughs/pirates-of-venus",
+    "repo_name": "edgar-rice-burroughs_pirates-of-venus",
+    "github_url": "https://github.com/standardebooks/edgar-rice-burroughs_pirates-of-venus.git",
+    "subject": "adventure",
+    "all_subjects": [
+      "adventure",
+      "science-fiction"
+    ]
+  },
+  {
+    "rank": 15,
+    "title": "Alice’s Adventures in Wonderland",
+    "author": "Lewis Carroll",
+    "web_url": "https://standardebooks.org/ebooks/lewis-carroll/alices-adventures-in-wonderland/john-tenniel",
+    "href": "/ebooks/lewis-carroll/alices-adventures-in-wonderland/john-tenniel",
+    "repo_name": "lewis-carroll_alices-adventures-in-wonderland_john-tenniel",
+    "github_url": "https://github.com/standardebooks/lewis-carroll_alices-adventures-in-wonderland_john-tenniel.git",
+    "subject": "childrens",
+    "all_subjects": [
+      "childrens",
+      "fiction"
+    ]
+  },
+  {
+    "rank": 16,
+    "title": "The Adventures of Sherlock Holmes",
+    "author": "Arthur Conan Doyle",
+    "web_url": "https://standardebooks.org/ebooks/arthur-conan-doyle/the-adventures-of-sherlock-holmes",
+    "href": "/ebooks/arthur-conan-doyle/the-adventures-of-sherlock-holmes",
+    "repo_name": "arthur-conan-doyle_the-adventures-of-sherlock-holmes",
+    "github_url": "https://github.com/standardebooks/arthur-conan-doyle_the-adventures-of-sherlock-holmes.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "mystery",
+      "shorts"
+    ]
+  },
+  {
+    "rank": 17,
+    "title": "Craig Kennedy Stories",
+    "author": "Arthur B. Reeve",
+    "web_url": "https://standardebooks.org/ebooks/arthur-b-reeve/craig-kennedy-stories",
+    "href": "/ebooks/arthur-b-reeve/craig-kennedy-stories",
+    "repo_name": "arthur-b-reeve_craig-kennedy-stories",
+    "github_url": "https://github.com/standardebooks/arthur-b-reeve_craig-kennedy-stories.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "mystery",
+      "shorts"
+    ]
+  },
+  {
+    "rank": 18,
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë",
+    "web_url": "https://standardebooks.org/ebooks/charlotte-bronte/jane-eyre",
+    "href": "/ebooks/charlotte-bronte/jane-eyre",
+    "repo_name": "charlotte-bronte_jane-eyre",
+    "github_url": "https://github.com/standardebooks/charlotte-bronte_jane-eyre.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 19,
+    "title": "Short Science Fiction",
+    "author": "Noel Loomis",
+    "web_url": "https://standardebooks.org/ebooks/noel-loomis/short-science-fiction",
+    "href": "/ebooks/noel-loomis/short-science-fiction",
+    "repo_name": "noel-loomis_short-science-fiction",
+    "github_url": "https://github.com/standardebooks/noel-loomis_short-science-fiction.git",
+    "subject": "science-fiction",
+    "all_subjects": [
+      "science-fiction",
+      "shorts"
+    ]
+  },
+  {
+    "rank": 20,
+    "title": "The Line of Love",
+    "author": "James Branch Cabell",
+    "web_url": "https://standardebooks.org/ebooks/james-branch-cabell/the-line-of-love",
+    "href": "/ebooks/james-branch-cabell/the-line-of-love",
+    "repo_name": "james-branch-cabell_the-line-of-love",
+    "github_url": "https://github.com/standardebooks/james-branch-cabell_the-line-of-love.git",
+    "subject": "comedy",
+    "all_subjects": [
+      "comedy",
+      "fantasy"
+    ]
+  },
+  {
+    "rank": 21,
+    "title": "Jesus the Son of Man",
+    "author": "Kahlil Gibran",
+    "web_url": "https://standardebooks.org/ebooks/kahlil-gibran/jesus-the-son-of-man",
+    "href": "/ebooks/kahlil-gibran/jesus-the-son-of-man",
+    "repo_name": "kahlil-gibran_jesus-the-son-of-man",
+    "github_url": "https://github.com/standardebooks/kahlil-gibran_jesus-the-son-of-man.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "shorts",
+      "spirituality"
+    ]
+  },
+  {
+    "rank": 22,
+    "title": "The Perfume of Eros",
+    "author": "Edgar Saltus",
+    "web_url": "https://standardebooks.org/ebooks/edgar-saltus/the-perfume-of-eros",
+    "href": "/ebooks/edgar-saltus/the-perfume-of-eros",
+    "repo_name": "edgar-saltus_the-perfume-of-eros",
+    "github_url": "https://github.com/standardebooks/edgar-saltus_the-perfume-of-eros.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 23,
+    "title": "Poetry",
+    "author": "Maria Lowell",
+    "web_url": "https://standardebooks.org/ebooks/maria-lowell/poetry",
+    "href": "/ebooks/maria-lowell/poetry",
+    "repo_name": "maria-lowell_poetry",
+    "github_url": "https://github.com/standardebooks/maria-lowell_poetry.git",
+    "subject": "poetry",
+    "all_subjects": [
+      "poetry"
+    ]
+  },
+  {
+    "rank": 24,
+    "title": "Flight",
+    "author": "Walter White",
+    "web_url": "https://standardebooks.org/ebooks/walter-white/flight",
+    "href": "/ebooks/walter-white/flight",
+    "repo_name": "walter-white_flight",
+    "github_url": "https://github.com/standardebooks/walter-white_flight.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 25,
+    "title": "The Protestant Ethic and the Spirit of Capitalism",
+    "author": "Max Weber",
+    "web_url": "https://standardebooks.org/ebooks/max-weber/the-protestant-ethic-and-the-spirit-of-capitalism/talcott-parsons",
+    "href": "/ebooks/max-weber/the-protestant-ethic-and-the-spirit-of-capitalism/talcott-parsons",
+    "repo_name": "max-weber_the-protestant-ethic-and-the-spirit-of-capitalism_talcott-parsons",
+    "github_url": "https://github.com/standardebooks/max-weber_the-protestant-ethic-and-the-spirit-of-capitalism_talcott-parsons.git",
+    "subject": "nonfiction",
+    "all_subjects": [
+      "nonfiction",
+      "philosophy",
+      "spirituality"
+    ]
+  },
+  {
+    "rank": 26,
+    "title": "The Brothers Karamazov",
+    "author": "Fyodor Dostoevsky",
+    "web_url": "https://standardebooks.org/ebooks/fyodor-dostoevsky/the-brothers-karamazov/constance-garnett",
+    "href": "/ebooks/fyodor-dostoevsky/the-brothers-karamazov/constance-garnett",
+    "repo_name": "fyodor-dostoevsky_the-brothers-karamazov_constance-garnett",
+    "github_url": "https://github.com/standardebooks/fyodor-dostoevsky_the-brothers-karamazov_constance-garnett.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 27,
+    "title": "The Time Machine",
+    "author": "H. G. Wells",
+    "web_url": "https://standardebooks.org/ebooks/h-g-wells/the-time-machine",
+    "href": "/ebooks/h-g-wells/the-time-machine",
+    "repo_name": "h-g-wells_the-time-machine",
+    "github_url": "https://github.com/standardebooks/h-g-wells_the-time-machine.git",
+    "subject": "science-fiction",
+    "all_subjects": [
+      "science-fiction"
+    ]
+  },
+  {
+    "rank": 28,
+    "title": "A Study in Scarlet",
+    "author": "Arthur Conan Doyle",
+    "web_url": "https://standardebooks.org/ebooks/arthur-conan-doyle/a-study-in-scarlet",
+    "href": "/ebooks/arthur-conan-doyle/a-study-in-scarlet",
+    "repo_name": "arthur-conan-doyle_a-study-in-scarlet",
+    "github_url": "https://github.com/standardebooks/arthur-conan-doyle_a-study-in-scarlet.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "mystery"
+    ]
+  },
+  {
+    "rank": 29,
+    "title": "Wuthering Heights",
+    "author": "Emily Brontë",
+    "web_url": "https://standardebooks.org/ebooks/emily-bronte/wuthering-heights",
+    "href": "/ebooks/emily-bronte/wuthering-heights",
+    "repo_name": "emily-bronte_wuthering-heights",
+    "github_url": "https://github.com/standardebooks/emily-bronte_wuthering-heights.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 30,
+    "title": "The Strange Case of Dr. Jekyll and Mr. Hyde",
+    "author": "Robert Louis Stevenson",
+    "web_url": "https://standardebooks.org/ebooks/robert-louis-stevenson/the-strange-case-of-dr-jekyll-and-mr-hyde",
+    "href": "/ebooks/robert-louis-stevenson/the-strange-case-of-dr-jekyll-and-mr-hyde",
+    "repo_name": "robert-louis-stevenson_the-strange-case-of-dr-jekyll-and-mr-hyde",
+    "github_url": "https://github.com/standardebooks/robert-louis-stevenson_the-strange-case-of-dr-jekyll-and-mr-hyde.git",
+    "subject": "horror",
+    "all_subjects": [
+      "horror",
+      "science-fiction"
+    ]
+  },
+  {
+    "rank": 31,
+    "title": "The Rescue",
+    "author": "Joseph Conrad",
+    "web_url": "https://standardebooks.org/ebooks/joseph-conrad/the-rescue",
+    "href": "/ebooks/joseph-conrad/the-rescue",
+    "repo_name": "joseph-conrad_the-rescue",
+    "github_url": "https://github.com/standardebooks/joseph-conrad_the-rescue.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 32,
+    "title": "Partners in Crime",
+    "author": "Agatha Christie",
+    "web_url": "https://standardebooks.org/ebooks/agatha-christie/partners-in-crime",
+    "href": "/ebooks/agatha-christie/partners-in-crime",
+    "repo_name": "agatha-christie_partners-in-crime",
+    "github_url": "https://github.com/standardebooks/agatha-christie_partners-in-crime.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "mystery",
+      "shorts"
+    ]
+  },
+  {
+    "rank": 33,
+    "title": "The Fire in the Flint",
+    "author": "Walter White",
+    "web_url": "https://standardebooks.org/ebooks/walter-white/the-fire-in-the-flint",
+    "href": "/ebooks/walter-white/the-fire-in-the-flint",
+    "repo_name": "walter-white_the-fire-in-the-flint",
+    "github_url": "https://github.com/standardebooks/walter-white_the-fire-in-the-flint.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 34,
+    "title": "Analects",
+    "author": "Confucius",
+    "web_url": "https://standardebooks.org/ebooks/confucius/analects/james-legge",
+    "href": "/ebooks/confucius/analects/james-legge",
+    "repo_name": "confucius_analects_james-legge",
+    "github_url": "https://github.com/standardebooks/confucius_analects_james-legge.git",
+    "subject": "philosophy",
+    "all_subjects": [
+      "philosophy"
+    ]
+  },
+  {
+    "rank": 35,
+    "title": "Don Quixote",
+    "author": "Miguel de Cervantes Saavedra",
+    "web_url": "https://standardebooks.org/ebooks/miguel-de-cervantes-saavedra/don-quixote/john-ormsby",
+    "href": "/ebooks/miguel-de-cervantes-saavedra/don-quixote/john-ormsby",
+    "repo_name": "miguel-de-cervantes-saavedra_don-quixote_john-ormsby",
+    "github_url": "https://github.com/standardebooks/miguel-de-cervantes-saavedra_don-quixote_john-ormsby.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 36,
+    "title": "Ulysses",
+    "author": "James Joyce",
+    "web_url": "https://standardebooks.org/ebooks/james-joyce/ulysses",
+    "href": "/ebooks/james-joyce/ulysses",
+    "repo_name": "james-joyce_ulysses",
+    "github_url": "https://github.com/standardebooks/james-joyce_ulysses.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 37,
+    "title": "Suspense",
+    "author": "Joseph Conrad",
+    "web_url": "https://standardebooks.org/ebooks/joseph-conrad/suspense",
+    "href": "/ebooks/joseph-conrad/suspense",
+    "repo_name": "joseph-conrad_suspense",
+    "github_url": "https://github.com/standardebooks/joseph-conrad_suspense.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 38,
+    "title": "Basil",
+    "author": "Wilkie Collins",
+    "web_url": "https://standardebooks.org/ebooks/wilkie-collins/basil",
+    "href": "/ebooks/wilkie-collins/basil",
+    "repo_name": "wilkie-collins_basil",
+    "github_url": "https://github.com/standardebooks/wilkie-collins_basil.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 39,
+    "title": "The Prince",
+    "author": "Niccolò Machiavelli",
+    "web_url": "https://standardebooks.org/ebooks/niccolo-machiavelli/the-prince/w-k-marriott",
+    "href": "/ebooks/niccolo-machiavelli/the-prince/w-k-marriott",
+    "repo_name": "niccolo-machiavelli_the-prince_w-k-marriott",
+    "github_url": "https://github.com/standardebooks/niccolo-machiavelli_the-prince_w-k-marriott.git",
+    "subject": "philosophy",
+    "all_subjects": [
+      "philosophy"
+    ]
+  },
+  {
+    "rank": 40,
+    "title": "Treasure Island",
+    "author": "Robert Louis Stevenson",
+    "web_url": "https://standardebooks.org/ebooks/robert-louis-stevenson/treasure-island",
+    "href": "/ebooks/robert-louis-stevenson/treasure-island",
+    "repo_name": "robert-louis-stevenson_treasure-island",
+    "github_url": "https://github.com/standardebooks/robert-louis-stevenson_treasure-island.git",
+    "subject": "adventure",
+    "all_subjects": [
+      "adventure",
+      "childrens",
+      "fiction"
+    ]
+  },
+  {
+    "rank": 41,
+    "title": "Hypatia",
+    "author": "Charles Kingsley",
+    "web_url": "https://standardebooks.org/ebooks/charles-kingsley/hypatia",
+    "href": "/ebooks/charles-kingsley/hypatia",
+    "repo_name": "charles-kingsley_hypatia",
+    "github_url": "https://github.com/standardebooks/charles-kingsley_hypatia.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 42,
+    "title": "War and Peace",
+    "author": "Leo Tolstoy",
+    "web_url": "https://standardebooks.org/ebooks/leo-tolstoy/war-and-peace/louise-maude_aylmer-maude",
+    "href": "/ebooks/leo-tolstoy/war-and-peace/louise-maude_aylmer-maude",
+    "repo_name": "leo-tolstoy_war-and-peace_louise-maude_aylmer-maude",
+    "github_url": "https://github.com/standardebooks/leo-tolstoy_war-and-peace_louise-maude_aylmer-maude.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 43,
+    "title": "The Art of War",
+    "author": "Sun Tzu",
+    "web_url": "https://standardebooks.org/ebooks/sun-tzu/the-art-of-war/lionel-giles",
+    "href": "/ebooks/sun-tzu/the-art-of-war/lionel-giles",
+    "repo_name": "sun-tzu_the-art-of-war_lionel-giles",
+    "github_url": "https://github.com/standardebooks/sun-tzu_the-art-of-war_lionel-giles.git",
+    "subject": "nonfiction",
+    "all_subjects": [
+      "nonfiction"
+    ]
+  },
+  {
+    "rank": 44,
+    "title": "The King in Yellow",
+    "author": "Robert W. Chambers",
+    "web_url": "https://standardebooks.org/ebooks/robert-w-chambers/the-king-in-yellow",
+    "href": "/ebooks/robert-w-chambers/the-king-in-yellow",
+    "repo_name": "robert-w-chambers_the-king-in-yellow",
+    "github_url": "https://github.com/standardebooks/robert-w-chambers_the-king-in-yellow.git",
+    "subject": "horror",
+    "all_subjects": [
+      "horror",
+      "shorts"
+    ]
+  },
+  {
+    "rank": 45,
+    "title": "Deadlock",
+    "author": "Dorothy M. Richardson",
+    "web_url": "https://standardebooks.org/ebooks/dorothy-m-richardson/deadlock",
+    "href": "/ebooks/dorothy-m-richardson/deadlock",
+    "repo_name": "dorothy-m-richardson_deadlock",
+    "github_url": "https://github.com/standardebooks/dorothy-m-richardson_deadlock.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 46,
+    "title": "Middlemarch",
+    "author": "George Eliot",
+    "web_url": "https://standardebooks.org/ebooks/george-eliot/middlemarch",
+    "href": "/ebooks/george-eliot/middlemarch",
+    "repo_name": "george-eliot_middlemarch",
+    "github_url": "https://github.com/standardebooks/george-eliot_middlemarch.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 47,
+    "title": "The Divine Comedy",
+    "author": "Dante Alighieri",
+    "web_url": "https://standardebooks.org/ebooks/dante-alighieri/the-divine-comedy/henry-wadsworth-longfellow",
+    "href": "/ebooks/dante-alighieri/the-divine-comedy/henry-wadsworth-longfellow",
+    "repo_name": "dante-alighieri_the-divine-comedy_henry-wadsworth-longfellow",
+    "github_url": "https://github.com/standardebooks/dante-alighieri_the-divine-comedy_henry-wadsworth-longfellow.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "poetry",
+      "spirituality"
+    ]
+  },
+  {
+    "rank": 48,
+    "title": "The Quest of the Silver Fleece",
+    "author": "W. E. B. Du Bois",
+    "web_url": "https://standardebooks.org/ebooks/w-e-b-du-bois/the-quest-of-the-silver-fleece",
+    "href": "/ebooks/w-e-b-du-bois/the-quest-of-the-silver-fleece",
+    "repo_name": "w-e-b-du-bois_the-quest-of-the-silver-fleece",
+    "github_url": "https://github.com/standardebooks/w-e-b-du-bois_the-quest-of-the-silver-fleece.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 49,
+    "title": "Dialogues",
+    "author": "Plato",
+    "web_url": "https://standardebooks.org/ebooks/plato/dialogues/benjamin-jowett",
+    "href": "/ebooks/plato/dialogues/benjamin-jowett",
+    "repo_name": "plato_dialogues_benjamin-jowett",
+    "github_url": "https://github.com/standardebooks/plato_dialogues_benjamin-jowett.git",
+    "subject": "philosophy",
+    "all_subjects": [
+      "philosophy"
+    ]
+  },
+  {
+    "rank": 50,
+    "title": "The Murder of Roger Ackroyd",
+    "author": "Agatha Christie",
+    "web_url": "https://standardebooks.org/ebooks/agatha-christie/the-murder-of-roger-ackroyd",
+    "href": "/ebooks/agatha-christie/the-murder-of-roger-ackroyd",
+    "repo_name": "agatha-christie_the-murder-of-roger-ackroyd",
+    "github_url": "https://github.com/standardebooks/agatha-christie_the-murder-of-roger-ackroyd.git",
+    "subject": "mystery",
+    "all_subjects": [
+      "mystery"
+    ]
+  },
+  {
+    "rank": 51,
+    "title": "In Search of Lost Time",
+    "author": "Marcel Proust",
+    "web_url": "https://standardebooks.org/ebooks/marcel-proust/in-search-of-lost-time/c-k-scott-moncrieff",
+    "href": "/ebooks/marcel-proust/in-search-of-lost-time/c-k-scott-moncrieff",
+    "repo_name": "marcel-proust_in-search-of-lost-time_c-k-scott-moncrieff",
+    "github_url": "https://github.com/standardebooks/marcel-proust_in-search-of-lost-time_c-k-scott-moncrieff.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 52,
+    "title": "Emma",
+    "author": "Jane Austen",
+    "web_url": "https://standardebooks.org/ebooks/jane-austen/emma",
+    "href": "/ebooks/jane-austen/emma",
+    "repo_name": "jane-austen_emma",
+    "github_url": "https://github.com/standardebooks/jane-austen_emma.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 53,
+    "title": "Anna Karenina",
+    "author": "Leo Tolstoy",
+    "web_url": "https://standardebooks.org/ebooks/leo-tolstoy/anna-karenina/constance-garnett",
+    "href": "/ebooks/leo-tolstoy/anna-karenina/constance-garnett",
+    "repo_name": "leo-tolstoy_anna-karenina_constance-garnett",
+    "github_url": "https://github.com/standardebooks/leo-tolstoy_anna-karenina_constance-garnett.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 54,
+    "title": "To the Lighthouse",
+    "author": "Virginia Woolf",
+    "web_url": "https://standardebooks.org/ebooks/virginia-woolf/to-the-lighthouse",
+    "href": "/ebooks/virginia-woolf/to-the-lighthouse",
+    "repo_name": "virginia-woolf_to-the-lighthouse",
+    "github_url": "https://github.com/standardebooks/virginia-woolf_to-the-lighthouse.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 55,
+    "title": "Short Fiction",
+    "author": "Harry Harrison",
+    "web_url": "https://standardebooks.org/ebooks/harry-harrison/short-fiction",
+    "href": "/ebooks/harry-harrison/short-fiction",
+    "repo_name": "harry-harrison_short-fiction",
+    "github_url": "https://github.com/standardebooks/harry-harrison_short-fiction.git",
+    "subject": "science-fiction",
+    "all_subjects": [
+      "science-fiction",
+      "shorts"
+    ]
+  },
+  {
+    "rank": 56,
+    "title": "Paradise Lost",
+    "author": "John Milton",
+    "web_url": "https://standardebooks.org/ebooks/john-milton/paradise-lost",
+    "href": "/ebooks/john-milton/paradise-lost",
+    "repo_name": "john-milton_paradise-lost",
+    "github_url": "https://github.com/standardebooks/john-milton_paradise-lost.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "poetry",
+      "spirituality"
+    ]
+  },
+  {
+    "rank": 57,
+    "title": "The War of the Worlds",
+    "author": "H. G. Wells",
+    "web_url": "https://standardebooks.org/ebooks/h-g-wells/the-war-of-the-worlds",
+    "href": "/ebooks/h-g-wells/the-war-of-the-worlds",
+    "repo_name": "h-g-wells_the-war-of-the-worlds",
+    "github_url": "https://github.com/standardebooks/h-g-wells_the-war-of-the-worlds.git",
+    "subject": "science-fiction",
+    "all_subjects": [
+      "science-fiction"
+    ]
+  },
+  {
+    "rank": 58,
+    "title": "Heart of Darkness",
+    "author": "Joseph Conrad",
+    "web_url": "https://standardebooks.org/ebooks/joseph-conrad/heart-of-darkness",
+    "href": "/ebooks/joseph-conrad/heart-of-darkness",
+    "repo_name": "joseph-conrad_heart-of-darkness",
+    "github_url": "https://github.com/standardebooks/joseph-conrad_heart-of-darkness.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 59,
+    "title": "The Secret Garden",
+    "author": "Frances Hodgson Burnett",
+    "web_url": "https://standardebooks.org/ebooks/frances-hodgson-burnett/the-secret-garden",
+    "href": "/ebooks/frances-hodgson-burnett/the-secret-garden",
+    "repo_name": "frances-hodgson-burnett_the-secret-garden",
+    "github_url": "https://github.com/standardebooks/frances-hodgson-burnett_the-secret-garden.git",
+    "subject": "childrens",
+    "all_subjects": [
+      "childrens",
+      "fiction"
+    ]
+  },
+  {
+    "rank": 60,
+    "title": "Persuasion",
+    "author": "Jane Austen",
+    "web_url": "https://standardebooks.org/ebooks/jane-austen/persuasion",
+    "href": "/ebooks/jane-austen/persuasion",
+    "repo_name": "jane-austen_persuasion",
+    "github_url": "https://github.com/standardebooks/jane-austen_persuasion.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 61,
+    "title": "The Hound of the Baskervilles",
+    "author": "Arthur Conan Doyle",
+    "web_url": "https://standardebooks.org/ebooks/arthur-conan-doyle/the-hound-of-the-baskervilles",
+    "href": "/ebooks/arthur-conan-doyle/the-hound-of-the-baskervilles",
+    "repo_name": "arthur-conan-doyle_the-hound-of-the-baskervilles",
+    "github_url": "https://github.com/standardebooks/arthur-conan-doyle_the-hound-of-the-baskervilles.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "mystery"
+    ]
+  },
+  {
+    "rank": 62,
+    "title": "’Midst the Wild Carpathians",
+    "author": "Mór Jókai",
+    "web_url": "https://standardebooks.org/ebooks/mor-jokai/midst-the-wild-carpathians/robert-nisbet-bain",
+    "href": "/ebooks/mor-jokai/midst-the-wild-carpathians/robert-nisbet-bain",
+    "repo_name": "mor-jokai_midst-the-wild-carpathians_robert-nisbet-bain",
+    "github_url": "https://github.com/standardebooks/mor-jokai_midst-the-wild-carpathians_robert-nisbet-bain.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 63,
+    "title": "Short Fiction",
+    "author": "Edgar Allan Poe",
+    "web_url": "https://standardebooks.org/ebooks/edgar-allan-poe/short-fiction",
+    "href": "/ebooks/edgar-allan-poe/short-fiction",
+    "repo_name": "edgar-allan-poe_short-fiction",
+    "github_url": "https://github.com/standardebooks/edgar-allan-poe_short-fiction.git",
+    "subject": "adventure",
+    "all_subjects": [
+      "adventure",
+      "comedy",
+      "horror",
+      "mystery",
+      "satire",
+      "science-fiction",
+      "shorts"
+    ]
+  },
+  {
+    "rank": 64,
+    "title": "Notes from Underground",
+    "author": "Fyodor Dostoevsky",
+    "web_url": "https://standardebooks.org/ebooks/fyodor-dostoevsky/notes-from-underground/constance-garnett",
+    "href": "/ebooks/fyodor-dostoevsky/notes-from-underground/constance-garnett",
+    "repo_name": "fyodor-dostoevsky_notes-from-underground_constance-garnett",
+    "github_url": "https://github.com/standardebooks/fyodor-dostoevsky_notes-from-underground_constance-garnett.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 65,
+    "title": "Macbeth",
+    "author": "William Shakespeare",
+    "web_url": "https://standardebooks.org/ebooks/william-shakespeare/macbeth",
+    "href": "/ebooks/william-shakespeare/macbeth",
+    "repo_name": "william-shakespeare_macbeth",
+    "github_url": "https://github.com/standardebooks/william-shakespeare_macbeth.git",
+    "subject": "drama",
+    "all_subjects": [
+      "drama"
+    ]
+  },
+  {
+    "rank": 66,
+    "title": "A Tale of Two Cities",
+    "author": "Charles Dickens",
+    "web_url": "https://standardebooks.org/ebooks/charles-dickens/a-tale-of-two-cities",
+    "href": "/ebooks/charles-dickens/a-tale-of-two-cities",
+    "repo_name": "charles-dickens_a-tale-of-two-cities",
+    "github_url": "https://github.com/standardebooks/charles-dickens_a-tale-of-two-cities.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 67,
+    "title": "Walden",
+    "author": "Henry David Thoreau",
+    "web_url": "https://standardebooks.org/ebooks/henry-david-thoreau/walden",
+    "href": "/ebooks/henry-david-thoreau/walden",
+    "repo_name": "henry-david-thoreau_walden",
+    "github_url": "https://github.com/standardebooks/henry-david-thoreau_walden.git",
+    "subject": "nonfiction",
+    "all_subjects": [
+      "nonfiction",
+      "philosophy"
+    ]
+  },
+  {
+    "rank": 68,
+    "title": "Short Science Fiction",
+    "author": "Isaac Asimov",
+    "web_url": "https://standardebooks.org/ebooks/isaac-asimov/short-science-fiction",
+    "href": "/ebooks/isaac-asimov/short-science-fiction",
+    "repo_name": "isaac-asimov_short-science-fiction",
+    "github_url": "https://github.com/standardebooks/isaac-asimov_short-science-fiction.git",
+    "subject": "science-fiction",
+    "all_subjects": [
+      "science-fiction",
+      "shorts"
+    ]
+  },
+  {
+    "rank": 69,
+    "title": "The Black Gang",
+    "author": "H. C. McNeile",
+    "web_url": "https://standardebooks.org/ebooks/h-c-mcneile/the-black-gang",
+    "href": "/ebooks/h-c-mcneile/the-black-gang",
+    "repo_name": "h-c-mcneile_the-black-gang",
+    "github_url": "https://github.com/standardebooks/h-c-mcneile_the-black-gang.git",
+    "subject": "adventure",
+    "all_subjects": [
+      "adventure",
+      "fiction"
+    ]
+  },
+  {
+    "rank": 70,
+    "title": "Hamlet",
+    "author": "William Shakespeare",
+    "web_url": "https://standardebooks.org/ebooks/william-shakespeare/hamlet",
+    "href": "/ebooks/william-shakespeare/hamlet",
+    "repo_name": "william-shakespeare_hamlet",
+    "github_url": "https://github.com/standardebooks/william-shakespeare_hamlet.git",
+    "subject": "drama",
+    "all_subjects": [
+      "drama"
+    ]
+  },
+  {
+    "rank": 71,
+    "title": "The Maltese Falcon",
+    "author": "Dashiell Hammett",
+    "web_url": "https://standardebooks.org/ebooks/dashiell-hammett/the-maltese-falcon",
+    "href": "/ebooks/dashiell-hammett/the-maltese-falcon",
+    "repo_name": "dashiell-hammett_the-maltese-falcon",
+    "github_url": "https://github.com/standardebooks/dashiell-hammett_the-maltese-falcon.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "mystery"
+    ]
+  },
+  {
+    "rank": 72,
+    "title": "The Wealth of Nations",
+    "author": "Adam Smith",
+    "web_url": "https://standardebooks.org/ebooks/adam-smith/the-wealth-of-nations",
+    "href": "/ebooks/adam-smith/the-wealth-of-nations",
+    "repo_name": "adam-smith_the-wealth-of-nations",
+    "github_url": "https://github.com/standardebooks/adam-smith_the-wealth-of-nations.git",
+    "subject": "philosophy",
+    "all_subjects": [
+      "philosophy"
+    ]
+  },
+  {
+    "rank": 73,
+    "title": "Sense and Sensibility",
+    "author": "Jane Austen",
+    "web_url": "https://standardebooks.org/ebooks/jane-austen/sense-and-sensibility",
+    "href": "/ebooks/jane-austen/sense-and-sensibility",
+    "repo_name": "jane-austen_sense-and-sensibility",
+    "github_url": "https://github.com/standardebooks/jane-austen_sense-and-sensibility.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 74,
+    "title": "Tao Te Ching",
+    "author": "Laozi",
+    "web_url": "https://standardebooks.org/ebooks/laozi/tao-te-ching/james-legge",
+    "href": "/ebooks/laozi/tao-te-ching/james-legge",
+    "repo_name": "laozi_tao-te-ching_james-legge",
+    "github_url": "https://github.com/standardebooks/laozi_tao-te-ching_james-legge.git",
+    "subject": "philosophy",
+    "all_subjects": [
+      "philosophy",
+      "spirituality"
+    ]
+  },
+  {
+    "rank": 75,
+    "title": "Great Expectations",
+    "author": "Charles Dickens",
+    "web_url": "https://standardebooks.org/ebooks/charles-dickens/great-expectations",
+    "href": "/ebooks/charles-dickens/great-expectations",
+    "repo_name": "charles-dickens_great-expectations",
+    "github_url": "https://github.com/standardebooks/charles-dickens_great-expectations.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 76,
+    "title": "The Book of Khalid",
+    "author": "Ameen Rihani",
+    "web_url": "https://standardebooks.org/ebooks/ameen-rihani/the-book-of-khalid",
+    "href": "/ebooks/ameen-rihani/the-book-of-khalid",
+    "repo_name": "ameen-rihani_the-book-of-khalid",
+    "github_url": "https://github.com/standardebooks/ameen-rihani_the-book-of-khalid.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "satire"
+    ]
+  },
+  {
+    "rank": 77,
+    "title": "The Sign of the Four",
+    "author": "Arthur Conan Doyle",
+    "web_url": "https://standardebooks.org/ebooks/arthur-conan-doyle/the-sign-of-the-four",
+    "href": "/ebooks/arthur-conan-doyle/the-sign-of-the-four",
+    "repo_name": "arthur-conan-doyle_the-sign-of-the-four",
+    "github_url": "https://github.com/standardebooks/arthur-conan-doyle_the-sign-of-the-four.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "mystery"
+    ]
+  },
+  {
+    "rank": 78,
+    "title": "The Mysterious Affair at Styles",
+    "author": "Agatha Christie",
+    "web_url": "https://standardebooks.org/ebooks/agatha-christie/the-mysterious-affair-at-styles",
+    "href": "/ebooks/agatha-christie/the-mysterious-affair-at-styles",
+    "repo_name": "agatha-christie_the-mysterious-affair-at-styles",
+    "github_url": "https://github.com/standardebooks/agatha-christie_the-mysterious-affair-at-styles.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "mystery"
+    ]
+  },
+  {
+    "rank": 79,
+    "title": "At the Mountains of Madness",
+    "author": "H. P. Lovecraft",
+    "web_url": "https://standardebooks.org/ebooks/h-p-lovecraft/at-the-mountains-of-madness",
+    "href": "/ebooks/h-p-lovecraft/at-the-mountains-of-madness",
+    "repo_name": "h-p-lovecraft_at-the-mountains-of-madness",
+    "github_url": "https://github.com/standardebooks/h-p-lovecraft_at-the-mountains-of-madness.git",
+    "subject": "adventure",
+    "all_subjects": [
+      "adventure",
+      "horror",
+      "science-fiction"
+    ]
+  },
+  {
+    "rank": 80,
+    "title": "Anne of Green Gables",
+    "author": "L. M. Montgomery",
+    "web_url": "https://standardebooks.org/ebooks/l-m-montgomery/anne-of-green-gables",
+    "href": "/ebooks/l-m-montgomery/anne-of-green-gables",
+    "repo_name": "l-m-montgomery_anne-of-green-gables",
+    "github_url": "https://github.com/standardebooks/l-m-montgomery_anne-of-green-gables.git",
+    "subject": "childrens",
+    "all_subjects": [
+      "childrens",
+      "fiction"
+    ]
+  },
+  {
+    "rank": 81,
+    "title": "The History of the Decline and Fall of the Roman Empire",
+    "author": "Edward Gibbon",
+    "web_url": "https://standardebooks.org/ebooks/edward-gibbon/the-history-of-the-decline-and-fall-of-the-roman-empire",
+    "href": "/ebooks/edward-gibbon/the-history-of-the-decline-and-fall-of-the-roman-empire",
+    "repo_name": "edward-gibbon_the-history-of-the-decline-and-fall-of-the-roman-empire",
+    "github_url": "https://github.com/standardebooks/edward-gibbon_the-history-of-the-decline-and-fall-of-the-roman-empire.git",
+    "subject": "nonfiction",
+    "all_subjects": [
+      "nonfiction"
+    ]
+  },
+  {
+    "rank": 82,
+    "title": "Little Women",
+    "author": "Louisa May Alcott",
+    "web_url": "https://standardebooks.org/ebooks/louisa-may-alcott/little-women",
+    "href": "/ebooks/louisa-may-alcott/little-women",
+    "repo_name": "louisa-may-alcott_little-women",
+    "github_url": "https://github.com/standardebooks/louisa-may-alcott_little-women.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 83,
+    "title": "A Farewell to Arms",
+    "author": "Ernest Hemingway",
+    "web_url": "https://standardebooks.org/ebooks/ernest-hemingway/a-farewell-to-arms",
+    "href": "/ebooks/ernest-hemingway/a-farewell-to-arms",
+    "repo_name": "ernest-hemingway_a-farewell-to-arms",
+    "github_url": "https://github.com/standardebooks/ernest-hemingway_a-farewell-to-arms.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 84,
+    "title": "The Castle",
+    "author": "Franz Kafka",
+    "web_url": "https://standardebooks.org/ebooks/franz-kafka/the-castle/willa-muir_edwin-muir",
+    "href": "/ebooks/franz-kafka/the-castle/willa-muir_edwin-muir",
+    "repo_name": "franz-kafka_the-castle_willa-muir_edwin-muir",
+    "github_url": "https://github.com/standardebooks/franz-kafka_the-castle_willa-muir_edwin-muir.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 85,
+    "title": "Orlando",
+    "author": "Virginia Woolf",
+    "web_url": "https://standardebooks.org/ebooks/virginia-woolf/orlando",
+    "href": "/ebooks/virginia-woolf/orlando",
+    "repo_name": "virginia-woolf_orlando",
+    "github_url": "https://github.com/standardebooks/virginia-woolf_orlando.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 86,
+    "title": "The Idiot",
+    "author": "Fyodor Dostoevsky",
+    "web_url": "https://standardebooks.org/ebooks/fyodor-dostoevsky/the-idiot/eva-m-martin",
+    "href": "/ebooks/fyodor-dostoevsky/the-idiot/eva-m-martin",
+    "repo_name": "fyodor-dostoevsky_the-idiot_eva-m-martin",
+    "github_url": "https://github.com/standardebooks/fyodor-dostoevsky_the-idiot_eva-m-martin.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 87,
+    "title": "The Communist Manifesto",
+    "author": "Karl Marx",
+    "web_url": "https://standardebooks.org/ebooks/karl-marx_friedrich-engels/the-communist-manifesto/samuel-moore",
+    "href": "/ebooks/karl-marx_friedrich-engels/the-communist-manifesto/samuel-moore",
+    "repo_name": "karl-marx_friedrich-engels_the-communist-manifesto_samuel-moore",
+    "github_url": "https://github.com/standardebooks/karl-marx_friedrich-engels_the-communist-manifesto_samuel-moore.git",
+    "subject": "philosophy",
+    "all_subjects": [
+      "philosophy"
+    ]
+  },
+  {
+    "rank": 88,
+    "title": "The Murder at the Vicarage",
+    "author": "Agatha Christie",
+    "web_url": "https://standardebooks.org/ebooks/agatha-christie/the-murder-at-the-vicarage",
+    "href": "/ebooks/agatha-christie/the-murder-at-the-vicarage",
+    "repo_name": "agatha-christie_the-murder-at-the-vicarage",
+    "github_url": "https://github.com/standardebooks/agatha-christie_the-murder-at-the-vicarage.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction",
+      "mystery"
+    ]
+  },
+  {
+    "rank": 89,
+    "title": "The Call of the Wild",
+    "author": "Jack London",
+    "web_url": "https://standardebooks.org/ebooks/jack-london/the-call-of-the-wild",
+    "href": "/ebooks/jack-london/the-call-of-the-wild",
+    "repo_name": "jack-london_the-call-of-the-wild",
+    "github_url": "https://github.com/standardebooks/jack-london_the-call-of-the-wild.git",
+    "subject": "adventure",
+    "all_subjects": [
+      "adventure",
+      "fiction"
+    ]
+  },
+  {
+    "rank": 90,
+    "title": "The Adventures of Huckleberry Finn",
+    "author": "Mark Twain",
+    "web_url": "https://standardebooks.org/ebooks/mark-twain/the-adventures-of-huckleberry-finn",
+    "href": "/ebooks/mark-twain/the-adventures-of-huckleberry-finn",
+    "repo_name": "mark-twain_the-adventures-of-huckleberry-finn",
+    "github_url": "https://github.com/standardebooks/mark-twain_the-adventures-of-huckleberry-finn.git",
+    "subject": "childrens",
+    "all_subjects": [
+      "childrens",
+      "fiction"
+    ]
+  },
+  {
+    "rank": 91,
+    "title": "As I Lay Dying",
+    "author": "William Faulkner",
+    "web_url": "https://standardebooks.org/ebooks/william-faulkner/as-i-lay-dying",
+    "href": "/ebooks/william-faulkner/as-i-lay-dying",
+    "repo_name": "william-faulkner_as-i-lay-dying",
+    "github_url": "https://github.com/standardebooks/william-faulkner_as-i-lay-dying.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 92,
+    "title": "Short Fiction",
+    "author": "H. P. Lovecraft",
+    "web_url": "https://standardebooks.org/ebooks/h-p-lovecraft/short-fiction",
+    "href": "/ebooks/h-p-lovecraft/short-fiction",
+    "repo_name": "h-p-lovecraft_short-fiction",
+    "github_url": "https://github.com/standardebooks/h-p-lovecraft_short-fiction.git",
+    "subject": "horror",
+    "all_subjects": [
+      "horror",
+      "shorts"
+    ]
+  },
+  {
+    "rank": 93,
+    "title": "The Sound and the Fury",
+    "author": "William Faulkner",
+    "web_url": "https://standardebooks.org/ebooks/william-faulkner/the-sound-and-the-fury",
+    "href": "/ebooks/william-faulkner/the-sound-and-the-fury",
+    "repo_name": "william-faulkner_the-sound-and-the-fury",
+    "github_url": "https://github.com/standardebooks/william-faulkner_the-sound-and-the-fury.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 94,
+    "title": "The Adventures of Tom Sawyer",
+    "author": "Mark Twain",
+    "web_url": "https://standardebooks.org/ebooks/mark-twain/the-adventures-of-tom-sawyer",
+    "href": "/ebooks/mark-twain/the-adventures-of-tom-sawyer",
+    "repo_name": "mark-twain_the-adventures-of-tom-sawyer",
+    "github_url": "https://github.com/standardebooks/mark-twain_the-adventures-of-tom-sawyer.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 95,
+    "title": "Beyond Good and Evil",
+    "author": "Friedrich Nietzsche",
+    "web_url": "https://standardebooks.org/ebooks/friedrich-nietzsche/beyond-good-and-evil/helen-zimmern",
+    "href": "/ebooks/friedrich-nietzsche/beyond-good-and-evil/helen-zimmern",
+    "repo_name": "friedrich-nietzsche_beyond-good-and-evil_helen-zimmern",
+    "github_url": "https://github.com/standardebooks/friedrich-nietzsche_beyond-good-and-evil_helen-zimmern.git",
+    "subject": "philosophy",
+    "all_subjects": [
+      "philosophy"
+    ]
+  },
+  {
+    "rank": 96,
+    "title": "Mrs. Dalloway",
+    "author": "Virginia Woolf",
+    "web_url": "https://standardebooks.org/ebooks/virginia-woolf/mrs-dalloway",
+    "href": "/ebooks/virginia-woolf/mrs-dalloway",
+    "repo_name": "virginia-woolf_mrs-dalloway",
+    "github_url": "https://github.com/standardebooks/virginia-woolf_mrs-dalloway.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 97,
+    "title": "The Condition of the Working Class in England",
+    "author": "Friedrich Engels",
+    "web_url": "https://standardebooks.org/ebooks/friedrich-engels/the-condition-of-the-working-class-in-england/florence-kelley-wischnewetzky",
+    "href": "/ebooks/friedrich-engels/the-condition-of-the-working-class-in-england/florence-kelley-wischnewetzky",
+    "repo_name": "friedrich-engels_the-condition-of-the-working-class-in-england_florence-kelley-wischnewetzky",
+    "github_url": "https://github.com/standardebooks/friedrich-engels_the-condition-of-the-working-class-in-england_florence-kelley-wischnewetzky.git",
+    "subject": "nonfiction",
+    "all_subjects": [
+      "nonfiction"
+    ]
+  },
+  {
+    "rank": 98,
+    "title": "The Three Musketeers",
+    "author": "Alexandre Dumas",
+    "web_url": "https://standardebooks.org/ebooks/alexandre-dumas/the-three-musketeers/william-robson",
+    "href": "/ebooks/alexandre-dumas/the-three-musketeers/william-robson",
+    "repo_name": "alexandre-dumas_the-three-musketeers_william-robson",
+    "github_url": "https://github.com/standardebooks/alexandre-dumas_the-three-musketeers_william-robson.git",
+    "subject": "adventure",
+    "all_subjects": [
+      "adventure",
+      "fiction"
+    ]
+  },
+  {
+    "rank": 99,
+    "title": "Les Misérables",
+    "author": "Victor Hugo",
+    "web_url": "https://standardebooks.org/ebooks/victor-hugo/les-miserables/isabel-f-hapgood",
+    "href": "/ebooks/victor-hugo/les-miserables/isabel-f-hapgood",
+    "repo_name": "victor-hugo_les-miserables_isabel-f-hapgood",
+    "github_url": "https://github.com/standardebooks/victor-hugo_les-miserables_isabel-f-hapgood.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  },
+  {
+    "rank": 100,
+    "title": "The Wonderful Wizard of Oz",
+    "author": "L. Frank Baum",
+    "web_url": "https://standardebooks.org/ebooks/l-frank-baum/the-wonderful-wizard-of-oz",
+    "href": "/ebooks/l-frank-baum/the-wonderful-wizard-of-oz",
+    "repo_name": "l-frank-baum_the-wonderful-wizard-of-oz",
+    "github_url": "https://github.com/standardebooks/l-frank-baum_the-wonderful-wizard-of-oz.git",
+    "subject": "fiction",
+    "all_subjects": [
+      "fiction"
+    ]
+  }
+]

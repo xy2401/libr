@@ -1,0 +1,303 @@
+[submodule "horror/mary-shelley_frankenstein"]
+	path = horror/mary-shelley_frankenstein
+	url = https://github.com/standardebooks/mary-shelley_frankenstein.git
+[submodule "fiction/jane-austen_pride-and-prejudice"]
+	path = fiction/jane-austen_pride-and-prejudice
+	url = https://github.com/standardebooks/jane-austen_pride-and-prejudice.git
+[submodule "mystery/charles-dickens_the-mystery-of-edwin-drood"]
+	path = mystery/charles-dickens_the-mystery-of-edwin-drood
+	url = https://github.com/standardebooks/charles-dickens_the-mystery-of-edwin-drood.git
+[submodule "autobiography/siegfried-sassoon_memoirs-of-an-infantry-officer"]
+	path = autobiography/siegfried-sassoon_memoirs-of-an-infantry-officer
+	url = https://github.com/standardebooks/siegfried-sassoon_memoirs-of-an-infantry-officer.git
+[submodule "fiction/bram-stoker_dracula"]
+	path = fiction/bram-stoker_dracula
+	url = https://github.com/standardebooks/bram-stoker_dracula.git
+[submodule "fiction/oscar-wilde_the-picture-of-dorian-gray"]
+	path = fiction/oscar-wilde_the-picture-of-dorian-gray
+	url = https://github.com/standardebooks/oscar-wilde_the-picture-of-dorian-gray.git
+[submodule "fiction/herman-melville_moby-dick"]
+	path = fiction/herman-melville_moby-dick
+	url = https://github.com/standardebooks/herman-melville_moby-dick.git
+[submodule "fiction/f-scott-fitzgerald_the-great-gatsby"]
+	path = fiction/f-scott-fitzgerald_the-great-gatsby
+	url = https://github.com/standardebooks/f-scott-fitzgerald_the-great-gatsby.git
+[submodule "adventure/edgar-rice-burroughs_pirates-of-venus"]
+	path = adventure/edgar-rice-burroughs_pirates-of-venus
+	url = https://github.com/standardebooks/edgar-rice-burroughs_pirates-of-venus.git
+[submodule "childrens/lewis-carroll_alices-adventures-in-wonderland"]
+	path = childrens/lewis-carroll_alices-adventures-in-wonderland
+	url = https://github.com/standardebooks/lewis-carroll_alices-adventures-in-wonderland.git
+[submodule "fiction/arthur-conan-doyle_the-adventures-of-sherlock-holmes"]
+	path = fiction/arthur-conan-doyle_the-adventures-of-sherlock-holmes
+	url = https://github.com/standardebooks/arthur-conan-doyle_the-adventures-of-sherlock-holmes.git
+[submodule "fiction/arthur-b-reeve_craig-kennedy-stories"]
+	path = fiction/arthur-b-reeve_craig-kennedy-stories
+	url = https://github.com/standardebooks/arthur-b-reeve_craig-kennedy-stories.git
+[submodule "fiction/charlotte-bronte_jane-eyre"]
+	path = fiction/charlotte-bronte_jane-eyre
+	url = https://github.com/standardebooks/charlotte-bronte_jane-eyre.git
+[submodule "science-fiction/noel-loomis_short-science-fiction"]
+	path = science-fiction/noel-loomis_short-science-fiction
+	url = https://github.com/standardebooks/noel-loomis_short-science-fiction.git
+[submodule "comedy/james-branch-cabell_the-line-of-love"]
+	path = comedy/james-branch-cabell_the-line-of-love
+	url = https://github.com/standardebooks/james-branch-cabell_the-line-of-love.git
+[submodule "fiction/kahlil-gibran_jesus-the-son-of-man"]
+	path = fiction/kahlil-gibran_jesus-the-son-of-man
+	url = https://github.com/standardebooks/kahlil-gibran_jesus-the-son-of-man.git
+[submodule "fiction/edgar-saltus_the-perfume-of-eros"]
+	path = fiction/edgar-saltus_the-perfume-of-eros
+	url = https://github.com/standardebooks/edgar-saltus_the-perfume-of-eros.git
+[submodule "poetry/maria-lowell_poetry"]
+	path = poetry/maria-lowell_poetry
+	url = https://github.com/standardebooks/maria-lowell_poetry.git
+[submodule "fiction/walter-white_flight"]
+	path = fiction/walter-white_flight
+	url = https://github.com/standardebooks/walter-white_flight.git
+[submodule "science-fiction/h-g-wells_the-time-machine"]
+	path = science-fiction/h-g-wells_the-time-machine
+	url = https://github.com/standardebooks/h-g-wells_the-time-machine.git
+[submodule "fiction/arthur-conan-doyle_a-study-in-scarlet"]
+	path = fiction/arthur-conan-doyle_a-study-in-scarlet
+	url = https://github.com/standardebooks/arthur-conan-doyle_a-study-in-scarlet.git
+[submodule "fiction/emily-bronte_wuthering-heights"]
+	path = fiction/emily-bronte_wuthering-heights
+	url = https://github.com/standardebooks/emily-bronte_wuthering-heights.git
+[submodule "horror/robert-louis-stevenson_the-strange-case-of-dr-jekyll-and-mr-hyde"]
+	path = horror/robert-louis-stevenson_the-strange-case-of-dr-jekyll-and-mr-hyde
+	url = https://github.com/standardebooks/robert-louis-stevenson_the-strange-case-of-dr-jekyll-and-mr-hyde.git
+[submodule "fiction/joseph-conrad_the-rescue"]
+	path = fiction/joseph-conrad_the-rescue
+	url = https://github.com/standardebooks/joseph-conrad_the-rescue.git
+[submodule "fiction/agatha-christie_partners-in-crime"]
+	path = fiction/agatha-christie_partners-in-crime
+	url = https://github.com/standardebooks/agatha-christie_partners-in-crime.git
+[submodule "fiction/walter-white_the-fire-in-the-flint"]
+	path = fiction/walter-white_the-fire-in-the-flint
+	url = https://github.com/standardebooks/walter-white_the-fire-in-the-flint.git
+[submodule "fiction/james-joyce_ulysses"]
+	path = fiction/james-joyce_ulysses
+	url = https://github.com/standardebooks/james-joyce_ulysses.git
+[submodule "fiction/joseph-conrad_suspense"]
+	path = fiction/joseph-conrad_suspense
+	url = https://github.com/standardebooks/joseph-conrad_suspense.git
+[submodule "fiction/wilkie-collins_basil"]
+	path = fiction/wilkie-collins_basil
+	url = https://github.com/standardebooks/wilkie-collins_basil.git
+[submodule "adventure/robert-louis-stevenson_treasure-island"]
+	path = adventure/robert-louis-stevenson_treasure-island
+	url = https://github.com/standardebooks/robert-louis-stevenson_treasure-island.git
+[submodule "fiction/charles-kingsley_hypatia"]
+	path = fiction/charles-kingsley_hypatia
+	url = https://github.com/standardebooks/charles-kingsley_hypatia.git
+[submodule "horror/robert-w-chambers_the-king-in-yellow"]
+	path = horror/robert-w-chambers_the-king-in-yellow
+	url = https://github.com/standardebooks/robert-w-chambers_the-king-in-yellow.git
+[submodule "fiction/dorothy-m-richardson_deadlock"]
+	path = fiction/dorothy-m-richardson_deadlock
+	url = https://github.com/standardebooks/dorothy-m-richardson_deadlock.git
+[submodule "fiction/george-eliot_middlemarch"]
+	path = fiction/george-eliot_middlemarch
+	url = https://github.com/standardebooks/george-eliot_middlemarch.git
+[submodule "fiction/w-e-b-du-bois_the-quest-of-the-silver-fleece"]
+	path = fiction/w-e-b-du-bois_the-quest-of-the-silver-fleece
+	url = https://github.com/standardebooks/w-e-b-du-bois_the-quest-of-the-silver-fleece.git
+[submodule "mystery/agatha-christie_the-murder-of-roger-ackroyd"]
+	path = mystery/agatha-christie_the-murder-of-roger-ackroyd
+	url = https://github.com/standardebooks/agatha-christie_the-murder-of-roger-ackroyd.git
+[submodule "fiction/jane-austen_emma"]
+	path = fiction/jane-austen_emma
+	url = https://github.com/standardebooks/jane-austen_emma.git
+[submodule "fiction/virginia-woolf_to-the-lighthouse"]
+	path = fiction/virginia-woolf_to-the-lighthouse
+	url = https://github.com/standardebooks/virginia-woolf_to-the-lighthouse.git
+[submodule "science-fiction/harry-harrison_short-fiction"]
+	path = science-fiction/harry-harrison_short-fiction
+	url = https://github.com/standardebooks/harry-harrison_short-fiction.git
+[submodule "fiction/john-milton_paradise-lost"]
+	path = fiction/john-milton_paradise-lost
+	url = https://github.com/standardebooks/john-milton_paradise-lost.git
+[submodule "science-fiction/h-g-wells_the-war-of-the-worlds"]
+	path = science-fiction/h-g-wells_the-war-of-the-worlds
+	url = https://github.com/standardebooks/h-g-wells_the-war-of-the-worlds.git
+[submodule "fiction/joseph-conrad_heart-of-darkness"]
+	path = fiction/joseph-conrad_heart-of-darkness
+	url = https://github.com/standardebooks/joseph-conrad_heart-of-darkness.git
+[submodule "childrens/frances-hodgson-burnett_the-secret-garden"]
+	path = childrens/frances-hodgson-burnett_the-secret-garden
+	url = https://github.com/standardebooks/frances-hodgson-burnett_the-secret-garden.git
+[submodule "fiction/jane-austen_persuasion"]
+	path = fiction/jane-austen_persuasion
+	url = https://github.com/standardebooks/jane-austen_persuasion.git
+[submodule "fiction/arthur-conan-doyle_the-hound-of-the-baskervilles"]
+	path = fiction/arthur-conan-doyle_the-hound-of-the-baskervilles
+	url = https://github.com/standardebooks/arthur-conan-doyle_the-hound-of-the-baskervilles.git
+[submodule "adventure/edgar-allan-poe_short-fiction"]
+	path = adventure/edgar-allan-poe_short-fiction
+	url = https://github.com/standardebooks/edgar-allan-poe_short-fiction.git
+[submodule "drama/william-shakespeare_macbeth"]
+	path = drama/william-shakespeare_macbeth
+	url = https://github.com/standardebooks/william-shakespeare_macbeth.git
+[submodule "fiction/charles-dickens_a-tale-of-two-cities"]
+	path = fiction/charles-dickens_a-tale-of-two-cities
+	url = https://github.com/standardebooks/charles-dickens_a-tale-of-two-cities.git
+[submodule "nonfiction/henry-david-thoreau_walden"]
+	path = nonfiction/henry-david-thoreau_walden
+	url = https://github.com/standardebooks/henry-david-thoreau_walden.git
+[submodule "science-fiction/isaac-asimov_short-science-fiction"]
+	path = science-fiction/isaac-asimov_short-science-fiction
+	url = https://github.com/standardebooks/isaac-asimov_short-science-fiction.git
+[submodule "adventure/h-c-mcneile_the-black-gang"]
+	path = adventure/h-c-mcneile_the-black-gang
+	url = https://github.com/standardebooks/h-c-mcneile_the-black-gang.git
+[submodule "drama/william-shakespeare_hamlet"]
+	path = drama/william-shakespeare_hamlet
+	url = https://github.com/standardebooks/william-shakespeare_hamlet.git
+[submodule "fiction/dashiell-hammett_the-maltese-falcon"]
+	path = fiction/dashiell-hammett_the-maltese-falcon
+	url = https://github.com/standardebooks/dashiell-hammett_the-maltese-falcon.git
+[submodule "philosophy/adam-smith_the-wealth-of-nations"]
+	path = philosophy/adam-smith_the-wealth-of-nations
+	url = https://github.com/standardebooks/adam-smith_the-wealth-of-nations.git
+[submodule "fiction/jane-austen_sense-and-sensibility"]
+	path = fiction/jane-austen_sense-and-sensibility
+	url = https://github.com/standardebooks/jane-austen_sense-and-sensibility.git
+[submodule "fiction/charles-dickens_great-expectations"]
+	path = fiction/charles-dickens_great-expectations
+	url = https://github.com/standardebooks/charles-dickens_great-expectations.git
+[submodule "fiction/ameen-rihani_the-book-of-khalid"]
+	path = fiction/ameen-rihani_the-book-of-khalid
+	url = https://github.com/standardebooks/ameen-rihani_the-book-of-khalid.git
+[submodule "fiction/arthur-conan-doyle_the-sign-of-the-four"]
+	path = fiction/arthur-conan-doyle_the-sign-of-the-four
+	url = https://github.com/standardebooks/arthur-conan-doyle_the-sign-of-the-four.git
+[submodule "fiction/agatha-christie_the-mysterious-affair-at-styles"]
+	path = fiction/agatha-christie_the-mysterious-affair-at-styles
+	url = https://github.com/standardebooks/agatha-christie_the-mysterious-affair-at-styles.git
+[submodule "adventure/h-p-lovecraft_at-the-mountains-of-madness"]
+	path = adventure/h-p-lovecraft_at-the-mountains-of-madness
+	url = https://github.com/standardebooks/h-p-lovecraft_at-the-mountains-of-madness.git
+[submodule "childrens/l-m-montgomery_anne-of-green-gables"]
+	path = childrens/l-m-montgomery_anne-of-green-gables
+	url = https://github.com/standardebooks/l-m-montgomery_anne-of-green-gables.git
+[submodule "nonfiction/edward-gibbon_the-history-of-the-decline-and-fall-of-the-roman-empire"]
+	path = nonfiction/edward-gibbon_the-history-of-the-decline-and-fall-of-the-roman-empire
+	url = https://github.com/standardebooks/edward-gibbon_the-history-of-the-decline-and-fall-of-the-roman-empire.git
+[submodule "fiction/louisa-may-alcott_little-women"]
+	path = fiction/louisa-may-alcott_little-women
+	url = https://github.com/standardebooks/louisa-may-alcott_little-women.git
+[submodule "fiction/ernest-hemingway_a-farewell-to-arms"]
+	path = fiction/ernest-hemingway_a-farewell-to-arms
+	url = https://github.com/standardebooks/ernest-hemingway_a-farewell-to-arms.git
+[submodule "fiction/virginia-woolf_orlando"]
+	path = fiction/virginia-woolf_orlando
+	url = https://github.com/standardebooks/virginia-woolf_orlando.git
+[submodule "fiction/agatha-christie_the-murder-at-the-vicarage"]
+	path = fiction/agatha-christie_the-murder-at-the-vicarage
+	url = https://github.com/standardebooks/agatha-christie_the-murder-at-the-vicarage.git
+[submodule "adventure/jack-london_the-call-of-the-wild"]
+	path = adventure/jack-london_the-call-of-the-wild
+	url = https://github.com/standardebooks/jack-london_the-call-of-the-wild.git
+[submodule "childrens/mark-twain_the-adventures-of-huckleberry-finn"]
+	path = childrens/mark-twain_the-adventures-of-huckleberry-finn
+	url = https://github.com/standardebooks/mark-twain_the-adventures-of-huckleberry-finn.git
+[submodule "fiction/william-faulkner_as-i-lay-dying"]
+	path = fiction/william-faulkner_as-i-lay-dying
+	url = https://github.com/standardebooks/william-faulkner_as-i-lay-dying.git
+[submodule "horror/h-p-lovecraft_short-fiction"]
+	path = horror/h-p-lovecraft_short-fiction
+	url = https://github.com/standardebooks/h-p-lovecraft_short-fiction.git
+[submodule "fiction/william-faulkner_the-sound-and-the-fury"]
+	path = fiction/william-faulkner_the-sound-and-the-fury
+	url = https://github.com/standardebooks/william-faulkner_the-sound-and-the-fury.git
+[submodule "fiction/mark-twain_the-adventures-of-tom-sawyer"]
+	path = fiction/mark-twain_the-adventures-of-tom-sawyer
+	url = https://github.com/standardebooks/mark-twain_the-adventures-of-tom-sawyer.git
+[submodule "fiction/virginia-woolf_mrs-dalloway"]
+	path = fiction/virginia-woolf_mrs-dalloway
+	url = https://github.com/standardebooks/virginia-woolf_mrs-dalloway.git
+[submodule "fiction/l-frank-baum_the-wonderful-wizard-of-oz"]
+	path = fiction/l-frank-baum_the-wonderful-wizard-of-oz
+	url = https://github.com/standardebooks/l-frank-baum_the-wonderful-wizard-of-oz.git
+[submodule "poetry/homer_the-odyssey_william-cullen-bryant"]
+	path = poetry/homer_the-odyssey_william-cullen-bryant
+	url = https://github.com/standardebooks/homer_the-odyssey_william-cullen-bryant.git
+[submodule "fiction/alexandre-dumas_the-count-of-monte-cristo_chapman-and-hall"]
+	path = fiction/alexandre-dumas_the-count-of-monte-cristo_chapman-and-hall
+	url = https://github.com/standardebooks/alexandre-dumas_the-count-of-monte-cristo_chapman-and-hall.git
+[submodule "philosophy/marcus-aurelius_meditations_george-long"]
+	path = philosophy/marcus-aurelius_meditations_george-long
+	url = https://github.com/standardebooks/marcus-aurelius_meditations_george-long.git
+[submodule "poetry/homer_the-iliad_william-cullen-bryant"]
+	path = poetry/homer_the-iliad_william-cullen-bryant
+	url = https://github.com/standardebooks/homer_the-iliad_william-cullen-bryant.git
+[submodule "fiction/fyodor-dostoevsky_crime-and-punishment_constance-garnett"]
+	path = fiction/fyodor-dostoevsky_crime-and-punishment_constance-garnett
+	url = https://github.com/standardebooks/fyodor-dostoevsky_crime-and-punishment_constance-garnett.git
+[submodule "childrens/lewis-carroll_alices-adventures-in-wonderland_john-tenniel"]
+	path = childrens/lewis-carroll_alices-adventures-in-wonderland_john-tenniel
+	url = https://github.com/standardebooks/lewis-carroll_alices-adventures-in-wonderland_john-tenniel.git
+[submodule "nonfiction/max-weber_the-protestant-ethic-and-the-spirit-of-capitalism_talcott-parsons"]
+	path = nonfiction/max-weber_the-protestant-ethic-and-the-spirit-of-capitalism_talcott-parsons
+	url = https://github.com/standardebooks/max-weber_the-protestant-ethic-and-the-spirit-of-capitalism_talcott-parsons.git
+[submodule "fiction/fyodor-dostoevsky_the-brothers-karamazov_constance-garnett"]
+	path = fiction/fyodor-dostoevsky_the-brothers-karamazov_constance-garnett
+	url = https://github.com/standardebooks/fyodor-dostoevsky_the-brothers-karamazov_constance-garnett.git
+[submodule "philosophy/confucius_analects_james-legge"]
+	path = philosophy/confucius_analects_james-legge
+	url = https://github.com/standardebooks/confucius_analects_james-legge.git
+[submodule "fiction/miguel-de-cervantes-saavedra_don-quixote_john-ormsby"]
+	path = fiction/miguel-de-cervantes-saavedra_don-quixote_john-ormsby
+	url = https://github.com/standardebooks/miguel-de-cervantes-saavedra_don-quixote_john-ormsby.git
+[submodule "philosophy/niccolo-machiavelli_the-prince_w-k-marriott"]
+	path = philosophy/niccolo-machiavelli_the-prince_w-k-marriott
+	url = https://github.com/standardebooks/niccolo-machiavelli_the-prince_w-k-marriott.git
+[submodule "fiction/leo-tolstoy_war-and-peace_louise-maude_aylmer-maude"]
+	path = fiction/leo-tolstoy_war-and-peace_louise-maude_aylmer-maude
+	url = https://github.com/standardebooks/leo-tolstoy_war-and-peace_louise-maude_aylmer-maude.git
+[submodule "nonfiction/sun-tzu_the-art-of-war_lionel-giles"]
+	path = nonfiction/sun-tzu_the-art-of-war_lionel-giles
+	url = https://github.com/standardebooks/sun-tzu_the-art-of-war_lionel-giles.git
+[submodule "fiction/dante-alighieri_the-divine-comedy_henry-wadsworth-longfellow"]
+	path = fiction/dante-alighieri_the-divine-comedy_henry-wadsworth-longfellow
+	url = https://github.com/standardebooks/dante-alighieri_the-divine-comedy_henry-wadsworth-longfellow.git
+[submodule "philosophy/plato_dialogues_benjamin-jowett"]
+	path = philosophy/plato_dialogues_benjamin-jowett
+	url = https://github.com/standardebooks/plato_dialogues_benjamin-jowett.git
+[submodule "fiction/marcel-proust_in-search-of-lost-time_c-k-scott-moncrieff"]
+	path = fiction/marcel-proust_in-search-of-lost-time_c-k-scott-moncrieff
+	url = https://github.com/standardebooks/marcel-proust_in-search-of-lost-time_c-k-scott-moncrieff.git
+[submodule "fiction/leo-tolstoy_anna-karenina_constance-garnett"]
+	path = fiction/leo-tolstoy_anna-karenina_constance-garnett
+	url = https://github.com/standardebooks/leo-tolstoy_anna-karenina_constance-garnett.git
+[submodule "fiction/mor-jokai_midst-the-wild-carpathians_robert-nisbet-bain"]
+	path = fiction/mor-jokai_midst-the-wild-carpathians_robert-nisbet-bain
+	url = https://github.com/standardebooks/mor-jokai_midst-the-wild-carpathians_robert-nisbet-bain.git
+[submodule "fiction/fyodor-dostoevsky_notes-from-underground_constance-garnett"]
+	path = fiction/fyodor-dostoevsky_notes-from-underground_constance-garnett
+	url = https://github.com/standardebooks/fyodor-dostoevsky_notes-from-underground_constance-garnett.git
+[submodule "philosophy/laozi_tao-te-ching_james-legge"]
+	path = philosophy/laozi_tao-te-ching_james-legge
+	url = https://github.com/standardebooks/laozi_tao-te-ching_james-legge.git
+[submodule "fiction/franz-kafka_the-castle_willa-muir_edwin-muir"]
+	path = fiction/franz-kafka_the-castle_willa-muir_edwin-muir
+	url = https://github.com/standardebooks/franz-kafka_the-castle_willa-muir_edwin-muir.git
+[submodule "fiction/fyodor-dostoevsky_the-idiot_eva-m-martin"]
+	path = fiction/fyodor-dostoevsky_the-idiot_eva-m-martin
+	url = https://github.com/standardebooks/fyodor-dostoevsky_the-idiot_eva-m-martin.git
+[submodule "philosophy/karl-marx_friedrich-engels_the-communist-manifesto_samuel-moore"]
+	path = philosophy/karl-marx_friedrich-engels_the-communist-manifesto_samuel-moore
+	url = https://github.com/standardebooks/karl-marx_friedrich-engels_the-communist-manifesto_samuel-moore.git
+[submodule "philosophy/friedrich-nietzsche_beyond-good-and-evil_helen-zimmern"]
+	path = philosophy/friedrich-nietzsche_beyond-good-and-evil_helen-zimmern
+	url = https://github.com/standardebooks/friedrich-nietzsche_beyond-good-and-evil_helen-zimmern.git
+[submodule "nonfiction/friedrich-engels_the-condition-of-the-working-class-in-england_florence-kelley-wischnewetzky"]
+	path = nonfiction/friedrich-engels_the-condition-of-the-working-class-in-england_florence-kelley-wischnewetzky
+	url = https://github.com/standardebooks/friedrich-engels_the-condition-of-the-working-class-in-england_florence-kelley-wischnewetzky.git
+[submodule "adventure/alexandre-dumas_the-three-musketeers_william-robson"]
+	path = adventure/alexandre-dumas_the-three-musketeers_william-robson
+	url = https://github.com/standardebooks/alexandre-dumas_the-three-musketeers_william-robson.git
+[submodule "fiction/victor-hugo_les-miserables_isabel-f-hapgood"]
+	path = fiction/victor-hugo_les-miserables_isabel-f-hapgood
+	url = https://github.com/standardebooks/victor-hugo_les-miserables_isabel-f-hapgood.git
