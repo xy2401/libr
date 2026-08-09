@@ -938,6 +938,21 @@
     document.getElementById('closeStatsBtn').addEventListener('click', closeStatsModal);
     document.getElementById('closeBookDetailBtn').addEventListener('click', closeBookDetailModal);
     
+    // Backdrop Clicks to close modals
+    const detailModal = document.getElementById('bookDetailModal');
+    if (detailModal) {
+      detailModal.addEventListener('click', (e) => {
+        if (e.target === detailModal) closeBookDetailModal();
+      });
+    }
+
+    const statsModal = document.getElementById('statsModal');
+    if (statsModal) {
+      statsModal.addEventListener('click', (e) => {
+        if (e.target === statsModal) closeStatsModal();
+      });
+    }
+
     // Cover Lightbox Controls
     const closeLightboxBtn = document.getElementById('closeCoverLightboxBtn');
     if (closeLightboxBtn) closeLightboxBtn.addEventListener('click', closeCoverLightbox);
@@ -952,6 +967,8 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeCoverLightbox();
+        closeBookDetailModal();
+        closeStatsModal();
       }
     });
 
