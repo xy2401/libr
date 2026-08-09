@@ -12,6 +12,7 @@
     displayedBooks: [],   // Currently filtered books
     activeSubject: 'all',
     searchQuery: '',
+    currentPage: 1,
     
     // Active Reader State
     reader: {
@@ -189,7 +190,9 @@
   }
 
   function filterAndRenderBooks(resetPage = false) {
-    if (resetPage) state.currentPage = 1;
+    if (resetPage || !state.currentPage || typeof state.currentPage !== 'number') {
+      state.currentPage = 1;
+    }
 
     let result = state.allBooks;
 
