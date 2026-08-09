@@ -354,6 +354,7 @@
 
     // Start Reading button handler
     const startBtn = document.getElementById('startReadingBtn');
+    startBtn.innerHTML = pct > 0 ? `<span>📖 继续阅读 (${pct}%)</span>` : `<span>📖 开始阅读</span>`;
     startBtn.onclick = function() {
       closeBookDetailModal();
       openReader(bookObj, subject);
