@@ -313,34 +313,52 @@
 
   async function openBookDetailModal(bookObj, subjectSlug) {
     const modal = document.getElementById('bookDetailModal');
+    if (!modal) return;
+
     const repoName = bookObj.repo_name;
     const subject = subjectSlug || bookObj.subject || 'fiction';
     const coverUrl = `./${subject}/${repoName}/src/epub/images/cover.svg`;
 
     const img = document.getElementById('detailCoverImg');
-    img.src = coverUrl;
-    img.onerror = function() {
-      this.onerror = null;
-      this.src = `./${subject}/${repoName}/src/epub/images/cover.jpg`;
-    };
+    if (img) {
+      img.src = coverUrl;
+      img.onerror = function() {
+        this.onerror = null;
+        this.src = `./${subject}/${repoName}/src/epub/images/cover.jpg`;
+      };
+    }
 
-    document.getElementById('detailSubjectTag').textContent = SUBJECT_ZH[subject] || subject;
-    document.getElementById('detailBookTitle').textContent = bookObj.title;
-    document.getElementById('detailAuthorName').textContent = bookObj.author;
+    const subjectsContainer = document.getElementById('detailSubjectsList');
+    if (subjectsContainer) {
+      subjectsContainer.innerHTML = `<span class="detail-subject-badge">${SUBJECT_ZH[subject] || subject}</span>`;
+    }
+
+    const titleElem = document.getElementById('detailBookTitle');
+    if (titleElem) titleElem.textContent = bookObj.title;
+
+    const authorElem = document.getElementById('detailAuthorName');
+    if (authorElem) authorElem.textContent = bookObj.author;
 
     // Progress & Time
     const prog = state.userData.bookProgress[repoName];
     const pct = prog && prog.scrollPercent ? Math.round(prog.scrollPercent * 100) : 0;
     const mins = prog && prog.timeSpent ? Math.round(prog.timeSpent / 60) : 0;
 
-    document.getElementById('detailProgressText').textContent = `${pct}%`;
-    document.getElementById('detailTimeText').textContent = `${mins} 分钟`;
+    const progElem = document.getElementById('detailProgressText');
+    if (progElem) progElem.textContent = `${pct}%`;
+
+    const timeElem = document.getElementById('detailTimeText');
+    if (timeElem) timeElem.textContent = `${mins} 分钟`;
 
     // Links
     const githubUrl = bookObj.github_url || `https://github.com/standardebooks/${repoName}.git`;
     const webUrl = bookObj.web_url || `https://standardebooks.org/ebooks/${repoName.replace('_', '/', 1)}`;
-    document.getElementById('detailGithubLink').href = githubUrl;
-    document.getElementById('detailWebLink').href = webUrl;
+    
+    const githubLink = document.getElementById('detailGithubLink');
+    if (githubLink) githubLink.href = githubUrl;
+
+    const webLink = document.getElementById('detailWebLink');
+    if (webLink) webLink.href = webUrl;
 
     // Default loading text for description
     const descElem = document.getElementById('detailDescriptionText');
