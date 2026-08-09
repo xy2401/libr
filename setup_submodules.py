@@ -177,8 +177,8 @@ def main():
         total_skipped += sub_skipped
         total_failed += sub_failed
         
-    # Save subject_catalog.json
-    catalog_file = "subject_catalog.json"
+    # Save subject_top100.json
+    catalog_file = "subject_top100.json"
     with open(catalog_file, "w", encoding="utf-8") as f:
         json.dump(subject_catalog, f, ensure_ascii=False, indent=2)
         
