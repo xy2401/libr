@@ -489,7 +489,7 @@ body {
 
 .book-cover-container {
   width: 100%;
-  height: 200px;
+  aspect-ratio: 2 / 3;
   border-radius: 6px;
   overflow: hidden;
   position: relative;
@@ -505,9 +505,8 @@ body {
 .book-cover-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
-  padding: 4px;
   transition: filter 0.3s ease;
 }
 
@@ -517,11 +516,11 @@ body {
 
 .recent-cover-img {
   width: 48px;
-  height: 68px;
+  aspect-ratio: 2 / 3;
+  height: auto;
   border-radius: 6px;
-  object-fit: contain;
+  object-fit: cover;
   background: rgba(0, 0, 0, 0.3);
-  padding: 2px;
   flex-shrink: 0;
   box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.3);
   border: 1px solid var(--border-color);
