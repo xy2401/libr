@@ -364,11 +364,10 @@
     const descElem = document.getElementById('detailDescriptionText');
     const dateElem = document.getElementById('detailDateText');
     const langElem = document.getElementById('detailLangText');
-    const subjectsContainer = document.getElementById('detailSubjectsList');
 
-    descElem.innerHTML = '<p class="desc-loading">正在载入图书完整梗概与元数据...</p>';
-    dateElem.textContent = '-';
-    langElem.textContent = 'en-US';
+    if (descElem) descElem.innerHTML = '<p class="desc-loading">正在载入图书完整梗概与元数据...</p>';
+    if (dateElem) dateElem.textContent = '-';
+    if (langElem) langElem.textContent = 'en-US';
 
     // Start Reading button handler
     const startBtn = document.getElementById('startReadingBtn');
