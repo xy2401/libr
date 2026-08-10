@@ -1,1048 +1,1229 @@
-/**
- * Standard Ebooks - Bookshelf & Static Reader App Engine
- */
-
 (function () {
   'use strict';
 
-  // State Store
+  const STORAGE_KEY = 'se_reader_user_data_v2';
+  const LEGACY_STORAGE_KEY = 'se_reader_user_data_v1';
+  const PAGE_SIZE = 24;
+  const TIMER_FLUSH_SECONDS = 15;
+
+  const SUBJECT_ZH = {
+    adventure: '冒险 Adventure',
+    autobiography: '自传 Autobiography',
+    biography: '传记 Biography',
+    childrens: "儿童文学 Children's",
+    comedy: '喜剧 Comedy',
+    drama: '戏剧 Drama',
+    fantasy: '奇幻 Fantasy',
+    fiction: '虚构小说 Fiction',
+    horror: '恐怖小说 Horror',
+    memoir: '回忆录 Memoir',
+    mystery: '悬疑/侦探 Mystery',
+    nonfiction: '非虚构 Non-fiction',
+    philosophy: '哲学 Philosophy',
+    poetry: '诗歌 Poetry',
+    satire: '讽刺 Satire',
+    'science-fiction': '科幻 Sci-Fi',
+    shorts: '短篇合集 Shorts',
+    spirituality: '灵性/宗教 Spirituality',
+    travel: '游记 Travel'
+  };
+
+  const DEFAULT_PREFERENCES = Object.freeze({
+    appTheme: 'system',
+    readerTheme: 'auto',
+    readerFont: 'serif',
+    fontSize: 18,
+    lineHeight: 1.8,
+    contentWidth: 680
+  });
+
+  function createDefaultUserData() {
+    return {
+      version: 2,
+      recent: [],
+      bookProgress: {},
+      totalReadingSeconds: 0,
+      favorites: [],
+      preferences: { ...DEFAULT_PREFERENCES }
+    };
+  }
+
   const state = {
-    subjectCatalog: {},   // Raw subject_top100.json
-    allBooks: [],         // All deduplicated book records
-    displayedBooks: [],   // Currently filtered books
-    activeSubject: 'all',
-    searchQuery: '',
-    currentPage: 1,
-    
-    // Active Reader State
+    catalog: null,
+    subjects: [],
+    subjectCatalog: {},
+    allBooks: [],
+    visibleCount: PAGE_SIZE,
+    activeView: 'library',
+    filters: { query: '', subjects: [], sort: 'default', favoriteOnly: false },
+    userData: createDefaultUserData(),
+    currentDetailBook: null,
+    lastDetailTrigger: null,
     reader: {
       active: false,
-      book: None,
+      book: null,
       subject: '',
       toc: [],
       chapterIndex: 0,
-      fontStyle: 'serif',
-      fontSize: 18,
-      theme: 'dark',
-      timerSeconds: 0,
-      timerHandle: null
-    },
-    
-    // User Reading History Storage
-    userData: {
-      recent: [],          // Last read books list
-      bookProgress: {},    // repo_name -> { chapterIndex, scrollPercent, timeSpent }
-      totalReadingSeconds: 0
+      sessionSeconds: 0,
+      pendingSeconds: 0,
+      timerHandle: null,
+      loadToken: 0,
+      chapterLoaded: false
     }
   };
 
-  // Helper for Python None -> JS null compatibility
-  function fixStateBook(val) {
-    return val === None ? null : val;
+  const dom = {};
+  let saveTimer = null;
+  let searchTimer = null;
+  let toastTimer = null;
+  let metadataController = null;
+
+  function cacheDom() {
+    [
+      'searchInput', 'clearSearchBtn', 'themeToggle', 'continuePanel', 'welcomePanel',
+      'continueCover', 'continueTitle', 'continueAuthor', 'continueProgressText',
+      'continueChapterText', 'continueProgressBar', 'continueReadingBtn', 'libraryTab',
+      'favoritesTab', 'recentTab', 'favoriteBadge', 'recentBadge', 'libraryView',
+      'favoritesView', 'recentView', 'subjectCheckboxes', 'sortButtons', 'favoriteOnlyInput',
+      'resultsCount', 'clearFiltersBtn', 'booksGrid', 'libraryEmpty', 'loadMoreBtn',
+      'favoritesGrid', 'favoritesEmpty', 'favoritesCount', 'recentGrid', 'recentEmpty',
+      'statBooks', 'statTime', 'statFavorites', 'mobileFilterBtn', 'filterDialog',
+      'welcomeCatalogText', 'catalogLocalBooks', 'catalogOfficialBooks',
+      'catalogSubjectCount', 'catalogSourceLink', 'catalogUpdated',
+      'mobileSubjectCheckboxes', 'mobileSortButtons', 'mobileFavoriteOnlyInput',
+      'mobileClearFiltersBtn', 'applyMobileFiltersBtn', 'bookDetailDialog',
+      'closeDetailBtn', 'detailCoverButton', 'detailCoverImg', 'detailProgressText',
+      'detailTimeText', 'detailDateText', 'detailLangText', 'detailSubjectsList',
+      'detailBookTitle', 'detailAuthorName', 'detailDescriptionText', 'startReadingBtn',
+      'detailFavoriteBtn', 'detailWebLink', 'coverDialog', 'closeCoverBtn',
+      'coverPreviewImg', 'resetDataBtn', 'resetDialog', 'confirmResetBtn',
+      'readerOverlay', 'closeReaderBtn', 'readerBookTitle', 'readerAuthorName',
+      'readerProgressBar', 'toggleTocBtn', 'toggleSettingsBtn',
+      'readerScrim', 'tocDrawer', 'closeTocBtn', 'tocNav', 'readerSettingsPanel',
+      'closeSettingsBtn', 'readerThemeSelect', 'readerFontSelect', 'fontSizeInput',
+      'fontSizeOutput', 'lineHeightInput', 'lineHeightOutput', 'contentWidthInput',
+      'contentWidthOutput', 'readerCanvas', 'chapterContainer', 'prevChapterBtn',
+      'nextChapterBtn', 'chapterProgressText', 'toastRegion'
+    ].forEach(id => { dom[id] = document.getElementById(id); });
   }
-  var None = null;
 
-  // Local Storage Key
-  const STORAGE_KEY = 'se_reader_user_data_v1';
+  function finiteNumber(value, fallback, min = -Infinity, max = Infinity) {
+    const number = Number(value);
+    return Number.isFinite(number) ? Math.min(max, Math.max(min, number)) : fallback;
+  }
 
-  /* ==========================================================
-     Storage Controller
-     ========================================================== */
+  function normalizePreferences(value) {
+    const input = value && typeof value === 'object' ? value : {};
+    const appThemes = ['system', 'light', 'dark'];
+    const readerThemes = ['auto', 'paper', 'light', 'dark'];
+    const fonts = ['serif', 'sans'];
+    return {
+      appTheme: appThemes.includes(input.appTheme) ? input.appTheme : DEFAULT_PREFERENCES.appTheme,
+      readerTheme: readerThemes.includes(input.readerTheme) ? input.readerTheme : DEFAULT_PREFERENCES.readerTheme,
+      readerFont: fonts.includes(input.readerFont) ? input.readerFont : DEFAULT_PREFERENCES.readerFont,
+      fontSize: finiteNumber(input.fontSize, 18, 14, 32),
+      lineHeight: finiteNumber(input.lineHeight, 1.8, 1.4, 2.2),
+      contentWidth: finiteNumber(input.contentWidth, 680, 520, 840)
+    };
+  }
+
+  function normalizeProgressMap(value) {
+    const source = value && typeof value === 'object' ? value : {};
+    const result = {};
+    Object.entries(source).forEach(([repo, item]) => {
+      if (!item || typeof item !== 'object') return;
+      const scrollPercent = finiteNumber(item.scrollPercent, 0, 0, 1);
+      result[repo] = {
+        chapterIndex: Math.round(finiteNumber(item.chapterIndex, 0, 0)),
+        scrollPercent,
+        overallPercent: finiteNumber(item.overallPercent, scrollPercent, 0, 1),
+        timeSpent: Math.round(finiteNumber(item.timeSpent, 0, 0))
+      };
+    });
+    return result;
+  }
+
+  function normalizeUserData(value) {
+    const input = value && typeof value === 'object' ? value : {};
+    return {
+      version: 2,
+      recent: Array.isArray(input.recent) ? input.recent.filter(item => item && typeof item.repo_name === 'string').slice(0, 24) : [],
+      bookProgress: normalizeProgressMap(input.bookProgress),
+      totalReadingSeconds: Math.round(finiteNumber(input.totalReadingSeconds, 0, 0)),
+      favorites: Array.isArray(input.favorites) ? [...new Set(input.favorites.filter(item => typeof item === 'string'))] : [],
+      preferences: normalizePreferences(input.preferences)
+    };
+  }
+
   function loadUserData() {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        state.userData.recent = parsed.recent || [];
-        state.userData.bookProgress = parsed.bookProgress || {};
-        state.userData.totalReadingSeconds = parsed.totalReadingSeconds || 0;
+      const current = localStorage.getItem(STORAGE_KEY);
+      if (current) {
+        state.userData = normalizeUserData(JSON.parse(current));
+        return;
       }
-    } catch (e) {
-      console.warn('Failed to load user data from localStorage', e);
+    } catch (error) {
+      console.warn('无法读取新版阅读数据，已使用默认状态。', error);
     }
+
+    try {
+      const legacy = localStorage.getItem(LEGACY_STORAGE_KEY);
+      if (legacy) {
+        state.userData = normalizeUserData(JSON.parse(legacy));
+        saveUserData();
+        return;
+      }
+    } catch (error) {
+      console.warn('旧版阅读数据迁移失败，已使用默认状态。', error);
+    }
+
+    state.userData = createDefaultUserData();
   }
 
   function saveUserData() {
+    if (saveTimer) {
+      clearTimeout(saveTimer);
+      saveTimer = null;
+    }
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state.userData));
-    } catch (e) {
-      console.warn('Failed to save user data to localStorage', e);
+    } catch (error) {
+      console.warn('阅读数据保存失败。', error);
     }
-    updateHeaderStats();
   }
 
-  function updateBookProgress(repoName, bookMeta, chapterIdx, scrollPct, secondsDelta) {
-    if (!state.userData.bookProgress[repoName]) {
-      state.userData.bookProgress[repoName] = {
-        chapterIndex: 0,
-        scrollPercent: 0,
-        timeSpent: 0
-      };
-    }
-
-    const item = state.userData.bookProgress[repoName];
-    if (chapterIdx !== undefined) item.chapterIndex = chapterIdx;
-    if (scrollPct !== undefined) item.scrollPercent = scrollPct;
-    if (secondsDelta) {
-      item.timeSpent = (item.timeSpent || 0) + secondsDelta;
-      state.userData.totalReadingSeconds += secondsDelta;
-    }
-
-    // Update Recent list
-    const existingIndex = state.userData.recent.findIndex(b => b.repo_name === repoName);
-    const recentEntry = {
-      repo_name: repoName,
-      title: bookMeta.title,
-      author: bookMeta.author,
-      subject: bookMeta.subject || state.reader.subject,
-      chapterIndex: item.chapterIndex,
-      scrollPercent: item.scrollPercent,
-      timeSpent: item.timeSpent,
-      lastReadAt: Date.now()
-    };
-
-    if (existingIndex >= 0) {
-      state.userData.recent.splice(existingIndex, 1);
-    }
-    state.userData.recent.unshift(recentEntry);
-    
-    // Keep max 12 recent items
-    if (state.userData.recent.length > 12) {
-      state.userData.recent.pop();
-    }
-
-    saveUserData();
-    renderRecentSection();
+  function scheduleSave(delay = 800) {
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveUserData, delay);
   }
 
-  /* ==========================================================
-     Catalog Data Loader & Aggregator
-     ========================================================== */
-  async function loadSubjectCatalog() {
-    const counterElem = document.getElementById('booksCounter');
+  function resolveAppTheme(choice) {
+    if (choice === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return choice;
+  }
+
+  function applyAppTheme() {
+    const choice = state.userData.preferences.appTheme;
+    document.documentElement.dataset.theme = resolveAppTheme(choice);
+    document.documentElement.dataset.themeChoice = choice;
+    const labels = { system: '跟随系统', light: '浅色', dark: '深色' };
+    dom.themeToggle.title = `主题：${labels[choice]}`;
+    dom.themeToggle.setAttribute('aria-label', `当前主题：${labels[choice]}，点击切换`);
+  }
+
+  function cycleAppTheme() {
+    const order = ['system', 'light', 'dark'];
+    const current = state.userData.preferences.appTheme;
+    state.userData.preferences.appTheme = order[(order.indexOf(current) + 1) % order.length];
+    applyAppTheme();
+    scheduleSave(0);
+    showToast(`站点主题：${dom.themeToggle.title.replace('主题：', '')}`);
+  }
+
+  function assetUrl(book, relativePath) {
+    const fallback = `${book.subject}/${book.repo_name}/src/epub`;
+    const base = String(book.asset_path || fallback).replace(/^\.\//, '').replace(/\/+$/, '');
+    return `./${base}/${String(relativePath).replace(/^\/+/, '')}`;
+  }
+
+  function coverUrl(book, extension = 'svg') {
+    return assetUrl(book, `images/cover.${extension}`);
+  }
+
+  function setCoverFallback(img, book) {
+    img.addEventListener('error', () => {
+      if (!img.dataset.jpgTried) {
+        img.dataset.jpgTried = 'true';
+        img.src = coverUrl(book, 'jpg');
+        return;
+      }
+      const fallback = document.createElement('div');
+      fallback.className = 'cover-fallback';
+      fallback.textContent = book.title;
+      img.replaceWith(fallback);
+    });
+  }
+
+  async function loadCatalog() {
+    renderSkeletons();
     try {
-      const resp = await fetch('./subject_top100.json');
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      state.subjectCatalog = await resp.json();
-
-      // Flatten & Deduplicate books while preserving subject tags
-      const bookMap = new Map();
-      Object.keys(state.subjectCatalog).forEach(subject => {
-        const booksInSubject = state.subjectCatalog[subject] || [];
-        booksInSubject.forEach(b => {
-          if (!bookMap.has(b.repo_name)) {
-            bookMap.set(b.repo_name, {
-              ...b,
-              subject: subject,
-              all_subjects: [subject]
-            });
-          } else {
-            const existing = bookMap.get(b.repo_name);
-            if (!existing.all_subjects.includes(subject)) {
-              existing.all_subjects.push(subject);
-            }
-          }
-        });
-      });
-
-      state.allBooks = Array.from(bookMap.values());
-      counterElem.textContent = `共收录 ${state.allBooks.length} 本名著`;
-
-      renderSubjectPills();
-      filterAndRenderBooks();
-
-    } catch (err) {
-      console.error('Failed to load subject_top100.json:', err);
-      counterElem.textContent = '载入全站图书数据失败';
-      document.getElementById('booksGrid').innerHTML = `
-        <div class="empty-state">
-          <div class="empty-icon">⚠️</div>
-          <h3>数据文件载入失败</h3>
-          <p>请确保通过本地 HTTP 服务器访问 index.html (例如运行 python -m http.server)</p>
-        </div>
-      `;
-    }
-  }
-
-  // Subject Chinese Translations Map
-  const SUBJECT_ZH = {
-    'adventure': '冒险 Adventure',
-    'autobiography': '自传 Autobiography',
-    'biography': '传记 Biography',
-    'childrens': '儿童文学 Children\'s',
-    'comedy': '喜剧 Comedy',
-    'drama': '戏剧 Drama',
-    'fantasy': '奇幻 Fantasy',
-    'fiction': '虚构小说 Fiction',
-    'horror': '恐怖小说 Horror',
-    'memoir': '回忆录 Memoir',
-    'mystery': '悬疑/侦探 Mystery',
-    'nonfiction': '非虚构 Non-fiction',
-    'philosophy': '哲学 Philosophy',
-    'poetry': '诗歌 Poetry',
-    'satire': '讽刺 Satire',
-    'science-fiction': '科幻 Sci-Fi',
-    'shorts': '短篇合集 Shorts',
-    'spirituality': '灵性/宗教 Spirituality',
-    'travel': '游记 Travel'
-  };
-
-  /* ==========================================================
-     Bookshelf UI Rendering
-     ========================================================== */
-  function renderSubjectPills() {
-    const container = document.getElementById('subjectPills');
-    const subjects = Object.keys(state.subjectCatalog).sort();
-
-    let html = `<button class="pill active" data-subject="all">🌟 全部集合 (${state.allBooks.length})</button>`;
-    subjects.forEach(sub => {
-      const count = (state.subjectCatalog[sub] || []).length;
-      const label = SUBJECT_ZH[sub] || sub;
-      html += `<button class="pill" data-subject="${sub}">${label} (${count})</button>`;
-    });
-
-    container.innerHTML = html;
-
-    container.querySelectorAll('.pill').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        container.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        state.activeSubject = btn.getAttribute('data-subject');
-        filterAndRenderBooks(true);
-      });
-    });
-  }
-
-  function filterAndRenderBooks(resetPage = false) {
-    if (resetPage || !state.currentPage || typeof state.currentPage !== 'number') {
-      state.currentPage = 1;
-    }
-
-    let result = state.allBooks;
-
-    // Filter by subject
-    if (state.activeSubject !== 'all') {
-      result = result.filter(b => b.all_subjects.includes(state.activeSubject));
-    }
-
-    // Filter by search query
-    if (state.searchQuery.trim()) {
-      const q = state.searchQuery.toLowerCase().trim();
-      result = result.filter(b => 
-        b.title.toLowerCase().includes(q) || 
-        b.author.toLowerCase().includes(q) ||
-        b.repo_name.toLowerCase().includes(q)
-      );
-    }
-
-    state.displayedBooks = result;
-
-    // Calculate pagination bounds
-    const pageSize = 24;
-    const totalPages = Math.ceil(result.length / pageSize) || 1;
-    if (state.currentPage > totalPages) state.currentPage = totalPages;
-    if (state.currentPage < 1) state.currentPage = 1;
-
-    const startIdx = (state.currentPage - 1) * pageSize;
-    const endIdx = startIdx + pageSize;
-    const pageBooks = result.slice(startIdx, endIdx);
-
-    renderBooksGrid(pageBooks, result.length);
-    renderPaginationBar(totalPages);
-  }
-
-  function renderBooksGrid(books, totalFilteredCount) {
-    const grid = document.getElementById('booksGrid');
-    const emptyState = document.getElementById('emptyState');
-
-    if (!books || books.length === 0) {
-      grid.innerHTML = '';
-      emptyState.classList.remove('hidden');
-      document.getElementById('paginationBar').classList.add('hidden');
-      return;
-    }
-
-    emptyState.classList.add('hidden');
-    
-    // Hash function to choose gradient theme
-    function getThemeClass(str) {
-      let hash = 0;
-      for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
-      const themeIdx = (Math.abs(hash) % 5) + 1;
-      return themeIdx === 1 ? '' : `theme-${themeIdx}`;
-    }
-
-    let html = '';
-    books.forEach(b => {
-      const prog = state.userData.bookProgress[b.repo_name];
-      const pct = prog && prog.scrollPercent ? Math.round(prog.scrollPercent * 100) : 0;
-      const coverUrl = `./${b.subject}/${b.repo_name}/src/epub/images/cover.svg`;
-
-      html += `
-        <div class="book-card" data-repo="${b.repo_name}" data-subject="${b.subject}">
-          <div class="book-info">
-            <h3 title="${escapeHtml(b.title)}">${escapeHtml(b.title)}</h3>
-            <p class="author" title="${escapeHtml(b.author)}">${escapeHtml(b.author)}</p>
-          </div>
-          <div class="book-cover-container">
-            <img class="book-cover-img" loading="lazy" src="${coverUrl}" alt="${escapeHtml(b.title)}" onerror="this.onerror=null; this.src='./${b.subject}/${b.repo_name}/src/epub/images/cover.jpg';">
-            <span class="cover-subject-tag">${SUBJECT_ZH[b.subject] || b.subject}</span>
-          </div>
-          <div class="book-meta-footer">
-            <div class="footer-progress-bar">
-              <div class="footer-progress-fill" style="width: ${pct}%;"></div>
-            </div>
-          </div>
-        </div>
-      `;
-    });
-
-    grid.innerHTML = html;
-
-    grid.querySelectorAll('.book-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const repo = card.getAttribute('data-repo');
-        const subject = card.getAttribute('data-subject');
-        const bookObj = state.allBooks.find(b => b.repo_name === repo);
-        if (bookObj) {
-          openBookDetailModal(bookObj, subject);
-        }
-      });
-    });
-  }
-
-  async function openBookDetailModal(bookObj, subjectSlug) {
-    const modal = document.getElementById('bookDetailModal');
-    if (!modal) return;
-
-    const repoName = bookObj.repo_name;
-    const subject = subjectSlug || bookObj.subject || 'fiction';
-    const coverUrl = `./${subject}/${repoName}/src/epub/images/cover.svg`;
-
-    const img = document.getElementById('detailCoverImg');
-    if (img) {
-      img.src = coverUrl;
-      img.onerror = function() {
-        this.onerror = null;
-        this.src = `./${subject}/${repoName}/src/epub/images/cover.jpg`;
-      };
-      
-      const coverContainer = img.closest('.book-detail-cover');
-      if (coverContainer) {
-        coverContainer.onclick = function() {
-          openCoverLightbox(img.src);
+      const response = await fetch('./subject_top.json');
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const catalog = await response.json();
+      if (catalog?.schema_version !== 2 || !Array.isArray(catalog.subjects) || !Array.isArray(catalog.books)) {
+        throw new Error('不支持的书目数据格式');
+      }
+      state.catalog = catalog;
+      state.subjects = catalog.subjects;
+      state.subjectCatalog = Object.fromEntries(catalog.subjects.map(subject => [subject.slug, subject]));
+      state.allBooks = catalog.books.map((book, index) => {
+        const subjectLinks = Array.isArray(book.subjects) ? book.subjects : [];
+        const allSubjects = subjectLinks.map(item => typeof item === 'string' ? item : item.slug).filter(Boolean);
+        return {
+          ...book,
+          subject: allSubjects[0] || '',
+          all_subjects: allSubjects,
+          _index: index
         };
-      }
-    }
-
-    const subjectsContainer = document.getElementById('detailSubjectsList');
-    if (subjectsContainer) {
-      subjectsContainer.innerHTML = `<span class="detail-subject-badge">${SUBJECT_ZH[subject] || subject}</span>`;
-    }
-
-    const titleElem = document.getElementById('detailBookTitle');
-    if (titleElem) titleElem.textContent = bookObj.title;
-
-    const authorElem = document.getElementById('detailAuthorName');
-    if (authorElem) authorElem.textContent = bookObj.author;
-
-    // Progress & Time
-    const prog = state.userData.bookProgress[repoName];
-    const pct = prog && prog.scrollPercent ? Math.round(prog.scrollPercent * 100) : 0;
-    const mins = prog && prog.timeSpent ? Math.round(prog.timeSpent / 60) : 0;
-
-    const progElem = document.getElementById('detailProgressText');
-    if (progElem) progElem.textContent = `${pct}%`;
-
-    const timeElem = document.getElementById('detailTimeText');
-    if (timeElem) timeElem.textContent = `${mins} 分钟`;
-
-    // Links
-    const githubUrl = bookObj.github_url || `https://github.com/standardebooks/${repoName}.git`;
-    const webUrl = bookObj.web_url || `https://standardebooks.org/ebooks/${repoName.replace('_', '/', 1)}`;
-    
-    const githubLink = document.getElementById('detailGithubLink');
-    if (githubLink) githubLink.href = githubUrl;
-
-    const webLink = document.getElementById('detailWebLink');
-    if (webLink) webLink.href = webUrl;
-
-    // Default loading text for description
-    const descElem = document.getElementById('detailDescriptionText');
-    const dateElem = document.getElementById('detailDateText');
-    const langElem = document.getElementById('detailLangText');
-
-    if (descElem) descElem.innerHTML = '<p class="desc-loading">正在载入图书完整梗概与元数据...</p>';
-    if (dateElem) dateElem.textContent = '-';
-    if (langElem) langElem.textContent = 'en-US';
-
-    // Start Reading button handler
-    const startBtn = document.getElementById('startReadingBtn');
-    startBtn.innerHTML = pct > 0 ? `<span>📖 继续阅读 (${pct}%)</span>` : `<span>📖 开始阅读</span>`;
-    startBtn.onclick = function() {
-      closeBookDetailModal();
-      openReader(bookObj, subject);
-    };
-
-    modal.classList.remove('hidden');
-
-    // Dynamically fetch & parse OPF metadata
-    const opfUrl = `./${subject}/${repoName}/src/epub/content.opf`;
-    try {
-      const resp = await fetch(opfUrl);
-      if (resp.ok) {
-        const xmlText = await resp.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(xmlText, 'application/xml');
-
-        // Extract description
-        const descNode = doc.querySelector('description, dc\\:description');
-        if (descNode && descNode.textContent.trim()) {
-          descElem.innerHTML = descNode.textContent.trim();
-        } else {
-          descElem.innerHTML = '<p>暂无该图书英文梗概信息。</p>';
-        }
-
-        // Extract release date
-        const dateNode = doc.querySelector('date, dc\\:date');
-        if (dateNode && dateNode.textContent) {
-          dateElem.textContent = dateNode.textContent.split('T')[0];
-        }
-
-        // Extract language
-        const langNode = doc.querySelector('language, dc\\:language');
-        if (langNode && langNode.textContent) {
-          langElem.textContent = langNode.textContent.trim();
-        }
-
-        // Extract subjects
-        const subjectNodes = doc.querySelectorAll('subject, dc\\:subject');
-        if (subjectNodes && subjectNodes.length > 0) {
-          let tagsHtml = `<span class="detail-subject-badge">${SUBJECT_ZH[subject] || subject}</span>`;
-          subjectNodes.forEach(node => {
-            const text = node.textContent.trim();
-            if (text) {
-              tagsHtml += `<span class="detail-tag-badge">${escapeHtml(text)}</span>`;
-            }
-          });
-          subjectsContainer.innerHTML = tagsHtml;
-        }
-      } else {
-        descElem.innerHTML = '<p>无法调取 OPF 文件元数据。</p>';
-      }
-    } catch (e) {
-      console.warn('OPF metadata parse warning:', e);
-      descElem.innerHTML = '<p>无全量 OPF 元数据简介。</p>';
+      });
+      renderCatalogOverview();
+      populateFilterOptions();
+      renderAll();
+    } catch (error) {
+      console.error('书目载入失败。', error);
+      dom.booksGrid.innerHTML = '';
+      dom.libraryEmpty.classList.remove('hidden');
+      dom.libraryEmpty.querySelector('h3').textContent = '书目数据载入失败';
+      dom.libraryEmpty.querySelector('p').textContent = '请确认通过本地 HTTP 服务访问，并检查 subject_top.json。';
+      dom.resultsCount.textContent = '无法读取馆藏';
     }
   }
 
-  function closeBookDetailModal() {
-    document.getElementById('bookDetailModal').classList.add('hidden');
+  function renderCatalogOverview() {
+    const sources = state.catalog?.sources || {};
+    const localCount = state.allBooks.length;
+    const officialCount = finiteNumber(sources.official_book_count, 0, 0);
+    dom.catalogLocalBooks.textContent = localCount.toLocaleString('zh-CN');
+    dom.catalogOfficialBooks.textContent = officialCount ? officialCount.toLocaleString('zh-CN') : '—';
+    dom.catalogSubjectCount.textContent = state.subjects.length.toLocaleString('zh-CN');
+    dom.welcomeCatalogText.textContent = `${localCount.toLocaleString('zh-CN')} 本精校公版名著，随时打开，安静阅读。`;
+    dom.catalogSourceLink.href = sources.subjects_url || 'https://standardebooks.org/bulk-downloads/subjects';
+    const generatedAt = state.catalog?.generated_at ? new Date(state.catalog.generated_at) : null;
+    dom.catalogUpdated.textContent = generatedAt && !Number.isNaN(generatedAt.getTime())
+      ? `更新于 ${generatedAt.toLocaleDateString('zh-CN')}`
+      : '';
   }
 
-  function openCoverLightbox(imgSrc) {
-    const modal = document.getElementById('coverLightboxModal');
-    const img = document.getElementById('lightboxCoverImg');
-    if (modal && img) {
-      img.src = imgSrc;
-      modal.classList.remove('hidden');
-    }
+  function populateFilterOptions() {
+    [
+      [dom.subjectCheckboxes, 'subject', dom.favoriteOnlyInput.closest('label'), dom.sortButtons.closest('.sort-filter-group')],
+      [dom.mobileSubjectCheckboxes, 'mobile-subject', dom.mobileFavoriteOnlyInput.closest('label'), null]
+    ].forEach(([container, prefix, favoriteOption, sortGroup]) => {
+      const fragment = document.createDocumentFragment();
+      fragment.appendChild(createSubjectCheckbox('all', '全部分类', '', prefix));
+      fragment.appendChild(favoriteOption);
+      state.subjects.forEach(subject => {
+        const label = subject.name_zh ? `${subject.name_zh} ${subject.name}` : (SUBJECT_ZH[subject.slug] || subject.name || subject.slug);
+        fragment.appendChild(createSubjectCheckbox(subject.slug, label, subject.local_book_count, prefix, subject.official_book_count));
+      });
+      if (sortGroup) fragment.appendChild(sortGroup);
+      container.replaceChildren(fragment);
+    });
+    syncFilterControls();
   }
 
-  function closeCoverLightbox() {
-    const modal = document.getElementById('coverLightboxModal');
-    if (modal) {
-      modal.classList.add('hidden');
-    }
+  function createSubjectCheckbox(value, label, count, prefix, officialCount = null) {
+    const wrapper = document.createElement('label');
+    wrapper.className = value === 'all' ? 'filter-check filter-special all-filter' : 'filter-check';
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.value = value;
+    input.id = `${prefix}-${value}`;
+    input.dataset.subjectFilter = 'true';
+    const text = document.createElement('span');
+    text.textContent = count === '' ? label : `${label} (${count})`;
+    if (Number.isFinite(Number(officialCount))) wrapper.title = `本站 ${count} 本 · 官网 ${Number(officialCount).toLocaleString('zh-CN')} 本`;
+    wrapper.append(input, text);
+    return wrapper;
   }
 
-  function renderPaginationBar(totalPages) {
-    const container = document.getElementById('paginationBar');
-    if (totalPages <= 1) {
-      container.classList.add('hidden');
+  function renderSkeletons() {
+    dom.booksGrid.innerHTML = Array.from({ length: 12 }, () => '<div class="skeleton-card" aria-hidden="true"></div>').join('');
+  }
+
+  function getProgress(repoName) {
+    const progress = state.userData.bookProgress[repoName];
+    return progress ? finiteNumber(progress.overallPercent, progress.scrollPercent || 0, 0, 1) : 0;
+  }
+
+  function isFavorite(repoName) {
+    return state.userData.favorites.includes(repoName);
+  }
+
+  function matchesSearch(book, query) {
+    if (!query) return true;
+    const haystack = `${book.title} ${book.author} ${book.repo_name}`.toLocaleLowerCase();
+    return haystack.includes(query.toLocaleLowerCase());
+  }
+
+  function getFilteredBooks() {
+    const { query, subjects, sort, favoriteOnly } = state.filters;
+    let books = state.allBooks.filter(book => {
+      if (subjects.length && !subjects.some(subject => book.all_subjects.includes(subject))) return false;
+      if (favoriteOnly && !isFavorite(book.repo_name)) return false;
+      return matchesSearch(book, query.trim());
+    });
+
+    if (sort === 'title') books.sort((a, b) => a.title.localeCompare(b.title, 'en'));
+    if (sort === 'author') books.sort((a, b) => a.author.localeCompare(b.author, 'en'));
+    if (sort === 'progress') books.sort((a, b) => getProgress(b.repo_name) - getProgress(a.repo_name) || a._index - b._index);
+    return books;
+  }
+
+  function renderAll() {
+    renderHeaderCounts();
+    renderContinuePanel();
+    renderLibrary();
+    renderFavorites();
+    renderRecent();
+    renderStats();
+  }
+
+  function renderHeaderCounts() {
+    dom.favoriteBadge.textContent = state.userData.favorites.length;
+    dom.recentBadge.textContent = state.userData.recent.length;
+  }
+
+  function renderContinuePanel() {
+    const entry = state.userData.recent[0];
+    const book = entry && state.allBooks.find(item => item.repo_name === entry.repo_name);
+    if (!book) {
+      dom.continuePanel.classList.add('hidden');
+      dom.welcomePanel.classList.remove('hidden');
       return;
     }
 
-    container.classList.remove('hidden');
-    container.innerHTML = `
-      <button id="prevPageBtn" class="page-nav-btn" ${state.currentPage === 1 ? 'disabled' : ''}>← 上一页</button>
-      <span class="page-indicator">第 ${state.currentPage} / ${totalPages} 页</span>
-      <button id="nextPageBtn" class="page-nav-btn" ${state.currentPage === totalPages ? 'disabled' : ''}>下一页 →</button>
+    const progress = state.userData.bookProgress[book.repo_name] || {};
+    const percent = Math.round(getProgress(book.repo_name) * 100);
+    delete dom.continueCover.dataset.jpgTried;
+    dom.continueCover.src = coverUrl(book);
+    dom.continueCover.alt = `${book.title} 封面`;
+    dom.continueCover.onerror = () => {
+      if (!dom.continueCover.dataset.jpgTried) {
+        dom.continueCover.dataset.jpgTried = 'true';
+        dom.continueCover.src = coverUrl(book, 'jpg');
+      }
+    };
+    dom.continueTitle.textContent = book.title;
+    dom.continueAuthor.textContent = book.author;
+    dom.continueProgressText.textContent = `${percent}%`;
+    dom.continueChapterText.textContent = `第 ${(progress.chapterIndex || 0) + 1} 章`;
+    dom.continueProgressBar.style.width = `${percent}%`;
+    dom.continueReadingBtn.dataset.repo = book.repo_name;
+    dom.continuePanel.classList.remove('hidden');
+    dom.welcomePanel.classList.add('hidden');
+  }
+
+  function createBookCard(book) {
+    const card = document.createElement('article');
+    card.className = 'book-card';
+    card.dataset.repo = book.repo_name;
+    const percent = Math.round(getProgress(book.repo_name) * 100);
+    const favorite = isFavorite(book.repo_name);
+    card.innerHTML = `
+      <button class="card-favorite" type="button" title="${favorite ? '取消收藏' : '加入收藏'}" aria-label="${favorite ? '取消收藏' : '收藏'} ${escapeHtml(book.title)}" aria-pressed="${favorite}">
+        <svg><use href="#icon-heart"></use></svg>
+      </button>
+      <button class="book-card-main" type="button" aria-label="查看《${escapeHtml(book.title)}》详情">
+        <div class="book-card-cover"><img loading="lazy" src="${coverUrl(book)}" alt="${escapeHtml(book.title)}封面"></div>
+        <div class="book-card-body">
+          <h3 class="book-title" title="${escapeHtml(book.title)}">${escapeHtml(book.title)}</h3>
+          <p class="book-author">${escapeHtml(book.author)}</p>
+          ${percent > 0 ? `<div class="card-progress"><div class="card-progress-row"><span>阅读进度</span><span>${percent}%</span></div><div class="progress-track"><span style="width:${percent}%"></span></div></div>` : ''}
+        </div>
+      </button>
+      ${percent > 0 ? '<button class="secondary-button card-continue" type="button">继续阅读</button>' : ''}
     `;
 
-    document.getElementById('prevPageBtn').addEventListener('click', () => {
-      if (state.currentPage > 1) {
-        state.currentPage--;
-        filterAndRenderBooks(false);
-        window.scrollTo({ top: 300, behavior: 'smooth' });
-      }
-    });
-
-    document.getElementById('nextPageBtn').addEventListener('click', () => {
-      if (state.currentPage < totalPages) {
-        state.currentPage++;
-        filterAndRenderBooks(false);
-        window.scrollTo({ top: 300, behavior: 'smooth' });
-      }
-    });
+    const image = card.querySelector('img');
+    setCoverFallback(image, book);
+    card.querySelector('.book-card-main').addEventListener('click', event => openBookDetail(book, event.currentTarget));
+    card.querySelector('.card-favorite').addEventListener('click', () => toggleFavorite(book.repo_name));
+    const continueButton = card.querySelector('.card-continue');
+    if (continueButton) continueButton.addEventListener('click', () => openReader(book));
+    return card;
   }
 
-  function removeRecentBook(repoName) {
-    const idx = state.userData.recent.findIndex(b => b.repo_name === repoName);
-    if (idx >= 0) {
-      state.userData.recent.splice(idx, 1);
-      saveUserData();
-      renderRecentSection();
-    }
+  function replaceGrid(container, books) {
+    const fragment = document.createDocumentFragment();
+    books.forEach(book => fragment.appendChild(createBookCard(book)));
+    container.replaceChildren(fragment);
   }
 
-  function renderRecentSection() {
-    const grid = document.getElementById('recentGrid');
-    const emptyState = document.getElementById('recentEmptyState');
-    const badge = document.getElementById('recentTabBadge');
+  function renderLibrary() {
+    if (!state.allBooks.length) return;
+    const filtered = getFilteredBooks();
+    const visible = filtered.slice(0, state.visibleCount);
+    replaceGrid(dom.booksGrid, visible);
+    dom.libraryEmpty.classList.toggle('hidden', filtered.length > 0);
+    dom.loadMoreBtn.classList.toggle('hidden', visible.length >= filtered.length || filtered.length === 0);
+    dom.resultsCount.textContent = `显示 ${visible.length} / ${filtered.length} 本 · 全馆 ${state.allBooks.length} 本`;
+    dom.clearFiltersBtn.classList.toggle('hidden', !hasActiveFilters());
+  }
 
-    const recentList = state.userData.recent || [];
-    badge.textContent = recentList.length;
+  function renderFavorites() {
+    if (!state.allBooks.length) return;
+    const books = state.allBooks.filter(book => isFavorite(book.repo_name) && matchesSearch(book, state.filters.query.trim()));
+    replaceGrid(dom.favoritesGrid, books);
+    dom.favoritesEmpty.classList.toggle('hidden', books.length > 0);
+    dom.favoritesCount.textContent = books.length ? `${books.length} 本收藏` : '';
+  }
 
-    if (recentList.length === 0) {
-      grid.innerHTML = '';
-      emptyState.classList.remove('hidden');
-      return;
-    }
+  function renderRecent() {
+    if (!state.allBooks.length) return;
+    const entries = state.userData.recent.filter(entry => {
+      const book = state.allBooks.find(item => item.repo_name === entry.repo_name);
+      return book && matchesSearch(book, state.filters.query.trim());
+    });
+    dom.recentGrid.replaceChildren();
 
-    emptyState.classList.add('hidden');
-
-    let html = '';
-    recentList.forEach(item => {
-      const pct = Math.round((item.scrollPercent || 0) * 100);
-      const timeMin = Math.round((item.timeSpent || 0) / 60);
-      const coverUrl = `./${item.subject}/${item.repo_name}/src/epub/images/cover.svg`;
-
-      html += `
-        <div class="book-card recent-card-item" data-repo="${item.repo_name}" data-subject="${item.subject}">
-          <button class="delete-recent-btn" data-repo="${item.repo_name}" title="从最近阅读彻底删除">✕</button>
-          <div class="book-info">
-            <h3 title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</h3>
-            <p class="author" title="${escapeHtml(item.author)}">${escapeHtml(item.author)}</p>
-          </div>
-          <div class="book-cover-container">
-            <img class="book-cover-img" loading="lazy" src="${coverUrl}" alt="${escapeHtml(item.title)}" onerror="this.onerror=null; this.src='./${item.subject}/${item.repo_name}/src/epub/images/cover.jpg';">
-            <span class="cover-subject-tag">${SUBJECT_ZH[item.subject] || item.subject}</span>
-          </div>
-          <div class="book-meta-footer">
-            <div class="footer-progress-bar">
-              <div class="footer-progress-fill" style="width: ${pct}%;"></div>
-            </div>
-          </div>
-        </div>
+    entries.forEach(entry => {
+      const book = state.allBooks.find(item => item.repo_name === entry.repo_name);
+      const percent = Math.round(getProgress(book.repo_name) * 100);
+      const item = document.createElement('article');
+      item.className = 'recent-item';
+      item.innerHTML = `
+        <img loading="lazy" src="${coverUrl(book)}" alt="${escapeHtml(book.title)}封面">
+        <div><h3>${escapeHtml(book.title)}</h3><p>${escapeHtml(book.author)} · ${formatRelativeDate(entry.lastReadAt)}</p></div>
+        <div class="recent-progress"><span>${percent}%</span><div class="progress-track"><span style="width:${percent}%"></span></div></div>
+        <div class="recent-actions"><button class="secondary-button" type="button">继续</button><button class="icon-button compact remove-recent" type="button" aria-label="从最近阅读移除 ${escapeHtml(book.title)}"><svg><use href="#icon-close"></use></svg></button></div>
       `;
+      setCoverFallback(item.querySelector('img'), book);
+      item.querySelector('.secondary-button').addEventListener('click', () => openReader(book));
+      item.querySelector('.remove-recent').addEventListener('click', () => removeRecent(book.repo_name));
+      dom.recentGrid.appendChild(item);
     });
+    dom.recentEmpty.classList.toggle('hidden', entries.length > 0);
+  }
 
-    grid.innerHTML = html;
+  function renderStats() {
+    dom.statBooks.textContent = Object.keys(state.userData.bookProgress).length;
+    dom.statTime.textContent = formatMinutes(state.userData.totalReadingSeconds);
+    dom.statFavorites.textContent = state.userData.favorites.length;
+  }
 
-    // Delete buttons event listener
-    grid.querySelectorAll('.delete-recent-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const repo = btn.getAttribute('data-repo');
-        removeRecentBook(repo);
-      });
-    });
+  function formatMinutes(seconds) {
+    const minutes = Math.floor((seconds || 0) / 60);
+    if (minutes < 60) return `${minutes} 分钟`;
+    const hours = Math.floor(minutes / 60);
+    const remainder = minutes % 60;
+    return remainder ? `${hours} 小时 ${remainder} 分` : `${hours} 小时`;
+  }
 
-    // Card click event listener to open reader
-    grid.querySelectorAll('.recent-card-item').forEach(card => {
-      card.addEventListener('click', (e) => {
-        if (e.target.classList.contains('delete-recent-btn')) return;
-        const repo = card.getAttribute('data-repo');
-        const subject = card.getAttribute('data-subject');
-        let bookObj = state.allBooks.find(b => b.repo_name === repo);
-        if (!bookObj) {
-          bookObj = { repo_name: repo, title: card.querySelector('h3').textContent, author: card.querySelector('p').textContent, subject: subject };
-        }
-        openBookDetailModal(bookObj, subject);
-      });
+  function formatRelativeDate(timestamp) {
+    if (!timestamp) return '最近打开';
+    const deltaDays = Math.floor((Date.now() - timestamp) / 86400000);
+    if (deltaDays <= 0) return '今天';
+    if (deltaDays === 1) return '昨天';
+    if (deltaDays < 30) return `${deltaDays} 天前`;
+    return new Date(timestamp).toLocaleDateString('zh-CN');
+  }
+
+  function toggleFavorite(repoName) {
+    const index = state.userData.favorites.indexOf(repoName);
+    const added = index < 0;
+    if (added) state.userData.favorites.unshift(repoName);
+    else state.userData.favorites.splice(index, 1);
+    scheduleSave(0);
+    renderHeaderCounts();
+    renderLibrary();
+    renderFavorites();
+    renderStats();
+    if (state.currentDetailBook && state.currentDetailBook.repo_name === repoName) updateDetailFavoriteButton();
+    showToast(added ? '已加入收藏' : '已取消收藏');
+  }
+
+  function hasActiveFilters() {
+    return Boolean(state.filters.query.trim() || state.filters.subjects.length || state.filters.sort !== 'default' || state.filters.favoriteOnly);
+  }
+
+  function clearFilters({ clearSearch = true } = {}) {
+    if (clearSearch) {
+      state.filters.query = '';
+      dom.searchInput.value = '';
+      dom.clearSearchBtn.classList.add('hidden');
+    }
+    state.filters.subjects = [];
+    state.filters.sort = 'default';
+    state.filters.favoriteOnly = false;
+    state.visibleCount = PAGE_SIZE;
+    syncFilterControls();
+    renderLibrary();
+    renderFavorites();
+    renderRecent();
+  }
+
+  function syncFilterControls() {
+    setSubjectGroup(dom.subjectCheckboxes, state.filters.subjects);
+    setSubjectGroup(dom.mobileSubjectCheckboxes, state.filters.subjects);
+    setSortGroup(dom.sortButtons, state.filters.sort);
+    setSortGroup(dom.mobileSortButtons, state.filters.sort);
+    dom.favoriteOnlyInput.checked = state.filters.favoriteOnly;
+    dom.mobileFavoriteOnlyInput.checked = state.filters.favoriteOnly;
+  }
+
+  function setSubjectGroup(container, subjects) {
+    container.querySelectorAll('input[data-subject-filter]').forEach(input => {
+      input.checked = input.value === 'all' ? subjects.length === 0 : subjects.includes(input.value);
     });
   }
 
-  /* ==========================================================
-     Reader Controller (TOC & Chapter Fetching)
-     ========================================================== */
-  async function openReader(bookObj, subjectSlug) {
+  function readSubjectGroup(container) {
+    return [...container.querySelectorAll('input[data-subject-filter]:checked')]
+      .map(input => input.value)
+      .filter(value => value !== 'all');
+  }
+
+  function normalizeSubjectGroup(container, changedInput) {
+    const allInput = container.querySelector('input[data-subject-filter][value="all"]');
+    const subjectInputs = [...container.querySelectorAll('input[data-subject-filter]:not([value="all"])')];
+    if (changedInput.value === 'all' && changedInput.checked) {
+      subjectInputs.forEach(input => { input.checked = false; });
+    } else if (changedInput.value !== 'all') {
+      allInput.checked = !subjectInputs.some(input => input.checked);
+    } else if (!subjectInputs.some(input => input.checked)) {
+      allInput.checked = true;
+    }
+  }
+
+  function setSortGroup(container, sort) {
+    container.querySelectorAll('[data-sort]').forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.sort === sort));
+    });
+  }
+
+  function readSortGroup(container) {
+    return container.querySelector('[data-sort][aria-pressed="true"]')?.dataset.sort || 'default';
+  }
+
+  function updateDesktopFilters() {
+    state.filters.subjects = readSubjectGroup(dom.subjectCheckboxes);
+    state.filters.favoriteOnly = dom.favoriteOnlyInput.checked;
+    state.visibleCount = PAGE_SIZE;
+    renderLibrary();
+  }
+
+  function setActiveView(view) {
+    state.activeView = view;
+    const views = ['library', 'favorites', 'recent'];
+    views.forEach(name => {
+      const active = name === view;
+      dom[`${name}Tab`].classList.toggle('active', active);
+      dom[`${name}Tab`].setAttribute('aria-selected', String(active));
+      dom[`${name}View`].classList.toggle('hidden', !active);
+    });
+    if (view === 'library') renderLibrary();
+    if (view === 'favorites') renderFavorites();
+    if (view === 'recent') renderRecent();
+    history.replaceState(null, '', `#${view}`);
+  }
+
+  function openBookDetail(book, trigger) {
+    state.currentDetailBook = book;
+    state.lastDetailTrigger = trigger || document.activeElement;
+    const progress = state.userData.bookProgress[book.repo_name] || {};
+    const percent = Math.round(getProgress(book.repo_name) * 100);
+    dom.detailBookTitle.textContent = book.title;
+    dom.detailAuthorName.textContent = book.author;
+    dom.detailProgressText.textContent = `${percent}%`;
+    dom.detailTimeText.textContent = formatMinutes(progress.timeSpent || 0);
+    dom.detailDateText.textContent = '—';
+    dom.detailLangText.textContent = 'en-US';
+    dom.detailCoverImg.src = coverUrl(book);
+    dom.detailCoverImg.alt = `${book.title}封面`;
+    dom.detailCoverImg.dataset.jpgTried = '';
+    dom.detailCoverImg.onerror = () => {
+      if (!dom.detailCoverImg.dataset.jpgTried) {
+        dom.detailCoverImg.dataset.jpgTried = 'true';
+        dom.detailCoverImg.src = coverUrl(book, 'jpg');
+      }
+    };
+    dom.startReadingBtn.textContent = percent > 0 ? `继续阅读 · ${percent}%` : '开始阅读';
+    dom.detailWebLink.href = book.web_url || `https://standardebooks.org${book.href || ''}`;
+    renderDetailTags([SUBJECT_ZH[book.subject] || book.subject]);
+    dom.detailDescriptionText.innerHTML = '<p>正在读取图书简介…</p>';
+    updateDetailFavoriteButton();
+    if (!dom.bookDetailDialog.open) dom.bookDetailDialog.showModal();
+    syncBodyLock();
+    fetchBookMetadata(book);
+  }
+
+  function updateDetailFavoriteButton() {
+    if (!state.currentDetailBook) return;
+    const favorite = isFavorite(state.currentDetailBook.repo_name);
+    dom.detailFavoriteBtn.setAttribute('aria-pressed', String(favorite));
+    dom.detailFavoriteBtn.querySelector('span').textContent = favorite ? '已收藏' : '收藏';
+  }
+
+  async function fetchBookMetadata(book) {
+    if (metadataController) metadataController.abort();
+    metadataController = new AbortController();
+    const expectedRepo = book.repo_name;
+    try {
+      const response = await fetch(assetUrl(book, 'content.opf'), { signal: metadataController.signal });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const doc = new DOMParser().parseFromString(await response.text(), 'application/xml');
+      if (doc.querySelector('parsererror')) throw new Error('OPF XML 解析失败');
+      if (!state.currentDetailBook || state.currentDetailBook.repo_name !== expectedRepo) return;
+
+      const description = doc.querySelector('description, dc\\:description')?.textContent?.trim();
+      renderSafeDescription(description || '暂无该图书的内容梗概。');
+      const date = doc.querySelector('date, dc\\:date')?.textContent?.trim();
+      const language = doc.querySelector('language, dc\\:language')?.textContent?.trim();
+      if (date) dom.detailDateText.textContent = date.split('T')[0];
+      if (language) dom.detailLangText.textContent = language;
+      const tags = book.all_subjects.map(subject => SUBJECT_ZH[subject] || subject);
+      doc.querySelectorAll('subject, dc\\:subject').forEach(node => {
+        const text = node.textContent.trim();
+        if (text && !tags.includes(text)) tags.push(text);
+      });
+      renderDetailTags(tags.slice(0, 8));
+    } catch (error) {
+      if (error.name === 'AbortError') return;
+      console.warn('图书元数据读取失败。', error);
+      renderSafeDescription('暂时无法读取这本书的完整简介，但仍可正常打开正文。');
+    }
+  }
+
+  function renderSafeDescription(text) {
+    dom.detailDescriptionText.replaceChildren();
+    const source = String(text);
+    const parsed = new DOMParser().parseFromString(source, 'text/html');
+    const paragraphText = [...parsed.body.querySelectorAll('p')]
+      .map(node => node.textContent.trim())
+      .filter(Boolean);
+    const plainText = parsed.body.textContent.trim() || source;
+    const parts = paragraphText.length
+      ? paragraphText
+      : plainText.split(/\n\s*\n/).map(item => item.trim()).filter(Boolean);
+    (parts.length ? parts : [plainText]).forEach(part => {
+      const paragraph = document.createElement('p');
+      paragraph.textContent = part;
+      dom.detailDescriptionText.appendChild(paragraph);
+    });
+  }
+
+  function renderDetailTags(tags) {
+    dom.detailSubjectsList.replaceChildren();
+    tags.forEach(text => {
+      const span = document.createElement('span');
+      span.className = 'tag';
+      span.textContent = text;
+      dom.detailSubjectsList.appendChild(span);
+    });
+  }
+
+  function closeDetail() {
+    if (metadataController) metadataController.abort();
+    if (dom.bookDetailDialog.open) dom.bookDetailDialog.close();
+  }
+
+  function openCoverPreview() {
+    if (!state.currentDetailBook) return;
+    dom.coverPreviewImg.src = dom.detailCoverImg.src;
+    dom.coverPreviewImg.alt = `${state.currentDetailBook.title}封面预览`;
+    if (!dom.coverDialog.open) dom.coverDialog.showModal();
+    syncBodyLock();
+  }
+
+  function getProgressItem(book) {
+    if (!state.userData.bookProgress[book.repo_name]) {
+      state.userData.bookProgress[book.repo_name] = { chapterIndex: 0, scrollPercent: 0, overallPercent: 0, timeSpent: 0 };
+    }
+    return state.userData.bookProgress[book.repo_name];
+  }
+
+  function touchRecent(book, moveToFront = true) {
+    const progress = getProgressItem(book);
+    const existingIndex = state.userData.recent.findIndex(item => item.repo_name === book.repo_name);
+    const previous = existingIndex >= 0 ? state.userData.recent[existingIndex] : {};
+    const entry = {
+      ...previous,
+      repo_name: book.repo_name,
+      title: book.title,
+      author: book.author,
+      subject: book.subject,
+      chapterIndex: progress.chapterIndex,
+      scrollPercent: progress.scrollPercent,
+      overallPercent: progress.overallPercent,
+      timeSpent: progress.timeSpent,
+      lastReadAt: moveToFront ? Date.now() : (previous.lastReadAt || Date.now())
+    };
+    if (existingIndex >= 0) state.userData.recent.splice(existingIndex, 1);
+    if (moveToFront) state.userData.recent.unshift(entry);
+    else state.userData.recent.splice(Math.max(existingIndex, 0), 0, entry);
+    state.userData.recent = state.userData.recent.slice(0, 24);
+  }
+
+  function updateRecentSnapshot() {
+    const book = state.reader.book;
+    if (!book) return;
+    const progress = getProgressItem(book);
+    const entry = state.userData.recent.find(item => item.repo_name === book.repo_name);
+    if (!entry) return;
+    entry.chapterIndex = progress.chapterIndex;
+    entry.scrollPercent = progress.scrollPercent;
+    entry.overallPercent = progress.overallPercent;
+    entry.timeSpent = progress.timeSpent;
+  }
+
+  async function openReader(book) {
+    if (!book) return;
+    if (dom.bookDetailDialog.open) dom.bookDetailDialog.close();
     state.reader.active = true;
-    state.reader.book = bookObj;
-    state.reader.subject = subjectSlug || bookObj.subject;
-    state.reader.timerSeconds = 0;
-
-    // Set Header titles
-    document.getElementById('readerBookTitle').textContent = bookObj.title;
-    document.getElementById('readerAuthorName').textContent = bookObj.author;
-
-    // Show Reader Overlay
-    const overlay = document.getElementById('readerOverlay');
-    overlay.classList.remove('hidden');
-
-    // Restore user progress if available
-    const saved = state.userData.bookProgress[bookObj.repo_name];
-    const targetChapterIdx = saved ? (saved.chapterIndex || 0) : 0;
-
+    state.reader.book = book;
+    state.reader.subject = book.subject;
+    state.reader.sessionSeconds = 0;
+    state.reader.pendingSeconds = 0;
+    state.reader.loadToken += 1;
+    state.reader.chapterLoaded = false;
+    dom.readerBookTitle.textContent = book.title;
+    dom.readerAuthorName.textContent = book.author;
+    dom.readerOverlay.classList.remove('hidden');
+    dom.readerOverlay.setAttribute('aria-hidden', 'false');
+    syncBodyLock();
+    applyReaderPreferences();
+    closeReaderDrawers();
+    touchRecent(book, true);
+    saveUserData();
+    renderHeaderCounts();
+    renderContinuePanel();
     startReaderTimer();
-
-    // Load TOC
-    await loadBookToc(bookObj.repo_name, state.reader.subject, targetChapterIdx);
+    await loadBookToc(book, state.reader.loadToken);
   }
 
   function closeReader() {
+    if (!state.reader.active) return;
+    flushReaderSeconds();
+    updateReaderProgress();
     stopReaderTimer();
     state.reader.active = false;
-    document.getElementById('readerOverlay').classList.add('hidden');
-    renderRecentSection();
-    filterAndRenderBooks();
+    state.reader.loadToken += 1;
+    closeReaderDrawers();
+    dom.readerOverlay.classList.add('hidden');
+    dom.readerOverlay.setAttribute('aria-hidden', 'true');
+    saveUserData();
+    renderAll();
+    syncBodyLock();
+    state.lastDetailTrigger?.focus?.();
   }
 
-  async function loadBookToc(repoName, subjectSlug, defaultChapterIdx = 0) {
-    const nav = document.getElementById('tocNav');
-    nav.innerHTML = '<div class="loading-spinner"><div class="spinner"></div><p>读取目录中...</p></div>';
-
-    const tocUrl = `./${subjectSlug}/${repoName}/src/epub/toc.xhtml`;
+  async function loadBookToc(book, token) {
+    dom.tocNav.innerHTML = '<div class="reader-loading"><div class="spinner"></div><p>正在读取目录…</p></div>';
+    dom.chapterContainer.innerHTML = '<div class="reader-loading"><div class="spinner"></div><p>正在打开图书…</p></div>';
     try {
-      const resp = await fetch(tocUrl);
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      const xmlText = await resp.text();
-
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(xmlText, 'application/xhtml+xml');
-      
-      const tocLinks = doc.querySelectorAll('nav#toc a, ol a, nav a');
-      const tocList = [];
-
-      tocLinks.forEach(a => {
-        const href = a.getAttribute('href');
-        const title = a.textContent.trim();
-        if (href && title && !href.startsWith('#')) {
-          tocList.push({ title: title, href: href });
-        }
+      const response = await fetch(assetUrl(book, 'toc.xhtml'));
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const doc = new DOMParser().parseFromString(await response.text(), 'application/xhtml+xml');
+      if (doc.querySelector('parsererror')) throw new Error('目录 XML 解析失败');
+      if (!state.reader.active || token !== state.reader.loadToken) return;
+      const toc = [];
+      doc.querySelectorAll('nav#toc a, nav[epub\\:type="toc"] a, ol a').forEach(anchor => {
+        const href = anchor.getAttribute('href');
+        const title = anchor.textContent.trim();
+        if (href && title && !href.startsWith('#')) toc.push({ href, title });
       });
-
-      if (tocList.length === 0) {
-        // Fallback default chapter
-        tocList.push({ title: '开始阅读', href: 'text/chapter-1.xhtml' });
-      }
-
-      state.reader.toc = tocList;
-      renderTocNav(tocList, defaultChapterIdx);
-
-      // Load target chapter
-      const validIdx = (defaultChapterIdx >= 0 && defaultChapterIdx < tocList.length) ? defaultChapterIdx : 0;
-      loadChapter(validIdx);
-
-    } catch (err) {
-      console.error('Failed to load TOC:', err);
-      nav.innerHTML = '<p style="padding:1rem; color:var(--text-sub);">无法载入本书目录，尝试默认第一章...</p>';
-      state.reader.toc = [{ title: '第一章', href: 'text/chapter-1.xhtml' }];
-      loadChapter(0);
+      state.reader.toc = toc.length ? toc : [{ title: '开始阅读', href: 'text/chapter-1.xhtml' }];
+      renderToc();
+      const savedIndex = getProgressItem(book).chapterIndex;
+      await loadChapter(Math.min(savedIndex, state.reader.toc.length - 1));
+    } catch (error) {
+      console.warn('目录读取失败，尝试默认章节。', error);
+      if (!state.reader.active || token !== state.reader.loadToken) return;
+      state.reader.toc = [{ title: '开始阅读', href: 'text/chapter-1.xhtml' }];
+      renderToc();
+      await loadChapter(0);
     }
   }
 
-  function renderTocNav(tocList, activeIdx) {
-    const nav = document.getElementById('tocNav');
-    let html = '<ol>';
-    tocList.forEach((item, idx) => {
-      const activeClass = idx === activeIdx ? 'active-chapter' : '';
-      html += `<li><a href="#" class="${activeClass}" data-idx="${idx}">${escapeHtml(item.title)}</a></li>`;
-    });
-    html += '</ol>';
-    nav.innerHTML = html;
-
-    nav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', (e) => {
-        e.preventDefault();
-        const idx = parseInt(a.getAttribute('data-idx'), 10);
-        loadChapter(idx);
-        // Collapse TOC on mobile
-        document.getElementById('tocSidebar').classList.add('collapsed');
+  function renderToc() {
+    const list = document.createElement('ol');
+    state.reader.toc.forEach((item, index) => {
+      const li = document.createElement('li');
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = item.title;
+      button.dataset.index = index;
+      button.classList.toggle('active', index === state.reader.chapterIndex);
+      button.addEventListener('click', () => {
+        loadChapter(index);
+        closeReaderDrawers();
       });
+      li.appendChild(button);
+      list.appendChild(li);
     });
+    dom.tocNav.replaceChildren(list);
   }
 
-  async function loadChapter(chapterIdx) {
-    const container = document.getElementById('chapterContainer');
-    container.innerHTML = `
-      <div class="loading-spinner">
-        <div class="spinner"></div>
-        <p>正在载入章节内容...</p>
-      </div>
-    `;
-
-    if (!state.reader.toc || state.reader.toc.length === 0) return;
-
-    state.reader.chapterIndex = chapterIdx;
-
-    // Highlight TOC active chapter
-    const nav = document.getElementById('tocNav');
-    nav.querySelectorAll('a').forEach(a => a.classList.remove('active-chapter'));
-    const activeLink = nav.querySelector(`a[data-idx="${chapterIdx}"]`);
-    if (activeLink) activeLink.classList.add('active-chapter');
-
-    const chapterItem = state.reader.toc[chapterIdx];
-    const repoName = state.reader.book.repo_name;
-    const subjectSlug = state.reader.subject;
-    
-    // Resolve clean chapter relative path
-    let relPath = chapterItem.href;
-    if (relPath.startsWith('epub/')) relPath = relPath.replace('epub/', '');
-    const chapterUrl = `./${subjectSlug}/${repoName}/src/epub/${relPath}`;
-
+  async function loadChapter(index) {
+    if (!state.reader.active || !state.reader.book || !state.reader.toc.length) return;
+    if (state.reader.chapterLoaded) updateReaderProgress();
+    flushReaderSeconds();
+    state.reader.chapterLoaded = false;
+    const token = ++state.reader.loadToken;
+    const safeIndex = Math.max(0, Math.min(index, state.reader.toc.length - 1));
+    state.reader.chapterIndex = safeIndex;
+    dom.chapterContainer.innerHTML = '<div class="reader-loading"><div class="spinner"></div><p>正在读取章节…</p></div>';
+    dom.tocNav.querySelectorAll('button').forEach((button, buttonIndex) => button.classList.toggle('active', buttonIndex === safeIndex));
+    const item = state.reader.toc[safeIndex];
+    const cleanHref = item.href.split('#')[0].replace(/^epub\//, '');
+    const relativeUrl = assetUrl(state.reader.book, cleanHref);
     try {
-      const resp = await fetch(chapterUrl);
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      const rawText = await resp.text();
-
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(rawText, 'application/xhtml+xml');
-
-      // Extract body or section HTML
+      const response = await fetch(relativeUrl);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const doc = new DOMParser().parseFromString(await response.text(), 'application/xhtml+xml');
+      if (doc.querySelector('parsererror')) throw new Error('章节 XML 解析失败');
+      if (!state.reader.active || token !== state.reader.loadToken) return;
       const body = doc.querySelector('body') || doc.documentElement;
-
-      // Fix image paths to relative submodule images folder
-      const images = body.querySelectorAll('img, image');
-      images.forEach(img => {
-        let src = img.getAttribute('src') || img.getAttribute('href') || img.getAttribute('xlink:href');
-        if (src && !src.startsWith('http') && !src.startsWith('data:')) {
-          if (src.startsWith('../')) src = src.replace('../', '');
-          const newSrc = `./${subjectSlug}/${repoName}/src/epub/${src}`;
-          img.setAttribute('src', newSrc);
-          if (img.hasAttribute('xlink:href')) img.setAttribute('xlink:href', newSrc);
-        }
+      sanitizeChapter(body, new URL(relativeUrl, location.href));
+      dom.chapterContainer.innerHTML = body.innerHTML;
+      state.reader.chapterLoaded = true;
+      dom.chapterContainer.dataset.font = state.userData.preferences.readerFont;
+      dom.chapterProgressText.textContent = `章节 ${safeIndex + 1} / ${state.reader.toc.length}`;
+      dom.prevChapterBtn.disabled = safeIndex === 0;
+      dom.nextChapterBtn.disabled = safeIndex >= state.reader.toc.length - 1;
+      const progress = getProgressItem(state.reader.book);
+      const restore = progress.chapterIndex === safeIndex ? progress.scrollPercent : 0;
+      progress.chapterIndex = safeIndex;
+      requestAnimationFrame(() => {
+        const maxScroll = Math.max(0, dom.readerCanvas.scrollHeight - dom.readerCanvas.clientHeight);
+        dom.readerCanvas.scrollTop = maxScroll * restore;
+        updateReaderProgress();
+        dom.readerCanvas.focus({ preventScroll: true });
       });
-
-      container.innerHTML = body.innerHTML;
-
-      // Update Nav Buttons & Progress text
-      document.getElementById('chapterProgressText').textContent = `章节 ${chapterIdx + 1} / ${state.reader.toc.length}`;
-      document.getElementById('prevChapterBtn').disabled = (chapterIdx === 0);
-      document.getElementById('nextChapterBtn').disabled = (chapterIdx >= state.reader.toc.length - 1);
-
-      // Restore scroll position if opening current saved chapter
-      const saved = state.userData.bookProgress[repoName];
-      const canvas = document.getElementById('readerCanvas');
-      if (saved && saved.chapterIndex === chapterIdx && saved.scrollPercent) {
-        setTimeout(() => {
-          const maxScroll = canvas.scrollHeight - canvas.clientHeight;
-          canvas.scrollTop = maxScroll * saved.scrollPercent;
-        }, 100);
-      } else {
-        canvas.scrollTop = 0;
-      }
-
-      updateReaderProgress();
-
-    } catch (err) {
-      console.error(`Failed to load chapter ${chapterUrl}:`, err);
-      container.innerHTML = `
-        <div class="empty-state">
-          <h3>章节载入失败</h3>
-          <p>无法获取文件路径: ${escapeHtml(chapterUrl)}</p>
-        </div>
-      `;
+      updateRecentSnapshot();
+      scheduleSave();
+    } catch (error) {
+      console.error(`章节读取失败：${relativeUrl}`, error);
+      if (!state.reader.active || token !== state.reader.loadToken) return;
+      dom.chapterContainer.innerHTML = '<div class="reader-error"><h2>章节暂时无法打开</h2><p>文件可能缺失或路径不兼容，请从目录选择其他章节。</p></div>';
     }
   }
 
-  /* ==========================================================
-     Reading Progress & Timer Controller
-     ========================================================== */
+  function sanitizeChapter(root, chapterUrl) {
+    root.querySelectorAll('script, iframe, object, embed, form, meta, link').forEach(node => node.remove());
+    root.querySelectorAll('*').forEach(node => {
+      [...node.attributes].forEach(attribute => {
+        if (/^on/i.test(attribute.name)) node.removeAttribute(attribute.name);
+      });
+    });
+    root.querySelectorAll('img').forEach(img => {
+      const src = img.getAttribute('src');
+      if (src && !/^(data:|https?:)/i.test(src)) img.setAttribute('src', new URL(src, chapterUrl).href);
+      img.setAttribute('loading', 'lazy');
+    });
+    root.querySelectorAll('image').forEach(image => {
+      const href = image.getAttribute('href') || image.getAttribute('xlink:href');
+      if (href && !/^(data:|https?:)/i.test(href)) {
+        const resolved = new URL(href, chapterUrl).href;
+        image.setAttribute('href', resolved);
+        image.setAttribute('xlink:href', resolved);
+      }
+    });
+    root.querySelectorAll('a[href]').forEach(anchor => {
+      const href = anchor.getAttribute('href');
+      if (/^https?:/i.test(href)) {
+        anchor.target = '_blank';
+        anchor.rel = 'noopener';
+      }
+    });
+  }
+
   function updateReaderProgress() {
-    const canvas = document.getElementById('readerCanvas');
-    const maxScroll = canvas.scrollHeight - canvas.clientHeight;
-    let scrollPct = maxScroll > 0 ? (canvas.scrollTop / maxScroll) : 0;
-    if (scrollPct > 1) scrollPct = 1;
-    if (scrollPct < 0) scrollPct = 0;
-
-    // Overall progress (combine chapter index + scroll pct within chapter)
-    const totalChapters = state.reader.toc.length || 1;
-    const overallPct = ((state.reader.chapterIndex + scrollPct) / totalChapters) * 100;
-    
-    document.getElementById('readerProgressBar').style.width = `${Math.min(overallPct, 100)}%`;
-
-    if (state.reader.active && state.reader.book) {
-      updateBookProgress(state.reader.book.repo_name, state.reader.book, state.reader.chapterIndex, scrollPct, 0);
-    }
+    if (!state.reader.active || !state.reader.chapterLoaded || !state.reader.book || !state.reader.toc.length) return;
+    const maxScroll = Math.max(0, dom.readerCanvas.scrollHeight - dom.readerCanvas.clientHeight);
+    const scrollPercent = maxScroll ? Math.min(1, Math.max(0, dom.readerCanvas.scrollTop / maxScroll)) : 0;
+    const overall = Math.min(1, (state.reader.chapterIndex + scrollPercent) / state.reader.toc.length);
+    const progress = getProgressItem(state.reader.book);
+    progress.chapterIndex = state.reader.chapterIndex;
+    progress.scrollPercent = scrollPercent;
+    progress.overallPercent = overall;
+    dom.readerProgressBar.style.width = `${overall * 100}%`;
+    updateRecentSnapshot();
+    scheduleSave(1200);
   }
 
   function startReaderTimer() {
     stopReaderTimer();
     state.reader.timerHandle = setInterval(() => {
-      if (state.reader.active && !document.hidden) {
-        state.reader.timerSeconds++;
-        updateTimerDisplay(state.reader.timerSeconds);
-        // Accumulate 1 second to book and total
-        if (state.reader.book) {
-          updateBookProgress(state.reader.book.repo_name, state.reader.book, undefined, undefined, 1);
-        }
-      }
+      if (!state.reader.active || document.hidden) return;
+      state.reader.sessionSeconds += 1;
+      state.reader.pendingSeconds += 1;
+      if (state.reader.pendingSeconds >= TIMER_FLUSH_SECONDS) flushReaderSeconds();
     }, 1000);
   }
 
   function stopReaderTimer() {
-    if (state.reader.timerHandle) {
-      clearInterval(state.reader.timerHandle);
-      state.reader.timerHandle = null;
-    }
+    if (state.reader.timerHandle) clearInterval(state.reader.timerHandle);
+    state.reader.timerHandle = null;
   }
 
-  function updateTimerDisplay(totalSecs) {
-    const mins = Math.floor(totalSecs / 60);
-    const secs = totalSecs % 60;
-    const fmt = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-    document.getElementById('readerTimerText').textContent = fmt;
+  function flushReaderSeconds() {
+    if (!state.reader.book || state.reader.pendingSeconds <= 0) return;
+    const progress = getProgressItem(state.reader.book);
+    progress.timeSpent += state.reader.pendingSeconds;
+    state.userData.totalReadingSeconds += state.reader.pendingSeconds;
+    state.reader.pendingSeconds = 0;
+    updateRecentSnapshot();
+    saveUserData();
   }
 
-  function updateHeaderStats() {
-    const totalSecs = state.userData.totalReadingSeconds || 0;
-    const totalMins = Math.round(totalSecs / 60);
-    document.getElementById('headerTotalTime').textContent = `${totalMins} 分钟`;
+  function applyReaderPreferences() {
+    const preferences = state.userData.preferences;
+    dom.readerOverlay.dataset.readerTheme = preferences.readerTheme;
+    dom.readerThemeSelect.value = preferences.readerTheme;
+    dom.readerFontSelect.value = preferences.readerFont;
+    dom.chapterContainer.dataset.font = preferences.readerFont;
+    dom.fontSizeInput.value = preferences.fontSize;
+    dom.lineHeightInput.value = preferences.lineHeight;
+    dom.contentWidthInput.value = preferences.contentWidth;
+    dom.fontSizeOutput.textContent = `${preferences.fontSize}px`;
+    dom.lineHeightOutput.textContent = Number(preferences.lineHeight).toFixed(1);
+    dom.contentWidthOutput.textContent = `${preferences.contentWidth}px`;
+    dom.readerOverlay.style.setProperty('--reader-font-size', `${preferences.fontSize}px`);
+    dom.readerOverlay.style.setProperty('--reader-line-height', preferences.lineHeight);
+    dom.readerOverlay.style.setProperty('--reader-width', `${preferences.contentWidth}px`);
   }
 
-  /* ==========================================================
-     Modal & Toolbar Controls
-     ========================================================== */
-  function setupEventListeners() {
-    // Main Navigation Mode Tabs
-    const tabBrowseBtn = document.getElementById('tabBrowseBtn');
-    const tabRecentBtn = document.getElementById('tabRecentBtn');
-    const viewBrowse = document.getElementById('viewBrowse');
-    const viewRecent = document.getElementById('viewRecent');
+  function updateReaderPreferences() {
+    state.userData.preferences.readerTheme = dom.readerThemeSelect.value;
+    state.userData.preferences.readerFont = dom.readerFontSelect.value;
+    state.userData.preferences.fontSize = finiteNumber(dom.fontSizeInput.value, 18, 14, 32);
+    state.userData.preferences.lineHeight = finiteNumber(dom.lineHeightInput.value, 1.8, 1.4, 2.2);
+    state.userData.preferences.contentWidth = finiteNumber(dom.contentWidthInput.value, 680, 520, 840);
+    applyReaderPreferences();
+    scheduleSave();
+  }
 
-    tabBrowseBtn.addEventListener('click', () => {
-      tabBrowseBtn.classList.add('active');
-      tabRecentBtn.classList.remove('active');
-      viewBrowse.classList.remove('hidden');
-      viewRecent.classList.add('hidden');
+  function openReaderDrawer(type) {
+    const toc = type === 'toc';
+    dom.tocDrawer.classList.toggle('open', toc);
+    dom.readerSettingsPanel.classList.toggle('open', !toc);
+    dom.tocDrawer.setAttribute('aria-hidden', String(!toc));
+    dom.readerSettingsPanel.setAttribute('aria-hidden', String(toc));
+    dom.toggleTocBtn.setAttribute('aria-expanded', String(toc));
+    dom.toggleSettingsBtn.setAttribute('aria-expanded', String(!toc));
+    dom.readerScrim.classList.remove('hidden');
+  }
+
+  function closeReaderDrawers() {
+    dom.tocDrawer.classList.remove('open');
+    dom.readerSettingsPanel.classList.remove('open');
+    dom.tocDrawer.setAttribute('aria-hidden', 'true');
+    dom.readerSettingsPanel.setAttribute('aria-hidden', 'true');
+    dom.toggleTocBtn.setAttribute('aria-expanded', 'false');
+    dom.toggleSettingsBtn.setAttribute('aria-expanded', 'false');
+    dom.readerScrim.classList.add('hidden');
+  }
+
+  function removeRecent(repoName) {
+    state.userData.recent = state.userData.recent.filter(item => item.repo_name !== repoName);
+    scheduleSave(0);
+    renderHeaderCounts();
+    renderContinuePanel();
+    renderRecent();
+  }
+
+  function resetReadingData() {
+    const preferences = { ...state.userData.preferences };
+    state.userData = createDefaultUserData();
+    state.userData.preferences = preferences;
+    saveUserData();
+    renderAll();
+    showToast('阅读数据已重置');
+  }
+
+  function syncBodyLock() {
+    const dialogOpen = document.querySelector('dialog[open]');
+    document.body.classList.toggle('dialog-open', Boolean(dialogOpen) || state.reader.active);
+  }
+
+  function closeOnBackdrop(dialog) {
+    dialog.addEventListener('click', event => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      const inside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+      if (!inside) dialog.close();
+    });
+  }
+
+  function showToast(message) {
+    clearTimeout(toastTimer);
+    dom.toastRegion.innerHTML = `<div class="toast">${escapeHtml(message)}</div>`;
+    toastTimer = setTimeout(() => { dom.toastRegion.innerHTML = ''; }, 2200);
+  }
+
+  function setupEvents() {
+    dom.themeToggle.addEventListener('click', cycleAppTheme);
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (state.userData.preferences.appTheme === 'system') applyAppTheme();
     });
 
-    tabRecentBtn.addEventListener('click', () => {
-      tabRecentBtn.classList.add('active');
-      tabBrowseBtn.classList.remove('active');
-      viewRecent.classList.remove('hidden');
-      viewBrowse.classList.add('hidden');
-      renderRecentSection();
+    dom.searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      dom.clearSearchBtn.classList.toggle('hidden', !dom.searchInput.value);
+      searchTimer = setTimeout(() => {
+        state.filters.query = dom.searchInput.value.trim();
+        state.visibleCount = PAGE_SIZE;
+        renderLibrary();
+        renderFavorites();
+        renderRecent();
+      }, 120);
+    });
+    dom.clearSearchBtn.addEventListener('click', () => {
+      state.filters.query = '';
+      dom.searchInput.value = '';
+      dom.clearSearchBtn.classList.add('hidden');
+      state.visibleCount = PAGE_SIZE;
+      renderLibrary();
+      renderFavorites();
+      renderRecent();
+      dom.searchInput.focus();
     });
 
-    // Search input
-    const searchInput = document.getElementById('searchInput');
-    const clearBtn = document.getElementById('clearSearchBtn');
-    searchInput.addEventListener('input', (e) => {
-      state.searchQuery = e.target.value;
-      if (state.searchQuery) {
-        clearBtn.classList.remove('hidden');
-      } else {
-        clearBtn.classList.add('hidden');
-      }
-      filterAndRenderBooks();
+    ['library', 'favorites', 'recent'].forEach(view => dom[`${view}Tab`].addEventListener('click', () => setActiveView(view)));
+    dom.subjectCheckboxes.addEventListener('change', event => {
+      if (!event.target.matches('input[data-subject-filter]')) return;
+      normalizeSubjectGroup(dom.subjectCheckboxes, event.target);
+      updateDesktopFilters();
+    });
+    dom.sortButtons.addEventListener('click', event => {
+      const button = event.target.closest('[data-sort]');
+      if (!button) return;
+      state.filters.sort = button.dataset.sort;
+      state.visibleCount = PAGE_SIZE;
+      setSortGroup(dom.sortButtons, state.filters.sort);
+      renderLibrary();
+    });
+    dom.favoriteOnlyInput.addEventListener('change', updateDesktopFilters);
+    dom.clearFiltersBtn.addEventListener('click', () => clearFilters());
+    document.querySelectorAll('[data-clear-filters]').forEach(button => button.addEventListener('click', () => clearFilters()));
+    document.querySelectorAll('[data-open-library]').forEach(button => button.addEventListener('click', () => setActiveView('library')));
+    dom.loadMoreBtn.addEventListener('click', () => { state.visibleCount += PAGE_SIZE; renderLibrary(); });
+
+    dom.mobileFilterBtn.addEventListener('click', () => {
+      syncFilterControls();
+      dom.filterDialog.showModal();
+      syncBodyLock();
+    });
+    dom.mobileSubjectCheckboxes.addEventListener('change', event => {
+      if (!event.target.matches('input[data-subject-filter]')) return;
+      normalizeSubjectGroup(dom.mobileSubjectCheckboxes, event.target);
+    });
+    dom.mobileSortButtons.addEventListener('click', event => {
+      const button = event.target.closest('[data-sort]');
+      if (button) setSortGroup(dom.mobileSortButtons, button.dataset.sort);
+    });
+    dom.applyMobileFiltersBtn.addEventListener('click', () => {
+      state.filters.subjects = readSubjectGroup(dom.mobileSubjectCheckboxes);
+      state.filters.sort = readSortGroup(dom.mobileSortButtons);
+      state.filters.favoriteOnly = dom.mobileFavoriteOnlyInput.checked;
+      state.visibleCount = PAGE_SIZE;
+      syncFilterControls();
+      renderLibrary();
+    });
+    dom.mobileClearFiltersBtn.addEventListener('click', () => {
+      setSubjectGroup(dom.mobileSubjectCheckboxes, []);
+      setSortGroup(dom.mobileSortButtons, 'default');
+      dom.mobileFavoriteOnlyInput.checked = false;
     });
 
-    clearBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      state.searchQuery = '';
-      clearBtn.classList.add('hidden');
-      filterAndRenderBooks();
+    dom.continueReadingBtn.addEventListener('click', () => {
+      const book = state.allBooks.find(item => item.repo_name === dom.continueReadingBtn.dataset.repo);
+      if (book) openReader(book);
     });
 
-    // Global Theme Toggle
-    const themeBtn = document.getElementById('globalThemeToggle');
-    themeBtn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      themeBtn.querySelector('.theme-icon').textContent = next === 'dark' ? '🌙' : '☀️';
+    dom.closeDetailBtn.addEventListener('click', closeDetail);
+    dom.bookDetailDialog.addEventListener('close', () => { syncBodyLock(); state.lastDetailTrigger?.focus?.(); });
+    dom.detailCoverButton.addEventListener('click', openCoverPreview);
+    dom.closeCoverBtn.addEventListener('click', () => dom.coverDialog.close());
+    dom.coverDialog.addEventListener('close', syncBodyLock);
+    dom.startReadingBtn.addEventListener('click', () => openReader(state.currentDetailBook));
+    dom.detailFavoriteBtn.addEventListener('click', () => {
+      if (state.currentDetailBook) toggleFavorite(state.currentDetailBook.repo_name);
     });
+    closeOnBackdrop(dom.bookDetailDialog);
+    closeOnBackdrop(dom.coverDialog);
+    closeOnBackdrop(dom.filterDialog);
+    [dom.filterDialog, dom.resetDialog].forEach(dialog => dialog.addEventListener('close', syncBodyLock));
 
-    // Reader Close
-    document.getElementById('closeReaderBtn').addEventListener('click', closeReader);
+    dom.resetDataBtn.addEventListener('click', () => { dom.resetDialog.showModal(); syncBodyLock(); });
+    dom.confirmResetBtn.addEventListener('click', resetReadingData);
 
-    // TOC Drawer Toggle
-    document.getElementById('toggleTocBtn').addEventListener('click', () => {
-      document.getElementById('tocSidebar').classList.toggle('collapsed');
-    });
-    document.getElementById('closeTocBtn').addEventListener('click', () => {
-      document.getElementById('tocSidebar').classList.add('collapsed');
-    });
+    dom.closeReaderBtn.addEventListener('click', closeReader);
+    dom.toggleTocBtn.addEventListener('click', () => dom.tocDrawer.classList.contains('open') ? closeReaderDrawers() : openReaderDrawer('toc'));
+    dom.toggleSettingsBtn.addEventListener('click', () => dom.readerSettingsPanel.classList.contains('open') ? closeReaderDrawers() : openReaderDrawer('settings'));
+    dom.closeTocBtn.addEventListener('click', closeReaderDrawers);
+    dom.closeSettingsBtn.addEventListener('click', closeReaderDrawers);
+    dom.readerScrim.addEventListener('click', closeReaderDrawers);
+    dom.prevChapterBtn.addEventListener('click', () => loadChapter(state.reader.chapterIndex - 1));
+    dom.nextChapterBtn.addEventListener('click', () => loadChapter(state.reader.chapterIndex + 1));
+    dom.readerCanvas.addEventListener('scroll', throttle(updateReaderProgress, 450), { passive: true });
+    [dom.readerThemeSelect, dom.readerFontSelect].forEach(control => control.addEventListener('change', updateReaderPreferences));
+    [dom.fontSizeInput, dom.lineHeightInput, dom.contentWidthInput].forEach(control => control.addEventListener('input', updateReaderPreferences));
 
-    // Reader Settings Drawer Toggle
-    document.getElementById('toggleSettingsBtn').addEventListener('click', () => {
-      document.getElementById('readerSettingsDrawer').classList.toggle('hidden');
-    });
-
-    // Reader Themes
-    document.querySelectorAll('.theme-opt').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.theme-opt').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const theme = btn.getAttribute('data-reader-theme');
-        document.getElementById('readerOverlay').setAttribute('data-reader-theme', theme);
-      });
-    });
-
-    // Reader Fonts
-    document.querySelectorAll('.font-opt').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.font-opt').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const font = btn.getAttribute('data-font');
-        const container = document.getElementById('chapterContainer');
-        if (font === 'serif') {
-          container.classList.remove('sans-mode');
-          container.classList.add('serif-mode');
-        } else {
-          container.classList.remove('serif-mode');
-          container.classList.add('sans-mode');
+    document.addEventListener('keydown', event => {
+      if (state.reader.active) {
+        if (event.key === 'Escape') {
+          if (dom.tocDrawer.classList.contains('open') || dom.readerSettingsPanel.classList.contains('open')) {
+            event.preventDefault();
+            closeReaderDrawers();
+          } else if (!document.querySelector('dialog[open]')) {
+            event.preventDefault();
+            closeReader();
+          }
+          return;
         }
-      });
-    });
-
-    // Reader Font Sizes
-    document.getElementById('fontIncBtn').addEventListener('click', () => {
-      if (state.reader.fontSize < 32) {
-        state.reader.fontSize += 2;
-        document.getElementById('fontSizeDisplay').textContent = `${state.reader.fontSize}px`;
-        document.getElementById('chapterContainer').style.fontSize = `${state.reader.fontSize}px`;
+        const tag = document.activeElement?.tagName;
+        if (!['INPUT', 'SELECT', 'TEXTAREA', 'BUTTON'].includes(tag)) {
+          if (event.key === 'ArrowLeft' && state.reader.chapterIndex > 0) loadChapter(state.reader.chapterIndex - 1);
+          if (event.key === 'ArrowRight' && state.reader.chapterIndex < state.reader.toc.length - 1) loadChapter(state.reader.chapterIndex + 1);
+        }
+      } else if (event.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
+        event.preventDefault();
+        dom.searchInput.focus();
       }
     });
 
-    document.getElementById('fontDecBtn').addEventListener('click', () => {
-      if (state.reader.fontSize > 12) {
-        state.reader.fontSize -= 2;
-        document.getElementById('fontSizeDisplay').textContent = `${state.reader.fontSize}px`;
-        document.getElementById('chapterContainer').style.fontSize = `${state.reader.fontSize}px`;
-      }
-    });
-
-    // Chapter Navigation Buttons
-    document.getElementById('prevChapterBtn').addEventListener('click', () => {
-      if (state.reader.chapterIndex > 0) {
-        loadChapter(state.reader.chapterIndex - 1);
-      }
-    });
-
-    document.getElementById('nextChapterBtn').addEventListener('click', () => {
-      if (state.reader.chapterIndex < state.reader.toc.length - 1) {
-        loadChapter(state.reader.chapterIndex + 1);
-      }
-    });
-
-    // Canvas Scroll Event for Reading Progress
-    const canvas = document.getElementById('readerCanvas');
-    canvas.addEventListener('scroll', throttle(updateReaderProgress, 200));
-
-    // Stats & Detail Modal Controls
-    document.getElementById('statsModalBtn').addEventListener('click', openStatsModal);
-    document.getElementById('closeStatsBtn').addEventListener('click', closeStatsModal);
-    document.getElementById('closeBookDetailBtn').addEventListener('click', closeBookDetailModal);
-    
-    // Backdrop Clicks to close modals
-    const detailModal = document.getElementById('bookDetailModal');
-    if (detailModal) {
-      detailModal.addEventListener('click', (e) => {
-        if (e.target === detailModal) closeBookDetailModal();
-      });
-    }
-
-    const statsModal = document.getElementById('statsModal');
-    if (statsModal) {
-      statsModal.addEventListener('click', (e) => {
-        if (e.target === statsModal) closeStatsModal();
-      });
-    }
-
-    // Cover Lightbox Controls
-    const closeLightboxBtn = document.getElementById('closeCoverLightboxBtn');
-    if (closeLightboxBtn) closeLightboxBtn.addEventListener('click', closeCoverLightbox);
-
-    const lightboxModal = document.getElementById('coverLightboxModal');
-    if (lightboxModal) {
-      lightboxModal.addEventListener('click', (e) => {
-        if (e.target === lightboxModal) closeCoverLightbox();
-      });
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeCoverLightbox();
-        closeBookDetailModal();
-        closeStatsModal();
-      }
-    });
-
-    document.getElementById('resetStatsBtn').addEventListener('click', () => {
-      if (confirm('确认重置所有最近阅读与时间统计数据？此操作不可撤销。')) {
-        localStorage.removeItem(STORAGE_KEY);
-        state.userData = { recent: [], bookProgress: {}, totalReadingSeconds: 0 };
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && state.reader.active) {
+        flushReaderSeconds();
+        updateReaderProgress();
         saveUserData();
-        closeStatsModal();
-        renderRecentSection();
-        filterAndRenderBooks();
       }
+    });
+    window.addEventListener('pagehide', () => {
+      if (state.reader.active) {
+        flushReaderSeconds();
+        updateReaderProgress();
+      }
+      saveUserData();
     });
   }
 
-  function openStatsModal() {
-    const modal = document.getElementById('statsModal');
-    modal.classList.remove('hidden');
-
-    const totalBooks = Object.keys(state.userData.bookProgress).length;
-    const totalSecs = state.userData.totalReadingSeconds || 0;
-    const totalMins = Math.round(totalSecs / 60);
-
-    document.getElementById('statTotalBooks').textContent = totalBooks;
-    document.getElementById('statTotalTime').textContent = `${totalMins} 分钟`;
-
-    const list = document.getElementById('bookTimeList');
-    let html = '';
-    const progressMap = state.userData.bookProgress;
-    Object.keys(progressMap).forEach(repo => {
-      const item = progressMap[repo];
-      const bookObj = state.allBooks.find(b => b.repo_name === repo);
-      const title = bookObj ? bookObj.title : repo;
-      const mins = Math.round((item.timeSpent || 0) / 60);
-      html += `
-        <div class="book-time-item">
-          <span>${escapeHtml(title)}</span>
-          <span>${mins} 分钟</span>
-        </div>
-      `;
-    });
-
-    list.innerHTML = html || '<p style="color:var(--text-sub); text-align:center;">暂无记录</p>';
-  }
-
-  function closeStatsModal() {
-    document.getElementById('statsModal').classList.add('hidden');
-  }
-
-  /* Utilities */
-  function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  }
-
-  function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-      const args = arguments;
-      const context = this;
-      if (!inThrottle) {
-        func.apply(context, args);
-        inThrottle = true;
-        setTimeout(() => inThrottle = false, limit);
-      }
+  function throttle(callback, delay) {
+    let timeout = null;
+    let lastArgs;
+    return function (...args) {
+      lastArgs = args;
+      if (timeout) return;
+      timeout = setTimeout(() => {
+        timeout = null;
+        callback.apply(this, lastArgs);
+      }, delay);
     };
   }
 
-  /* Application Entry Point */
-  document.addEventListener('DOMContentLoaded', () => {
-    loadUserData();
-    setupEventListeners();
-    loadSubjectCatalog();
-    renderRecentSection();
-  });
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
 
+  document.addEventListener('DOMContentLoaded', () => {
+    cacheDom();
+    loadUserData();
+    applyAppTheme();
+    applyReaderPreferences();
+    setupEvents();
+    const initialView = ['library', 'favorites', 'recent'].includes(location.hash.slice(1)) ? location.hash.slice(1) : 'library';
+    setActiveView(initialView);
+    loadCatalog();
+  });
 })();

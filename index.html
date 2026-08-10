@@ -1,312 +1,298 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="dark">
+<html lang="zh-CN" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Standard Ebooks - 典藏电子书架与阅读器</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta name="color-scheme" content="light dark">
+  <title>Standard Ebooks · 私人典藏书架</title>
+  <link rel="stylesheet" href="style.css?v=20260810-1">
 </head>
 <body>
-  <!-- App Container -->
-  <div id="app" class="app-container">
-    
-    <!-- Top Header -->
-    <header class="main-header">
-      <div class="logo-group">
-        <div class="logo-icon">📚</div>
-        <div class="logo-text">
-          <h1>Standard Ebooks</h1>
-          <span class="subtitle">精美公有领域典藏书架</span>
-        </div>
-      </div>
-      
-      <div class="header-actions">
-        <!-- Search Input -->
-        <div class="search-box">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="searchInput" placeholder="搜索书名或作者..." autocomplete="off">
-          <button id="clearSearchBtn" class="clear-btn hidden">✕</button>
-        </div>
-        
-        <!-- Stats Summary Badge -->
-        <button id="statsModalBtn" class="action-btn pill-btn" title="查看阅读统计">
-          <span class="icon">⏱️</span>
-          <span id="headerTotalTime">0 分钟</span>
-        </button>
-        
-        <!-- Theme Toggle -->
-        <button id="globalThemeToggle" class="action-btn circle-btn" title="切换暗色/亮色模式">
-          <span class="theme-icon">🌙</span>
+  <svg class="icon-sprite" aria-hidden="true">
+    <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Zm16 0A2.5 2.5 0 0 0 17.5 3H13v16h4.5a2.5 2.5 0 0 1 2.5 2.5v-16Z"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></symbol>
+    <symbol id="icon-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10m-7 6h4"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="icon-list" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1v.1h-4v-.1A1.7 1.7 0 0 0 8.6 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1-.4h-.1v-4H3A1.7 1.7 0 0 0 4.6 8.6a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1v-.1h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 19.4 9c.13.38.36.72.68.97.29.23.64.36 1 .38h.1v4h-.1A1.7 1.7 0 0 0 19.4 15Z"/></symbol>
+  </svg>
+
+  <div id="app" class="app-shell">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#library" aria-label="返回书库首页">
+          <span class="brand-mark"><svg><use href="#icon-book"></use></svg></span>
+          <span>
+            <strong>Standard Ebooks</strong>
+            <small>私人典藏书架</small>
+          </span>
+        </a>
+
+        <label class="global-search" for="searchInput">
+          <svg aria-hidden="true"><use href="#icon-search"></use></svg>
+          <input id="searchInput" type="search" placeholder="搜索书名、作者或关键词" autocomplete="off">
+          <button id="clearSearchBtn" class="icon-button compact hidden" type="button" aria-label="清除搜索">
+            <svg><use href="#icon-close"></use></svg>
+          </button>
+        </label>
+
+        <button id="themeToggle" class="icon-button" type="button" aria-label="切换站点主题" title="主题：跟随系统">
+          <svg><use href="#icon-sun"></use></svg>
         </button>
       </div>
     </header>
 
-    <!-- Main Content Grid -->
-    <main class="main-body">
-      
-      <!-- Main Mode Tabs Switcher -->
-      <div class="main-tabs-bar">
-        <button id="tabBrowseBtn" class="main-tab-btn active" data-tab="browse">
-          <span>📚 分类浏览</span>
-        </button>
-        <button id="tabRecentBtn" class="main-tab-btn" data-tab="recent">
-          <span>⏱️ 最近阅读</span>
-          <span class="tab-badge" id="recentTabBadge">0</span>
-        </button>
-      </div>
-
-      <!-- Tab View 1: Category Browse View -->
-      <div id="viewBrowse" class="tab-view-content">
-        <!-- Subject Categories Pills Filter -->
-        <section class="filter-section">
-          <div class="filter-header">
-            <h2>分类筛选</h2>
-            <span class="book-total-counter" id="booksCounter">全站加载中...</span>
+    <main class="main-shell">
+      <section id="continuePanel" class="continue-panel hidden" aria-labelledby="continueHeading">
+        <img id="continueCover" class="continue-cover" src="" alt="">
+        <div class="continue-copy">
+          <span class="eyebrow">继续阅读</span>
+          <h1 id="continueHeading">上次读到这里</h1>
+          <p><strong id="continueTitle"></strong><span id="continueAuthor"></span></p>
+          <div class="continue-progress" aria-label="阅读进度">
+            <span><span id="continueProgressText">0%</span> · <span id="continueChapterText">尚未开始</span></span>
+            <div class="progress-track"><span id="continueProgressBar"></span></div>
           </div>
-          <div class="subject-pills-grid" id="subjectPills">
-            <button class="pill active" data-subject="all">🌟 全部集合</button>
-            <!-- Dynamically populated subject pills -->
-          </div>
-        </section>
-
-        <!-- Book Grid Container -->
-        <section class="shelf-section">
-          <div id="booksGrid" class="books-grid">
-            <!-- Dynamically populated book cards -->
-          </div>
-          <div id="paginationBar" class="pagination-bar hidden"></div>
-          <div id="emptyState" class="empty-state hidden">
-            <div class="empty-icon">📖</div>
-            <h3>未找到匹配的图书</h3>
-            <p>尝试更换关键词或切换分类标签</p>
-          </div>
-        </section>
-      </div>
-
-      <!-- Tab View 2: Recently Read View -->
-      <div id="viewRecent" class="tab-view-content hidden">
-        <section class="shelf-section">
-          <div class="filter-header">
-            <h2>最近阅读历史</h2>
-            <span class="book-total-counter" id="recentSubtext">按最近打开时间排序</span>
-          </div>
-          <div id="recentGrid" class="books-grid">
-            <!-- Dynamically populated recent book cards -->
-          </div>
-          <div id="recentEmptyState" class="empty-state hidden">
-            <div class="empty-icon">🔖</div>
-            <h3>暂无最近阅读记录</h3>
-            <p>去“分类浏览”中挑选一本书开始阅读吧！记录会自动保存在这里。</p>
-          </div>
-        </section>
-      </div>
-
-    </main>
-
-    <!-- Reader View Overlay / Modal -->
-    <div id="readerOverlay" class="reader-overlay hidden">
-      
-      <!-- Reader Header Bar -->
-      <div class="reader-header">
-        <button id="closeReaderBtn" class="reader-btn icon-btn" title="返回书架">
-          <span>← 返回书架</span>
-        </button>
-        
-        <div class="reader-book-info">
-          <span id="readerBookTitle" class="reader-title">书名</span>
-          <span id="readerAuthorName" class="reader-author">作者</span>
         </div>
-        
-        <div class="reader-tools">
-          <!-- Reader Timer -->
-          <div class="reader-timer-badge">
-            <span class="timer-dot"></span>
-            <span id="readerTimerText">00:00</span>
-          </div>
+        <button id="continueReadingBtn" class="primary-button" type="button">
+          继续阅读 <svg><use href="#icon-chevron"></use></svg>
+        </button>
+      </section>
 
-          <!-- TOC Toggle -->
-          <button id="toggleTocBtn" class="reader-btn circle-btn" title="目录">
-            <span>📜</span>
-          </button>
-          
-          <!-- Reader Settings Dropdown Toggle -->
-          <button id="toggleSettingsBtn" class="reader-btn circle-btn" title="阅读设置">
-            <span>⚙️</span>
+      <section id="welcomePanel" class="welcome-panel" aria-labelledby="welcomeHeading">
+        <div>
+          <span class="eyebrow">你的私人数字书房</span>
+          <h1 id="welcomeHeading">从一本好书开始</h1>
+          <p id="welcomeCatalogText">精校公版名著，随时打开，安静阅读。</p>
+        </div>
+      </section>
+
+      <nav class="library-tabs" aria-label="书架视图">
+        <button class="tab-button active" id="libraryTab" type="button" data-view="library" aria-selected="true">全部书库</button>
+        <button class="tab-button" id="favoritesTab" type="button" data-view="favorites" aria-selected="false">我的收藏 <span id="favoriteBadge">0</span></button>
+        <button class="tab-button" id="recentTab" type="button" data-view="recent" aria-selected="false">最近阅读 <span id="recentBadge">0</span></button>
+      </nav>
+
+      <section id="libraryView" class="view-panel" aria-labelledby="libraryTab">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">馆藏</span>
+            <h2>发现下一本书</h2>
+          </div>
+          <button id="mobileFilterBtn" class="secondary-button mobile-filter-button" type="button">
+            <svg><use href="#icon-filter"></use></svg> 筛选
           </button>
         </div>
-      </div>
 
-      <!-- Reader Settings Toolbar Drawer -->
-      <div id="readerSettingsDrawer" class="settings-drawer hidden">
-        <div class="setting-item">
-          <label>阅读主题</label>
-          <div class="theme-options">
-            <button class="theme-opt active" data-reader-theme="dark">深色</button>
-            <button class="theme-opt" data-reader-theme="sepia">羊皮纸</button>
-            <button class="theme-opt" data-reader-theme="light">亮色</button>
-          </div>
-        </div>
-        
-        <div class="setting-item">
-          <label>字体风格</label>
-          <div class="font-options">
-            <button class="font-opt active" data-font="serif">衬线体 (Merriweather)</button>
-            <button class="font-opt" data-font="sans">无衬线 (Inter)</button>
-          </div>
-        </div>
-
-        <div class="setting-item">
-          <label>字号调节</label>
-          <div class="size-controls">
-            <button id="fontDecBtn" class="size-btn">A-</button>
-            <span id="fontSizeDisplay">18px</span>
-            <button id="fontIncBtn" class="size-btn">A+</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Reader Body (TOC Drawer + Content Canvas) -->
-      <div class="reader-body">
-        
-        <!-- Table of Contents Sidebar -->
-        <aside id="tocSidebar" class="toc-sidebar">
-          <div class="toc-header">
-            <h3>图书目录</h3>
-            <button id="closeTocBtn" class="close-toc-btn">✕</button>
-          </div>
-          <nav id="tocNav" class="toc-nav">
-            <!-- Dynamically populated TOC items -->
-          </nav>
+        <aside class="catalog-overview" aria-label="馆藏概览">
+          <div><strong id="catalogLocalBooks">—</strong><span>本站馆藏</span></div>
+          <div><strong id="catalogOfficialBooks">—</strong><span>官网典藏</span></div>
+          <div><strong id="catalogSubjectCount">—</strong><span>覆盖分类</span></div>
+          <p><a id="catalogSourceLink" href="https://standardebooks.org/" target="_blank" rel="noopener">数据来自 Standard Ebooks</a><span id="catalogUpdated"></span></p>
         </aside>
 
-        <!-- Chapter Render Area -->
-        <main id="readerCanvas" class="reader-canvas">
-          <div id="chapterContainer" class="chapter-container serif-mode">
-            <div class="loading-spinner">
-              <div class="spinner"></div>
-              <p>正在载入章节内容...</p>
-            </div>
-          </div>
-          
-          <!-- Bottom Navigation inside Reader -->
-          <div class="chapter-nav-bar">
-            <button id="prevChapterBtn" class="nav-chapter-btn">← 上一章</button>
-            <span id="chapterProgressText">章节 1 / 1</span>
-            <button id="nextChapterBtn" class="nav-chapter-btn">下一章 →</button>
-          </div>
-        </main>
-      </div>
-
-      <!-- Top Reading Progress Indicator -->
-      <div class="reader-progress-track">
-        <div id="readerProgressBar" class="progress-fill"></div>
-      </div>
-    </div>
-
-    <!-- Reading Statistics Modal -->
-    <div id="statsModal" class="stats-modal-overlay hidden">
-      <div class="stats-modal-card">
-        <div class="stats-header">
-          <h2>阅读统计中心</h2>
-          <button id="closeStatsBtn" class="close-modal-btn">✕</button>
-        </div>
-        <div class="stats-grid">
-          <div class="stat-box">
-            <span class="stat-number" id="statTotalBooks">0</span>
-            <span class="stat-label">已读图书总数</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-number" id="statTotalTime">0 分钟</span>
-            <span class="stat-label">累计阅读总时长</span>
-          </div>
-        </div>
-        <div class="stats-detail-list">
-          <h3>各图书累计时长</h3>
-          <div id="bookTimeList" class="book-time-list">
-            <!-- Dynamic list of book time breakdown -->
-          </div>
-        </div>
-        <div class="stats-footer">
-          <button id="resetStatsBtn" class="danger-btn">重置阅读进度与时间数据</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Book Detail Modal -->
-    <div id="bookDetailModal" class="stats-modal-overlay hidden">
-      <div class="book-detail-card">
-        <button id="closeBookDetailBtn" class="close-modal-btn">✕</button>
-        <div class="book-detail-body">
-          <!-- Left Side: Cover & Key Metadata -->
-          <div class="book-detail-left">
-            <div class="book-detail-cover">
-              <img id="detailCoverImg" src="" alt="Book Cover">
-            </div>
-            
-            <div class="detail-meta-list">
-              <div class="meta-item">
-                <span class="meta-label">阅读进度</span>
-                <span id="detailProgressText" class="meta-value">0%</span>
-              </div>
-              <div class="meta-item">
-                <span class="meta-label">阅读时间</span>
-                <span id="detailTimeText" class="meta-value">0 分钟</span>
-              </div>
-              <div class="meta-item">
-                <span class="meta-label">发布日期</span>
-                <span id="detailDateText" class="meta-value">-</span>
-              </div>
-              <div class="meta-item">
-                <span class="meta-label">图书语言</span>
-                <span id="detailLangText" class="meta-value">en-US</span>
+        <div class="filter-toolbar" aria-label="书库筛选">
+          <fieldset class="filter-group subject-filter-group">
+            <legend>分类 <small>可多选，未选择表示全部</small></legend>
+            <div id="subjectCheckboxes" class="filter-check-grid">
+              <label class="filter-check favorite-filter filter-special">
+                <input id="favoriteOnlyInput" type="checkbox">
+                <svg aria-hidden="true"><use href="#icon-heart"></use></svg>
+                <span>仅看收藏</span>
+              </label>
+              <div class="sort-filter-group" role="group" aria-label="排序">
+                <span class="filter-inline-label">排序</span>
+                <div id="sortButtons" class="segmented-control" aria-label="排序方式">
+                  <button type="button" data-sort="default" aria-pressed="true">典藏</button>
+                  <button type="button" data-sort="title" aria-pressed="false">书名</button>
+                  <button type="button" data-sort="author" aria-pressed="false">作者</button>
+                  <button type="button" data-sort="progress" aria-pressed="false">进度</button>
+                </div>
               </div>
             </div>
-          </div>
-
-          <!-- Right Side: Title, Author, Action Buttons & Synopsis -->
-          <div class="book-detail-right">
-            <div id="detailSubjectsList" class="detail-subjects-badges">
-              <span id="detailSubjectTag" class="detail-subject-badge">Subject</span>
-            </div>
-            <h2 id="detailBookTitle">Book Title</h2>
-            <p id="detailAuthorName" class="detail-author">Author Name</p>
-
-            <!-- Action Buttons Bar -->
-            <div class="detail-action-buttons">
-              <button id="startReadingBtn" class="primary-action-btn">
-                <span>📖 开始阅读</span>
-              </button>
-              <a id="detailWebLink" href="#" target="_blank" class="secondary-action-btn">
-                <span>🌐 官网 ↗</span>
-              </a>
-              <a id="detailGithubLink" href="#" target="_blank" class="secondary-action-btn">
-                <span>🐙 GitHub ↗</span>
-              </a>
-            </div>
-
-            <!-- Book Synopsis / Description -->
-            <div class="detail-description-section">
-              <h3>内容梗概 / Synopsis</h3>
-              <div id="detailDescriptionText" class="detail-description-body">
-                正在读取详细图书简介...
-              </div>
-            </div>
-          </div>
+          </fieldset>
         </div>
-      </div>
-    <!-- Cover Image Lightbox Modal -->
-    <div id="coverLightboxModal" class="stats-modal-overlay hidden">
-      <div class="lightbox-card">
-        <button id="closeCoverLightboxBtn" class="close-modal-btn">✕</button>
-        <img id="lightboxCoverImg" src="" alt="Enlarged Book Cover">
-      </div>
-    </div>
 
+        <div class="results-row">
+          <p id="resultsCount" aria-live="polite">正在整理馆藏…</p>
+          <button id="clearFiltersBtn" class="text-button hidden" type="button">清除筛选</button>
+        </div>
+
+        <div id="booksGrid" class="books-grid" aria-live="polite"></div>
+        <div id="libraryEmpty" class="empty-state hidden">
+          <svg><use href="#icon-search"></use></svg>
+          <h3>没有找到匹配的图书</h3>
+          <p>换个关键词，或者清除当前筛选条件。</p>
+          <button class="secondary-button" type="button" data-clear-filters>清除筛选</button>
+        </div>
+        <div class="load-more-wrap">
+          <button id="loadMoreBtn" class="secondary-button hidden" type="button">加载更多</button>
+        </div>
+      </section>
+
+      <section id="favoritesView" class="view-panel hidden" aria-labelledby="favoritesTab">
+        <div class="section-heading">
+          <div><span class="eyebrow">个人书单</span><h2>我的收藏</h2></div>
+          <p id="favoritesCount" class="muted-copy"></p>
+        </div>
+        <div id="favoritesGrid" class="books-grid"></div>
+        <div id="favoritesEmpty" class="empty-state hidden">
+          <svg><use href="#icon-heart"></use></svg>
+          <h3>还没有收藏</h3>
+          <p>在书籍卡片或详情页点击心形按钮，把想读的书留在这里。</p>
+          <button class="secondary-button" type="button" data-open-library>浏览全部书库</button>
+        </div>
+      </section>
+
+      <section id="recentView" class="view-panel hidden" aria-labelledby="recentTab">
+        <div class="section-heading">
+          <div><span class="eyebrow">阅读足迹</span><h2>最近阅读</h2></div>
+        </div>
+        <div class="stats-strip">
+          <div><span id="statBooks">0</span><small>读过的书</small></div>
+          <div><span id="statTime">0 分钟</span><small>累计阅读</small></div>
+          <div><span id="statFavorites">0</span><small>收藏</small></div>
+          <button id="resetDataBtn" class="text-button danger" type="button">重置阅读数据</button>
+        </div>
+        <div id="recentGrid" class="recent-list"></div>
+        <div id="recentEmpty" class="empty-state hidden">
+          <svg><use href="#icon-clock"></use></svg>
+          <h3>还没有阅读记录</h3>
+          <p>打开一本书开始阅读，进度会自动保存在本机。</p>
+          <button class="secondary-button" type="button" data-open-library>去选一本书</button>
+        </div>
+      </section>
+    </main>
   </div>
 
-  <script src="app.js"></script>
+  <dialog id="filterDialog" class="sheet-dialog" aria-labelledby="filterDialogTitle">
+    <form method="dialog" class="sheet-card">
+      <div class="dialog-heading">
+        <h2 id="filterDialogTitle">筛选书库</h2>
+        <button class="icon-button" value="cancel" aria-label="关闭筛选"><svg><use href="#icon-close"></use></svg></button>
+      </div>
+      <fieldset class="filter-group subject-filter-group">
+        <legend>分类 <small>可多选</small></legend>
+        <div id="mobileSubjectCheckboxes" class="filter-check-grid">
+          <label class="filter-check favorite-filter filter-special"><input id="mobileFavoriteOnlyInput" type="checkbox"><svg aria-hidden="true"><use href="#icon-heart"></use></svg><span>仅看收藏</span></label>
+        </div>
+      </fieldset>
+      <div class="sort-filter-group" role="group" aria-label="排序">
+        <span class="filter-inline-label">排序</span>
+        <div id="mobileSortButtons" class="segmented-control" aria-label="排序方式">
+          <button type="button" data-sort="default" aria-pressed="true">典藏</button>
+          <button type="button" data-sort="title" aria-pressed="false">书名</button>
+          <button type="button" data-sort="author" aria-pressed="false">作者</button>
+          <button type="button" data-sort="progress" aria-pressed="false">进度</button>
+        </div>
+      </div>
+      <div class="sheet-actions">
+        <button id="mobileClearFiltersBtn" class="secondary-button" type="button">清除</button>
+        <button id="applyMobileFiltersBtn" class="primary-button" value="default">查看结果</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="bookDetailDialog" class="detail-dialog" aria-labelledby="detailBookTitle">
+    <div class="detail-card">
+      <button id="closeDetailBtn" class="icon-button dialog-close" type="button" aria-label="关闭图书详情"><svg><use href="#icon-close"></use></svg></button>
+      <div class="detail-layout">
+        <div class="detail-cover-column">
+          <button id="detailCoverButton" class="cover-button" type="button" aria-label="放大封面">
+            <img id="detailCoverImg" src="" alt="">
+          </button>
+          <dl class="detail-meta">
+            <div><dt>全书进度</dt><dd id="detailProgressText">0%</dd></div>
+            <div><dt>阅读时间</dt><dd id="detailTimeText">0 分钟</dd></div>
+            <div><dt>发布日期</dt><dd id="detailDateText">—</dd></div>
+            <div><dt>语言</dt><dd id="detailLangText">en-US</dd></div>
+          </dl>
+        </div>
+        <div class="detail-content">
+          <div id="detailSubjectsList" class="tag-list"></div>
+          <h2 id="detailBookTitle">图书标题</h2>
+          <p id="detailAuthorName" class="detail-author">作者</p>
+          <div class="detail-actions">
+            <button id="startReadingBtn" class="primary-button" type="button">开始阅读</button>
+            <button id="detailFavoriteBtn" class="secondary-button favorite-action" type="button" aria-pressed="false"><svg><use href="#icon-heart"></use></svg><span>收藏</span></button>
+            <a id="detailWebLink" class="text-link" href="#" target="_blank" rel="noopener">Standard Ebooks 官网 ↗</a>
+          </div>
+          <section class="synopsis" aria-labelledby="synopsisHeading">
+            <h3 id="synopsisHeading">内容梗概</h3>
+            <div id="detailDescriptionText" class="synopsis-body" aria-live="polite"><p>正在读取图书简介…</p></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="coverDialog" class="cover-dialog" aria-label="图书封面预览">
+    <button id="closeCoverBtn" class="icon-button dialog-close" type="button" aria-label="关闭封面预览"><svg><use href="#icon-close"></use></svg></button>
+    <img id="coverPreviewImg" src="" alt="">
+  </dialog>
+
+  <dialog id="resetDialog" class="confirm-dialog" aria-labelledby="resetDialogTitle">
+    <form method="dialog" class="confirm-card">
+      <h2 id="resetDialogTitle">重置阅读数据？</h2>
+      <p>最近阅读、进度、时长和收藏将从本机删除，此操作无法撤销。</p>
+      <div class="dialog-actions">
+        <button class="secondary-button" value="cancel">取消</button>
+        <button id="confirmResetBtn" class="danger-button" value="default">确认重置</button>
+      </div>
+    </form>
+  </dialog>
+
+  <section id="readerOverlay" class="reader-view hidden" aria-label="电子书阅读器" aria-hidden="true">
+    <header class="reader-header">
+      <button id="closeReaderBtn" class="reader-header-button reader-back" type="button">
+        <svg><use href="#icon-arrow-left"></use></svg><span>返回书架</span>
+      </button>
+      <div class="reader-book-heading">
+        <strong id="readerBookTitle">书名</strong>
+        <span id="readerAuthorName">作者</span>
+      </div>
+      <div class="reader-tools">
+        <button id="toggleTocBtn" class="reader-header-button icon-only" type="button" aria-label="打开目录" aria-expanded="false"><svg><use href="#icon-list"></use></svg></button>
+        <button id="toggleSettingsBtn" class="reader-header-button icon-only" type="button" aria-label="打开阅读设置" aria-expanded="false"><svg><use href="#icon-settings"></use></svg></button>
+      </div>
+    </header>
+    <div class="reader-progress-track"><span id="readerProgressBar"></span></div>
+
+    <div class="reader-body">
+      <button id="readerScrim" class="reader-scrim hidden" type="button" aria-label="关闭侧边面板"></button>
+      <aside id="tocDrawer" class="reader-drawer toc-drawer" aria-hidden="true">
+        <div class="drawer-heading"><h2>目录</h2><button id="closeTocBtn" class="icon-button" type="button" aria-label="关闭目录"><svg><use href="#icon-close"></use></svg></button></div>
+        <nav id="tocNav" class="toc-nav" aria-label="章节目录"></nav>
+      </aside>
+
+      <aside id="readerSettingsPanel" class="reader-drawer settings-panel" aria-hidden="true">
+        <div class="drawer-heading"><h2>阅读设置</h2><button id="closeSettingsBtn" class="icon-button" type="button" aria-label="关闭阅读设置"><svg><use href="#icon-close"></use></svg></button></div>
+        <div class="reader-setting-fields">
+          <label class="field-label"><span>阅读主题</span><select id="readerThemeSelect"><option value="auto">跟随系统</option><option value="paper">纸张</option><option value="light">浅色</option><option value="dark">深色</option></select></label>
+          <label class="field-label"><span>正文字体</span><select id="readerFontSelect"><option value="serif">衬线体</option><option value="sans">无衬线体</option></select></label>
+          <label class="range-field"><span>字号 <output id="fontSizeOutput">18px</output></span><input id="fontSizeInput" type="range" min="14" max="32" step="2" value="18"></label>
+          <label class="range-field"><span>行高 <output id="lineHeightOutput">1.8</output></span><input id="lineHeightInput" type="range" min="1.4" max="2.2" step="0.1" value="1.8"></label>
+          <label class="range-field"><span>正文宽度 <output id="contentWidthOutput">680px</output></span><input id="contentWidthInput" type="range" min="520" max="840" step="40" value="680"></label>
+        </div>
+      </aside>
+
+      <main id="readerCanvas" class="reader-canvas" tabindex="0">
+        <article id="chapterContainer" class="chapter-container"></article>
+        <nav class="chapter-navigation" aria-label="章节导航">
+          <button id="prevChapterBtn" class="secondary-button" type="button">上一章</button>
+          <span id="chapterProgressText">章节 1 / 1</span>
+          <button id="nextChapterBtn" class="secondary-button" type="button">下一章</button>
+        </nav>
+      </main>
+    </div>
+  </section>
+
+  <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="app.js?v=20260810-1"></script>
 </body>
 </html>
