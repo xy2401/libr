@@ -13,6 +13,7 @@ import sys
 import tempfile
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -363,6 +364,105 @@ def build_site(output: Path) -> dict:
     return stats
 
 
+def run_git(*args: str, cwd: Path = ROOT, check: bool = True) -> subprocess.CompletedProcess:
+    env = os.environ.copy()
+    env["GIT_TERMINAL_PROMPT"] = "0"
+    result = subprocess.run(
+        ["git", *args],
+        cwd=cwd,
+        env=env,
+        text=True,
+        capture_output=True,
+    )
+    if check and result.returncode:
+        detail = result.stderr.strip() or result.stdout.strip() or f"退出码 {result.returncode}"
+        raise SiteError(f"git {' '.join(args)} 失败: {detail}")
+    return result
+
+
+def library_gitlinks() -> dict[str, str]:
+    links: dict[str, str] = {}
+    for line in run_git("ls-tree", "-r", "HEAD", "library").stdout.splitlines():
+        metadata, separator, path = line.partition("\t")
+        parts = metadata.split()
+        if separator and len(parts) >= 3 and parts[0] == "160000":
+            links[path.replace("\\", "/")] = parts[2]
+    return links
+
+
+def sync_one_book(book: dict, commit: str) -> str:
+    repo = book["repo_name"]
+    target = ensure_inside_root(ROOT / "library" / repo)
+    asset_dir = target / "src" / "epub"
+    if target.exists():
+        if not target.is_dir():
+            raise SiteError(f"library/{repo} 已存在但不是目录")
+        current = run_git("rev-parse", "HEAD", cwd=target, check=False)
+        if current.returncode:
+            if any(target.iterdir()):
+                raise SiteError(f"library/{repo} 已存在但不是有效的 Git 仓库")
+            target.rmdir()
+        elif current.stdout.strip() == commit and asset_dir.is_dir():
+            return "cached"
+    if not target.exists():
+        target.parent.mkdir(parents=True, exist_ok=True)
+        run_git(
+            "clone",
+            "--depth", "1",
+            "--filter=blob:none",
+            "--no-checkout",
+            book["github_url"],
+            str(target),
+        )
+
+    run_git("sparse-checkout", "init", "--cone", cwd=target)
+    run_git("sparse-checkout", "set", "src/epub", cwd=target)
+    available = run_git("cat-file", "-e", f"{commit}^{{commit}}", cwd=target, check=False)
+    if available.returncode:
+        run_git("fetch", "--depth", "1", "origin", commit, cwd=target)
+    run_git("checkout", "--detach", commit, cwd=target)
+    if not asset_dir.is_dir():
+        raise SiteError(f"library/{repo} 检出后缺少 src/epub")
+    return "updated"
+
+
+def sync_library(jobs: int) -> None:
+    catalog = load_catalog()
+    gitlinks = library_gitlinks()
+    tasks = []
+    missing_links = []
+    for book in catalog["books"]:
+        path = f"library/{book['repo_name']}"
+        commit = gitlinks.get(path)
+        if not commit:
+            missing_links.append(path)
+        else:
+            tasks.append((book, commit))
+    if missing_links:
+        preview = ", ".join(missing_links[:8])
+        raise SiteError(f"有 {len(missing_links)} 本书缺少 Git 子模块记录: {preview}")
+
+    cached = 0
+    updated = 0
+    errors = []
+    info(f"同步 {len(tasks)} 本书，最大并发数 {jobs}")
+    with ThreadPoolExecutor(max_workers=jobs) as executor:
+        futures = {executor.submit(sync_one_book, book, commit): book["repo_name"] for book, commit in tasks}
+        for index, future in enumerate(as_completed(futures), 1):
+            repo = futures[future]
+            try:
+                result = future.result()
+                cached += result == "cached"
+                updated += result == "updated"
+            except Exception as exc:
+                errors.append(f"{repo}: {exc}")
+            if index % 50 == 0:
+                info(f"已检查 {index}/{len(tasks)} 本")
+    if errors:
+        raise SiteError(f"书库同步失败 {len(errors)} 本；" + "；".join(errors[:5]))
+    info(f"书库同步完成: 缓存命中 {cached} 本，新检出或更新 {updated} 本")
+
+
 def serve_site(output: Path, port: int, skip_build: bool) -> None:
     if not skip_build:
         build_site(output)
@@ -395,11 +495,14 @@ def output_path(value: str) -> Path:
 
 
 def create_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Standard Ebooks 演示书库工具")
+    parser = argparse.ArgumentParser(description="Standard Ebooks 个人书库工具")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     refresh = subparsers.add_parser("refresh", help="刷新官网元数据和精选书目")
     refresh.add_argument("--per-subject", type=int, default=DEFAULT_PER_SUBJECT)
+
+    sync = subparsers.add_parser("sync-library", help="并发浅层稀疏检出书籍子模块")
+    sync.add_argument("--jobs", type=int, default=16)
 
     build = subparsers.add_parser("build", help="生成 Cloudflare Pages 发布目录")
     build.add_argument("--output", default="dist")
@@ -429,6 +532,10 @@ def main() -> int:
                     warn(f"官网刷新失败，保留上次成功数据: {exc}")
                 else:
                     raise
+        elif args.command == "sync-library":
+            if args.jobs < 1:
+                raise SiteError("--jobs 必须大于 0")
+            sync_library(args.jobs)
         elif args.command == "build":
             build_site(output_path(args.output))
         elif args.command == "serve":

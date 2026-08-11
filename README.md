@@ -26,11 +26,13 @@ dist/                       Cloudflare Pages 发布产物
 python -m pip install beautifulsoup4
 ```
 
-首次克隆项目时初始化浅层子模块：
+首次克隆项目时，推荐使用项目工具并发、浅层、稀疏检出书籍内容：
 
 ```bash
-git submodule update --init --depth 1
+python site.py sync-library --jobs 16
 ```
+
+该命令严格按照主仓库记录的子模块提交检出，只展开每本书的 `src/epub`。重复执行时会跳过已经匹配的书籍。
 
 ## 日常使用
 
@@ -60,17 +62,28 @@ python site.py serve --port 8000 --skip-build
 
 ## Cloudflare Pages
 
+项目默认使用 Cloudflare Pages 的 Git 集成自动构建。连接 GitHub 仓库后填写：
+
+- 生产分支：`main`
+- 构建命令：`python site.py sync-library --jobs 16 && python site.py build`
+- 构建输出目录：`dist`
+- 根目录：项目根目录
+
+构建时会并发浅层检出 402 个书籍仓库，并且只展开 `src/epub`，然后生成、校验并发布 `dist`。
+
+`.github/workflows/deploy-pages.yml` 保留为手动备用部署，不会在推送时自动触发。如果以后需要使用它，在 GitHub Actions 页面手动运行，并配置：
+
+- Secret `CLOUDFLARE_ACCOUNT_ID`
+- Secret `CLOUDFLARE_API_TOKEN`
+- Variable `CLOUDFLARE_PROJECT_NAME`
+
+### 本地部署
+
 直接从本地构建并部署：
 
 ```bash
 python site.py deploy --project-name YOUR_PROJECT --branch main
 ```
-
-如果使用 Cloudflare Pages 的 Git 集成：
-
-- 构建命令：`python site.py build`
-- 输出目录：`dist`
-- 根目录：项目根目录
 
 构建过程只复制 `index.html`、`style.css`、`app.js`、`subject_top.json` 和入选书籍的 `src/epub`。产物不会包含 `.git`、书籍顶层 `images` 或制作源文件，并会自动检查 Pages 的文件数量与单文件大小限制。
 
