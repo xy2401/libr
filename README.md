@@ -60,16 +60,17 @@ python site.py serve --port 8000
 python site.py serve --port 8000 --skip-build
 ```
 
-## Cloudflare Workers Builds
+## Cloudflare Pages
 
-项目默认使用 Cloudflare 的 Git 集成自动构建，并通过 Workers Static Assets 发布。连接 GitHub 仓库后填写：
+项目默认使用 Cloudflare Pages 的 Git 集成自动构建。通过 `Workers & Pages → 创建应用 → Pages → Connect to Git` 连接 GitHub 仓库后填写：
 
 - 生产分支：`main`
+- 框架预设：无
 - 构建命令：`python site.py sync-library --jobs 16 && python site.py build`
-- 部署命令：`npx wrangler deploy --assets ./dist`
+- 构建输出目录：`dist`
 - 根目录：留空
 
-`wrangler.jsonc` 固定 Worker 名称、兼容日期和静态资源目录。`.gitmodules` 将子模块的默认更新策略设为 `none`，避免 Cloudflare 在运行构建命令之前串行检出全部书籍。构建命令随后通过 `sync-library` 并发浅层检出 402 个书籍仓库，并且只展开 `src/epub`，然后生成、校验并发布 `dist`。
+Pages 项目不需要部署命令；如果配置页面要求填写部署命令，说明创建的是 Worker 而不是 Pages。`.gitmodules` 将子模块的默认更新策略设为 `none`，避免 Cloudflare 在运行构建命令之前串行检出全部书籍。构建命令随后通过 `sync-library` 并发浅层检出 402 个书籍仓库，并且只展开 `src/epub`，然后生成、校验并发布 `dist`。
 
 `.github/workflows/deploy-pages.yml` 保留为手动备用部署，不会在推送时自动触发。如果以后需要使用它，在 GitHub Actions 页面手动运行，并配置：
 
@@ -77,7 +78,7 @@ python site.py serve --port 8000 --skip-build
 - Secret `CLOUDFLARE_API_TOKEN`
 - Variable `CLOUDFLARE_PROJECT_NAME`
 
-### 本地部署到 Pages
+### 本地部署
 
 直接从本地构建并部署：
 
