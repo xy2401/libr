@@ -2,1607 +2,2009 @@
 	path = library/edgar-rice-burroughs_pirates-of-venus
 	url = https://github.com/standardebooks/edgar-rice-burroughs_pirates-of-venus.git
 	shallow = true
+	update = none
 [submodule "library/robert-louis-stevenson_treasure-island"]
 	path = library/robert-louis-stevenson_treasure-island
 	url = https://github.com/standardebooks/robert-louis-stevenson_treasure-island.git
 	shallow = true
+	update = none
 [submodule "library/h-c-mcneile_the-black-gang"]
 	path = library/h-c-mcneile_the-black-gang
 	url = https://github.com/standardebooks/h-c-mcneile_the-black-gang.git
 	shallow = true
+	update = none
 [submodule "library/edgar-allan-poe_short-fiction"]
 	path = library/edgar-allan-poe_short-fiction
 	url = https://github.com/standardebooks/edgar-allan-poe_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/h-p-lovecraft_at-the-mountains-of-madness"]
 	path = library/h-p-lovecraft_at-the-mountains-of-madness
 	url = https://github.com/standardebooks/h-p-lovecraft_at-the-mountains-of-madness.git
 	shallow = true
+	update = none
 [submodule "library/jack-london_the-call-of-the-wild"]
 	path = library/jack-london_the-call-of-the-wild
 	url = https://github.com/standardebooks/jack-london_the-call-of-the-wild.git
 	shallow = true
+	update = none
 [submodule "library/franklin-w-dixon_the-great-airport-mystery"]
 	path = library/franklin-w-dixon_the-great-airport-mystery
 	url = https://github.com/standardebooks/franklin-w-dixon_the-great-airport-mystery.git
 	shallow = true
+	update = none
 [submodule "library/alexandre-dumas_the-three-musketeers_william-robson"]
 	path = library/alexandre-dumas_the-three-musketeers_william-robson
 	url = https://github.com/standardebooks/alexandre-dumas_the-three-musketeers_william-robson.git
 	shallow = true
+	update = none
 [submodule "library/jules-verne_journey-to-the-center-of-the-earth_f-a-malleson"]
 	path = library/jules-verne_journey-to-the-center-of-the-earth_f-a-malleson
 	url = https://github.com/standardebooks/jules-verne_journey-to-the-center-of-the-earth_f-a-malleson.git
 	shallow = true
+	update = none
 [submodule "library/joshua-slocum_sailing-alone-around-the-world"]
 	path = library/joshua-slocum_sailing-alone-around-the-world
 	url = https://github.com/standardebooks/joshua-slocum_sailing-alone-around-the-world.git
 	shallow = true
+	update = none
 [submodule "library/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle"]
 	path = library/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle
 	url = https://github.com/standardebooks/jules-verne_around-the-world-in-eighty-days_george-makepeace-towle.git
 	shallow = true
+	update = none
 [submodule "library/t-e-lawrence_seven-pillars-of-wisdom"]
 	path = library/t-e-lawrence_seven-pillars-of-wisdom
 	url = https://github.com/standardebooks/t-e-lawrence_seven-pillars-of-wisdom.git
 	shallow = true
+	update = none
 [submodule "library/arthur-conan-doyle_the-lost-world"]
 	path = library/arthur-conan-doyle_the-lost-world
 	url = https://github.com/standardebooks/arthur-conan-doyle_the-lost-world.git
 	shallow = true
+	update = none
 [submodule "library/john-buchan_the-thirty-nine-steps"]
 	path = library/john-buchan_the-thirty-nine-steps
 	url = https://github.com/standardebooks/john-buchan_the-thirty-nine-steps.git
 	shallow = true
+	update = none
 [submodule "library/jack-london_white-fang"]
 	path = library/jack-london_white-fang
 	url = https://github.com/standardebooks/jack-london_white-fang.git
 	shallow = true
+	update = none
 [submodule "library/edgar-allan-poe_the-narrative-of-arthur-gordon-pym-of-nantucket"]
 	path = library/edgar-allan-poe_the-narrative-of-arthur-gordon-pym-of-nantucket
 	url = https://github.com/standardebooks/edgar-allan-poe_the-narrative-of-arthur-gordon-pym-of-nantucket.git
 	shallow = true
+	update = none
 [submodule "library/franklin-w-dixon_the-tower-treasure"]
 	path = library/franklin-w-dixon_the-tower-treasure
 	url = https://github.com/standardebooks/franklin-w-dixon_the-tower-treasure.git
 	shallow = true
+	update = none
 [submodule "library/hugh-lofting_the-story-of-doctor-dolittle"]
 	path = library/hugh-lofting_the-story-of-doctor-dolittle
 	url = https://github.com/standardebooks/hugh-lofting_the-story-of-doctor-dolittle.git
 	shallow = true
+	update = none
 [submodule "library/edgar-rice-burroughs_tarzan-of-the-apes"]
 	path = library/edgar-rice-burroughs_tarzan-of-the-apes
 	url = https://github.com/standardebooks/edgar-rice-burroughs_tarzan-of-the-apes.git
 	shallow = true
+	update = none
 [submodule "library/agatha-christie_the-man-in-the-brown-suit"]
 	path = library/agatha-christie_the-man-in-the-brown-suit
 	url = https://github.com/standardebooks/agatha-christie_the-man-in-the-brown-suit.git
 	shallow = true
+	update = none
 [submodule "library/james-fenimore-cooper_the-last-of-the-mohicans"]
 	path = library/james-fenimore-cooper_the-last-of-the-mohicans
 	url = https://github.com/standardebooks/james-fenimore-cooper_the-last-of-the-mohicans.git
 	shallow = true
+	update = none
 [submodule "library/walter-scott_ivanhoe"]
 	path = library/walter-scott_ivanhoe
 	url = https://github.com/standardebooks/walter-scott_ivanhoe.git
 	shallow = true
+	update = none
 [submodule "library/franklin-w-dixon_the-house-on-the-cliff"]
 	path = library/franklin-w-dixon_the-house-on-the-cliff
 	url = https://github.com/standardebooks/franklin-w-dixon_the-house-on-the-cliff.git
 	shallow = true
+	update = none
 [submodule "library/h-rider-haggard_king-solomons-mines"]
 	path = library/h-rider-haggard_king-solomons-mines
 	url = https://github.com/standardebooks/h-rider-haggard_king-solomons-mines.git
 	shallow = true
+	update = none
 [submodule "library/jack-london_the-sea-wolf"]
 	path = library/jack-london_the-sea-wolf
 	url = https://github.com/standardebooks/jack-london_the-sea-wolf.git
 	shallow = true
+	update = none
 [submodule "library/rudyard-kipling_kim"]
 	path = library/rudyard-kipling_kim
 	url = https://github.com/standardebooks/rudyard-kipling_kim.git
 	shallow = true
+	update = none
 [submodule "library/franklin-w-dixon_the-mystery-of-cabin-island"]
 	path = library/franklin-w-dixon_the-mystery-of-cabin-island
 	url = https://github.com/standardebooks/franklin-w-dixon_the-mystery-of-cabin-island.git
 	shallow = true
+	update = none
 [submodule "library/alexandre-dumas_twenty-years-after_estes-and-lauriat"]
 	path = library/alexandre-dumas_twenty-years-after_estes-and-lauriat
 	url = https://github.com/standardebooks/alexandre-dumas_twenty-years-after_estes-and-lauriat.git
 	shallow = true
+	update = none
 [submodule "library/franklin-w-dixon_the-secret-of-the-old-mill"]
 	path = library/franklin-w-dixon_the-secret-of-the-old-mill
 	url = https://github.com/standardebooks/franklin-w-dixon_the-secret-of-the-old-mill.git
 	shallow = true
+	update = none
 [submodule "library/robert-louis-stevenson_kidnapped"]
 	path = library/robert-louis-stevenson_kidnapped
 	url = https://github.com/standardebooks/robert-louis-stevenson_kidnapped.git
 	shallow = true
+	update = none
 [submodule "library/siegfried-sassoon_memoirs-of-an-infantry-officer"]
 	path = library/siegfried-sassoon_memoirs-of-an-infantry-officer
 	url = https://github.com/standardebooks/siegfried-sassoon_memoirs-of-an-infantry-officer.git
 	shallow = true
+	update = none
 [submodule "library/benjamin-franklin_the-autobiography-of-benjamin-franklin"]
 	path = library/benjamin-franklin_the-autobiography-of-benjamin-franklin
 	url = https://github.com/standardebooks/benjamin-franklin_the-autobiography-of-benjamin-franklin.git
 	shallow = true
+	update = none
 [submodule "library/mahatma-gandhi_the-story-of-my-experiments-with-truth_mahadev-desai"]
 	path = library/mahatma-gandhi_the-story-of-my-experiments-with-truth_mahadev-desai
 	url = https://github.com/standardebooks/mahatma-gandhi_the-story-of-my-experiments-with-truth_mahadev-desai.git
 	shallow = true
+	update = none
 [submodule "library/frederick-douglass_narrative-of-the-life-of-frederick-douglass"]
 	path = library/frederick-douglass_narrative-of-the-life-of-frederick-douglass
 	url = https://github.com/standardebooks/frederick-douglass_narrative-of-the-life-of-frederick-douglass.git
 	shallow = true
+	update = none
 [submodule "library/ulysses-s-grant_personal-memoirs-of-ulysses-s-grant"]
 	path = library/ulysses-s-grant_personal-memoirs-of-ulysses-s-grant
 	url = https://github.com/standardebooks/ulysses-s-grant_personal-memoirs-of-ulysses-s-grant.git
 	shallow = true
+	update = none
 [submodule "library/booker-t-washington_up-from-slavery"]
 	path = library/booker-t-washington_up-from-slavery
 	url = https://github.com/standardebooks/booker-t-washington_up-from-slavery.git
 	shallow = true
+	update = none
 [submodule "library/theodore-roosevelt_an-autobiography"]
 	path = library/theodore-roosevelt_an-autobiography
 	url = https://github.com/standardebooks/theodore-roosevelt_an-autobiography.git
 	shallow = true
+	update = none
 [submodule "library/mark-twain_the-autobiography-of-mark-twain"]
 	path = library/mark-twain_the-autobiography-of-mark-twain
 	url = https://github.com/standardebooks/mark-twain_the-autobiography-of-mark-twain.git
 	shallow = true
+	update = none
 [submodule "library/dorothy-m-richardson_pointed-roofs"]
 	path = library/dorothy-m-richardson_pointed-roofs
 	url = https://github.com/standardebooks/dorothy-m-richardson_pointed-roofs.git
 	shallow = true
+	update = none
 [submodule "library/helen-keller_the-story-of-my-life"]
 	path = library/helen-keller_the-story-of-my-life
 	url = https://github.com/standardebooks/helen-keller_the-story-of-my-life.git
 	shallow = true
+	update = none
 [submodule "library/siegfried-sassoon_memoirs-of-a-foxhunting-man"]
 	path = library/siegfried-sassoon_memoirs-of-a-foxhunting-man
 	url = https://github.com/standardebooks/siegfried-sassoon_memoirs-of-a-foxhunting-man.git
 	shallow = true
+	update = none
 [submodule "library/thomas-de-quincey_confessions-of-an-english-opium-eater"]
 	path = library/thomas-de-quincey_confessions-of-an-english-opium-eater
 	url = https://github.com/standardebooks/thomas-de-quincey_confessions-of-an-english-opium-eater.git
 	shallow = true
+	update = none
 [submodule "library/samuel-pepys_the-diary"]
 	path = library/samuel-pepys_the-diary
 	url = https://github.com/standardebooks/samuel-pepys_the-diary.git
 	shallow = true
+	update = none
 [submodule "library/charles-a-lindbergh_we"]
 	path = library/charles-a-lindbergh_we
 	url = https://github.com/standardebooks/charles-a-lindbergh_we.git
 	shallow = true
+	update = none
 [submodule "library/etsu-inagaki-sugimoto_a-daughter-of-the-samurai"]
 	path = library/etsu-inagaki-sugimoto_a-daughter-of-the-samurai
 	url = https://github.com/standardebooks/etsu-inagaki-sugimoto_a-daughter-of-the-samurai.git
 	shallow = true
+	update = none
 [submodule "library/henry-adams_the-education-of-henry-adams"]
 	path = library/henry-adams_the-education-of-henry-adams
 	url = https://github.com/standardebooks/henry-adams_the-education-of-henry-adams.git
 	shallow = true
+	update = none
 [submodule "library/geronimo_geronimos-story-of-his-life"]
 	path = library/geronimo_geronimos-story-of-his-life
 	url = https://github.com/standardebooks/geronimo_geronimos-story-of-his-life.git
 	shallow = true
+	update = none
 [submodule "library/william-craft_ellen-craft_running-a-thousand-miles-for-freedom"]
 	path = library/william-craft_ellen-craft_running-a-thousand-miles-for-freedom
 	url = https://github.com/standardebooks/william-craft_ellen-craft_running-a-thousand-miles-for-freedom.git
 	shallow = true
+	update = none
 [submodule "library/calvin-coolidge_the-autobiography-of-calvin-coolidge"]
 	path = library/calvin-coolidge_the-autobiography-of-calvin-coolidge
 	url = https://github.com/standardebooks/calvin-coolidge_the-autobiography-of-calvin-coolidge.git
 	shallow = true
+	update = none
 [submodule "library/jack-black_you-cant-win"]
 	path = library/jack-black_you-cant-win
 	url = https://github.com/standardebooks/jack-black_you-cant-win.git
 	shallow = true
+	update = none
 [submodule "library/e-e-cummings_the-enormous-room"]
 	path = library/e-e-cummings_the-enormous-room
 	url = https://github.com/standardebooks/e-e-cummings_the-enormous-room.git
 	shallow = true
+	update = none
 [submodule "library/elizabeth-von-arnim_elizabeth-and-her-german-garden"]
 	path = library/elizabeth-von-arnim_elizabeth-and-her-german-garden
 	url = https://github.com/standardebooks/elizabeth-von-arnim_elizabeth-and-her-german-garden.git
 	shallow = true
+	update = none
 [submodule "library/robert-derby-holmes_a-yankee-in-the-trenches"]
 	path = library/robert-derby-holmes_a-yankee-in-the-trenches
 	url = https://github.com/standardebooks/robert-derby-holmes_a-yankee-in-the-trenches.git
 	shallow = true
+	update = none
 [submodule "library/peter-kropotkin_memoirs-of-a-revolutionist"]
 	path = library/peter-kropotkin_memoirs-of-a-revolutionist
 	url = https://github.com/standardebooks/peter-kropotkin_memoirs-of-a-revolutionist.git
 	shallow = true
+	update = none
 [submodule "library/rabindranath-tagore_my-reminiscences_the-macmillan-company"]
 	path = library/rabindranath-tagore_my-reminiscences_the-macmillan-company
 	url = https://github.com/standardebooks/rabindranath-tagore_my-reminiscences_the-macmillan-company.git
 	shallow = true
+	update = none
 [submodule "library/black-hawk_the-autobiography-of-ma-ka-tai-me-she-kia-kiak-or-black-hawk"]
 	path = library/black-hawk_the-autobiography-of-ma-ka-tai-me-she-kia-kiak-or-black-hawk
 	url = https://github.com/standardebooks/black-hawk_the-autobiography-of-ma-ka-tai-me-she-kia-kiak-or-black-hawk.git
 	shallow = true
+	update = none
 [submodule "library/charles-babbage_passages-from-the-life-of-a-philosopher"]
 	path = library/charles-babbage_passages-from-the-life-of-a-philosopher
 	url = https://github.com/standardebooks/charles-babbage_passages-from-the-life-of-a-philosopher.git
 	shallow = true
+	update = none
 [submodule "library/maria-bochkareva_yashka"]
 	path = library/maria-bochkareva_yashka
 	url = https://github.com/standardebooks/maria-bochkareva_yashka.git
 	shallow = true
+	update = none
 [submodule "library/john-stuart-mill_the-autobiography-of-john-stuart-mill"]
 	path = library/john-stuart-mill_the-autobiography-of-john-stuart-mill
 	url = https://github.com/standardebooks/john-stuart-mill_the-autobiography-of-john-stuart-mill.git
 	shallow = true
+	update = none
 [submodule "library/jane-addams_twenty-years-at-hull-house"]
 	path = library/jane-addams_twenty-years-at-hull-house
 	url = https://github.com/standardebooks/jane-addams_twenty-years-at-hull-house.git
 	shallow = true
+	update = none
 [submodule "library/captain-charles-johnson_a-general-history-of-the-pirates"]
 	path = library/captain-charles-johnson_a-general-history-of-the-pirates
 	url = https://github.com/standardebooks/captain-charles-johnson_a-general-history-of-the-pirates.git
 	shallow = true
+	update = none
 [submodule "library/mark-twain_personal-recollections-of-joan-of-arc"]
 	path = library/mark-twain_personal-recollections-of-joan-of-arc
 	url = https://github.com/standardebooks/mark-twain_personal-recollections-of-joan-of-arc.git
 	shallow = true
+	update = none
 [submodule "library/diogenes-laertius_the-lives-and-opinions-of-eminent-philosophers_c-d-yonge"]
 	path = library/diogenes-laertius_the-lives-and-opinions-of-eminent-philosophers_c-d-yonge
 	url = https://github.com/standardebooks/diogenes-laertius_the-lives-and-opinions-of-eminent-philosophers_c-d-yonge.git
 	shallow = true
+	update = none
 [submodule "library/helen-herron-taft_recollections-of-full-years"]
 	path = library/helen-herron-taft_recollections-of-full-years
 	url = https://github.com/standardebooks/helen-herron-taft_recollections-of-full-years.git
 	shallow = true
+	update = none
 [submodule "library/lytton-strachey_eminent-victorians"]
 	path = library/lytton-strachey_eminent-victorians
 	url = https://github.com/standardebooks/lytton-strachey_eminent-victorians.git
 	shallow = true
+	update = none
 [submodule "library/lytton-strachey_queen-victoria"]
 	path = library/lytton-strachey_queen-victoria
 	url = https://github.com/standardebooks/lytton-strachey_queen-victoria.git
 	shallow = true
+	update = none
 [submodule "library/walter-noble-burns_tombstone"]
 	path = library/walter-noble-burns_tombstone
 	url = https://github.com/standardebooks/walter-noble-burns_tombstone.git
 	shallow = true
+	update = none
 [submodule "library/lewis-carroll_alices-adventures-in-wonderland_john-tenniel"]
 	path = library/lewis-carroll_alices-adventures-in-wonderland_john-tenniel
 	url = https://github.com/standardebooks/lewis-carroll_alices-adventures-in-wonderland_john-tenniel.git
 	shallow = true
+	update = none
 [submodule "library/frances-hodgson-burnett_the-secret-garden"]
 	path = library/frances-hodgson-burnett_the-secret-garden
 	url = https://github.com/standardebooks/frances-hodgson-burnett_the-secret-garden.git
 	shallow = true
+	update = none
 [submodule "library/l-m-montgomery_anne-of-green-gables"]
 	path = library/l-m-montgomery_anne-of-green-gables
 	url = https://github.com/standardebooks/l-m-montgomery_anne-of-green-gables.git
 	shallow = true
+	update = none
 [submodule "library/mark-twain_the-adventures-of-huckleberry-finn"]
 	path = library/mark-twain_the-adventures-of-huckleberry-finn
 	url = https://github.com/standardebooks/mark-twain_the-adventures-of-huckleberry-finn.git
 	shallow = true
+	update = none
 [submodule "library/a-a-milne_winnie-the-pooh"]
 	path = library/a-a-milne_winnie-the-pooh
 	url = https://github.com/standardebooks/a-a-milne_winnie-the-pooh.git
 	shallow = true
+	update = none
 [submodule "library/lewis-carroll_through-the-looking-glass_john-tenniel"]
 	path = library/lewis-carroll_through-the-looking-glass_john-tenniel
 	url = https://github.com/standardebooks/lewis-carroll_through-the-looking-glass_john-tenniel.git
 	shallow = true
+	update = none
 [submodule "library/kenneth-grahame_the-wind-in-the-willows"]
 	path = library/kenneth-grahame_the-wind-in-the-willows
 	url = https://github.com/standardebooks/kenneth-grahame_the-wind-in-the-willows.git
 	shallow = true
+	update = none
 [submodule "library/carolyn-keene_the-secret-of-the-old-clock"]
 	path = library/carolyn-keene_the-secret-of-the-old-clock
 	url = https://github.com/standardebooks/carolyn-keene_the-secret-of-the-old-clock.git
 	shallow = true
+	update = none
 [submodule "library/jacob-grimm_wilhelm-grimm_household-tales_margaret-hunt"]
 	path = library/jacob-grimm_wilhelm-grimm_household-tales_margaret-hunt
 	url = https://github.com/standardebooks/jacob-grimm_wilhelm-grimm_household-tales_margaret-hunt.git
 	shallow = true
+	update = none
 [submodule "library/beatrix-potter_short-fiction"]
 	path = library/beatrix-potter_short-fiction
 	url = https://github.com/standardebooks/beatrix-potter_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/j-m-barrie_peter-and-wendy"]
 	path = library/j-m-barrie_peter-and-wendy
 	url = https://github.com/standardebooks/j-m-barrie_peter-and-wendy.git
 	shallow = true
+	update = none
 [submodule "library/anna-sewell_black-beauty"]
 	path = library/anna-sewell_black-beauty
 	url = https://github.com/standardebooks/anna-sewell_black-beauty.git
 	shallow = true
+	update = none
 [submodule "library/arthur-ransome_swallows-and-amazons"]
 	path = library/arthur-ransome_swallows-and-amazons
 	url = https://github.com/standardebooks/arthur-ransome_swallows-and-amazons.git
 	shallow = true
+	update = none
 [submodule "library/mark-twain_the-prince-and-the-pauper"]
 	path = library/mark-twain_the-prince-and-the-pauper
 	url = https://github.com/standardebooks/mark-twain_the-prince-and-the-pauper.git
 	shallow = true
+	update = none
 [submodule "library/george-macdonald_short-fiction"]
 	path = library/george-macdonald_short-fiction
 	url = https://github.com/standardebooks/george-macdonald_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/a-a-milne_the-house-at-pooh-corner"]
 	path = library/a-a-milne_the-house-at-pooh-corner
 	url = https://github.com/standardebooks/a-a-milne_the-house-at-pooh-corner.git
 	shallow = true
+	update = none
 [submodule "library/carolyn-keene_the-mystery-at-lilac-inn"]
 	path = library/carolyn-keene_the-mystery-at-lilac-inn
 	url = https://github.com/standardebooks/carolyn-keene_the-mystery-at-lilac-inn.git
 	shallow = true
+	update = none
 [submodule "library/carolyn-keene_the-hidden-staircase"]
 	path = library/carolyn-keene_the-hidden-staircase
 	url = https://github.com/standardebooks/carolyn-keene_the-hidden-staircase.git
 	shallow = true
+	update = none
 [submodule "library/johann-david-wyss_the-swiss-family-robinson_mary-jane-godwin_william-godwin"]
 	path = library/johann-david-wyss_the-swiss-family-robinson_mary-jane-godwin_william-godwin
 	url = https://github.com/standardebooks/johann-david-wyss_the-swiss-family-robinson_mary-jane-godwin_william-godwin.git
 	shallow = true
+	update = none
 [submodule "library/rudyard-kipling_just-so-stories"]
 	path = library/rudyard-kipling_just-so-stories
 	url = https://github.com/standardebooks/rudyard-kipling_just-so-stories.git
 	shallow = true
+	update = none
 [submodule "library/l-frank-baum_the-road-to-oz"]
 	path = library/l-frank-baum_the-road-to-oz
 	url = https://github.com/standardebooks/l-frank-baum_the-road-to-oz.git
 	shallow = true
+	update = none
 [submodule "library/george-macdonald_the-princess-and-the-goblin"]
 	path = library/george-macdonald_the-princess-and-the-goblin
 	url = https://github.com/standardebooks/george-macdonald_the-princess-and-the-goblin.git
 	shallow = true
+	update = none
 [submodule "library/johanna-spyri_heidi_elisabeth-p-stork"]
 	path = library/johanna-spyri_heidi_elisabeth-p-stork
 	url = https://github.com/standardebooks/johanna-spyri_heidi_elisabeth-p-stork.git
 	shallow = true
+	update = none
 [submodule "library/james-branch-cabell_the-line-of-love"]
 	path = library/james-branch-cabell_the-line-of-love
 	url = https://github.com/standardebooks/james-branch-cabell_the-line-of-love.git
 	shallow = true
+	update = none
 [submodule "library/jerome-k-jerome_three-men-in-a-boat"]
 	path = library/jerome-k-jerome_three-men-in-a-boat
 	url = https://github.com/standardebooks/jerome-k-jerome_three-men-in-a-boat.git
 	shallow = true
+	update = none
 [submodule "library/oscar-wilde_the-importance-of-being-earnest"]
 	path = library/oscar-wilde_the-importance-of-being-earnest
 	url = https://github.com/standardebooks/oscar-wilde_the-importance-of-being-earnest.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_a-midsummer-nights-dream"]
 	path = library/william-shakespeare_a-midsummer-nights-dream
 	url = https://github.com/standardebooks/william-shakespeare_a-midsummer-nights-dream.git
 	shallow = true
+	update = none
 [submodule "library/ring-lardner_george-s-kaufman_june-moon"]
 	path = library/ring-lardner_george-s-kaufman_june-moon
 	url = https://github.com/standardebooks/ring-lardner_george-s-kaufman_june-moon.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_the-merchant-of-venice"]
 	path = library/william-shakespeare_the-merchant-of-venice
 	url = https://github.com/standardebooks/william-shakespeare_the-merchant-of-venice.git
 	shallow = true
+	update = none
 [submodule "library/p-g-wodehouse_jeeves-stories"]
 	path = library/p-g-wodehouse_jeeves-stories
 	url = https://github.com/standardebooks/p-g-wodehouse_jeeves-stories.git
 	shallow = true
+	update = none
 [submodule "library/p-g-wodehouse_the-adventures-of-sally"]
 	path = library/p-g-wodehouse_the-adventures-of-sally
 	url = https://github.com/standardebooks/p-g-wodehouse_the-adventures-of-sally.git
 	shallow = true
+	update = none
 [submodule "library/ring-lardner_fred-gross-stories"]
 	path = library/ring-lardner_fred-gross-stories
 	url = https://github.com/standardebooks/ring-lardner_fred-gross-stories.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_twelfth-night"]
 	path = library/william-shakespeare_twelfth-night
 	url = https://github.com/standardebooks/william-shakespeare_twelfth-night.git
 	shallow = true
+	update = none
 [submodule "library/noel-coward_hay-fever"]
 	path = library/noel-coward_hay-fever
 	url = https://github.com/standardebooks/noel-coward_hay-fever.git
 	shallow = true
+	update = none
 [submodule "library/ring-lardner_gullibles-travels"]
 	path = library/ring-lardner_gullibles-travels
 	url = https://github.com/standardebooks/ring-lardner_gullibles-travels.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_as-you-like-it"]
 	path = library/william-shakespeare_as-you-like-it
 	url = https://github.com/standardebooks/william-shakespeare_as-you-like-it.git
 	shallow = true
+	update = none
 [submodule "library/oscar-wilde_a-woman-of-no-importance"]
 	path = library/oscar-wilde_a-woman-of-no-importance
 	url = https://github.com/standardebooks/oscar-wilde_a-woman-of-no-importance.git
 	shallow = true
+	update = none
 [submodule "library/p-g-wodehouse_right-ho-jeeves"]
 	path = library/p-g-wodehouse_right-ho-jeeves
 	url = https://github.com/standardebooks/p-g-wodehouse_right-ho-jeeves.git
 	shallow = true
+	update = none
 [submodule "library/anton-chekhov_the-cherry-orchard_constance-garnett"]
 	path = library/anton-chekhov_the-cherry-orchard_constance-garnett
 	url = https://github.com/standardebooks/anton-chekhov_the-cherry-orchard_constance-garnett.git
 	shallow = true
+	update = none
 [submodule "library/ring-lardner_short-fiction"]
 	path = library/ring-lardner_short-fiction
 	url = https://github.com/standardebooks/ring-lardner_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_alls-well-that-ends-well"]
 	path = library/william-shakespeare_alls-well-that-ends-well
 	url = https://github.com/standardebooks/william-shakespeare_alls-well-that-ends-well.git
 	shallow = true
+	update = none
 [submodule "library/anton-chekhov_the-seagull_constance-garnett"]
 	path = library/anton-chekhov_the-seagull_constance-garnett
 	url = https://github.com/standardebooks/anton-chekhov_the-seagull_constance-garnett.git
 	shallow = true
+	update = none
 [submodule "library/oscar-wilde_an-ideal-husband"]
 	path = library/oscar-wilde_an-ideal-husband
 	url = https://github.com/standardebooks/oscar-wilde_an-ideal-husband.git
 	shallow = true
+	update = none
 [submodule "library/p-g-wodehouse_the-small-bachelor"]
 	path = library/p-g-wodehouse_the-small-bachelor
 	url = https://github.com/standardebooks/p-g-wodehouse_the-small-bachelor.git
 	shallow = true
+	update = none
 [submodule "library/rudolph-erich-raspe_the-surprising-adventures-of-baron-munchausen"]
 	path = library/rudolph-erich-raspe_the-surprising-adventures-of-baron-munchausen
 	url = https://github.com/standardebooks/rudolph-erich-raspe_the-surprising-adventures-of-baron-munchausen.git
 	shallow = true
+	update = none
 [submodule "library/nikolai-gogol_the-inspector-general_thomas-seltzer"]
 	path = library/nikolai-gogol_the-inspector-general_thomas-seltzer
 	url = https://github.com/standardebooks/nikolai-gogol_the-inspector-general_thomas-seltzer.git
 	shallow = true
+	update = none
 [submodule "library/george-bernard-shaw_back-to-methuselah"]
 	path = library/george-bernard-shaw_back-to-methuselah
 	url = https://github.com/standardebooks/george-bernard-shaw_back-to-methuselah.git
 	shallow = true
+	update = none
 [submodule "library/oscar-wilde_lady-windermeres-fan"]
 	path = library/oscar-wilde_lady-windermeres-fan
 	url = https://github.com/standardebooks/oscar-wilde_lady-windermeres-fan.git
 	shallow = true
+	update = none
 [submodule "library/ring-lardner_my-four-weeks-in-france"]
 	path = library/ring-lardner_my-four-weeks-in-france
 	url = https://github.com/standardebooks/ring-lardner_my-four-weeks-in-france.git
 	shallow = true
+	update = none
 [submodule "library/edward-lear_nonsense-books"]
 	path = library/edward-lear_nonsense-books
 	url = https://github.com/standardebooks/edward-lear_nonsense-books.git
 	shallow = true
+	update = none
 [submodule "library/anthony-berkeley_the-layton-court-mystery"]
 	path = library/anthony-berkeley_the-layton-court-mystery
 	url = https://github.com/standardebooks/anthony-berkeley_the-layton-court-mystery.git
 	shallow = true
+	update = none
 [submodule "library/anita-loos_gentlemen-prefer-blondes"]
 	path = library/anita-loos_gentlemen-prefer-blondes
 	url = https://github.com/standardebooks/anita-loos_gentlemen-prefer-blondes.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_macbeth"]
 	path = library/william-shakespeare_macbeth
 	url = https://github.com/standardebooks/william-shakespeare_macbeth.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_hamlet"]
 	path = library/william-shakespeare_hamlet
 	url = https://github.com/standardebooks/william-shakespeare_hamlet.git
 	shallow = true
+	update = none
 [submodule "library/john-gay_the-beggars-opera"]
 	path = library/john-gay_the-beggars-opera
 	url = https://github.com/standardebooks/john-gay_the-beggars-opera.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_romeo-and-juliet"]
 	path = library/william-shakespeare_romeo-and-juliet
 	url = https://github.com/standardebooks/william-shakespeare_romeo-and-juliet.git
 	shallow = true
+	update = none
 [submodule "library/henry-van-dyke-jr_the-house-of-rimmon"]
 	path = library/henry-van-dyke-jr_the-house-of-rimmon
 	url = https://github.com/standardebooks/henry-van-dyke-jr_the-house-of-rimmon.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_othello"]
 	path = library/william-shakespeare_othello
 	url = https://github.com/standardebooks/william-shakespeare_othello.git
 	shallow = true
+	update = none
 [submodule "library/sophocles_oedipus-rex_francis-storr"]
 	path = library/sophocles_oedipus-rex_francis-storr
 	url = https://github.com/standardebooks/sophocles_oedipus-rex_francis-storr.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_king-lear"]
 	path = library/william-shakespeare_king-lear
 	url = https://github.com/standardebooks/william-shakespeare_king-lear.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_julius-caesar"]
 	path = library/william-shakespeare_julius-caesar
 	url = https://github.com/standardebooks/william-shakespeare_julius-caesar.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_the-tempest"]
 	path = library/william-shakespeare_the-tempest
 	url = https://github.com/standardebooks/william-shakespeare_the-tempest.git
 	shallow = true
+	update = none
 [submodule "library/sophocles_antigone_francis-storr"]
 	path = library/sophocles_antigone_francis-storr
 	url = https://github.com/standardebooks/sophocles_antigone_francis-storr.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_much-ado-about-nothing"]
 	path = library/william-shakespeare_much-ado-about-nothing
 	url = https://github.com/standardebooks/william-shakespeare_much-ado-about-nothing.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_the-taming-of-the-shrew"]
 	path = library/william-shakespeare_the-taming-of-the-shrew
 	url = https://github.com/standardebooks/william-shakespeare_the-taming-of-the-shrew.git
 	shallow = true
+	update = none
 [submodule "library/aeschylus_agamemnon_gilbert-murray"]
 	path = library/aeschylus_agamemnon_gilbert-murray
 	url = https://github.com/standardebooks/aeschylus_agamemnon_gilbert-murray.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_richard-iii"]
 	path = library/william-shakespeare_richard-iii
 	url = https://github.com/standardebooks/william-shakespeare_richard-iii.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_henry-v"]
 	path = library/william-shakespeare_henry-v
 	url = https://github.com/standardebooks/william-shakespeare_henry-v.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_antony-and-cleopatra"]
 	path = library/william-shakespeare_antony-and-cleopatra
 	url = https://github.com/standardebooks/william-shakespeare_antony-and-cleopatra.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_the-winters-tale"]
 	path = library/william-shakespeare_the-winters-tale
 	url = https://github.com/standardebooks/william-shakespeare_the-winters-tale.git
 	shallow = true
+	update = none
 [submodule "library/edgar-rice-burroughs_a-princess-of-mars"]
 	path = library/edgar-rice-burroughs_a-princess-of-mars
 	url = https://github.com/standardebooks/edgar-rice-burroughs_a-princess-of-mars.git
 	shallow = true
+	update = none
 [submodule "library/mark-twain_a-connecticut-yankee-in-king-arthurs-court"]
 	path = library/mark-twain_a-connecticut-yankee-in-king-arthurs-court
 	url = https://github.com/standardebooks/mark-twain_a-connecticut-yankee-in-king-arthurs-court.git
 	shallow = true
+	update = none
 [submodule "library/lord-dunsany_the-king-of-elflands-daughter"]
 	path = library/lord-dunsany_the-king-of-elflands-daughter
 	url = https://github.com/standardebooks/lord-dunsany_the-king-of-elflands-daughter.git
 	shallow = true
+	update = none
 [submodule "library/a-n-afanasyev_russian-folktales_leonard-a-magnus"]
 	path = library/a-n-afanasyev_russian-folktales_leonard-a-magnus
 	url = https://github.com/standardebooks/a-n-afanasyev_russian-folktales_leonard-a-magnus.git
 	shallow = true
+	update = none
 [submodule "library/william-morris_the-roots-of-the-mountains"]
 	path = library/william-morris_the-roots-of-the-mountains
 	url = https://github.com/standardebooks/william-morris_the-roots-of-the-mountains.git
 	shallow = true
+	update = none
 [submodule "library/edgar-rice-burroughs_the-gods-of-mars"]
 	path = library/edgar-rice-burroughs_the-gods-of-mars
 	url = https://github.com/standardebooks/edgar-rice-burroughs_the-gods-of-mars.git
 	shallow = true
+	update = none
 [submodule "library/l-frank-baum_dorothy-and-the-wizard-in-oz"]
 	path = library/l-frank-baum_dorothy-and-the-wizard-in-oz
 	url = https://github.com/standardebooks/l-frank-baum_dorothy-and-the-wizard-in-oz.git
 	shallow = true
+	update = none
 [submodule "library/george-macdonald_the-princess-and-curdie"]
 	path = library/george-macdonald_the-princess-and-curdie
 	url = https://github.com/standardebooks/george-macdonald_the-princess-and-curdie.git
 	shallow = true
+	update = none
 [submodule "library/clark-ashton-smith_short-fiction"]
 	path = library/clark-ashton-smith_short-fiction
 	url = https://github.com/standardebooks/clark-ashton-smith_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/e-m-forster_short-fiction"]
 	path = library/e-m-forster_short-fiction
 	url = https://github.com/standardebooks/e-m-forster_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/e-r-eddison_the-worm-ouroboros"]
 	path = library/e-r-eddison_the-worm-ouroboros
 	url = https://github.com/standardebooks/e-r-eddison_the-worm-ouroboros.git
 	shallow = true
+	update = none
 [submodule "library/edgar-rice-burroughs_the-warlord-of-mars"]
 	path = library/edgar-rice-burroughs_the-warlord-of-mars
 	url = https://github.com/standardebooks/edgar-rice-burroughs_the-warlord-of-mars.git
 	shallow = true
+	update = none
 [submodule "library/george-macdonald_the-portent"]
 	path = library/george-macdonald_the-portent
 	url = https://github.com/standardebooks/george-macdonald_the-portent.git
 	shallow = true
+	update = none
 [submodule "library/edgar-rice-burroughs_the-master-mind-of-mars"]
 	path = library/edgar-rice-burroughs_the-master-mind-of-mars
 	url = https://github.com/standardebooks/edgar-rice-burroughs_the-master-mind-of-mars.git
 	shallow = true
+	update = none
 [submodule "library/mary-de-morgan_the-windfairies"]
 	path = library/mary-de-morgan_the-windfairies
 	url = https://github.com/standardebooks/mary-de-morgan_the-windfairies.git
 	shallow = true
+	update = none
 [submodule "library/edgar-rice-burroughs_the-chessmen-of-mars"]
 	path = library/edgar-rice-burroughs_the-chessmen-of-mars
 	url = https://github.com/standardebooks/edgar-rice-burroughs_the-chessmen-of-mars.git
 	shallow = true
+	update = none
 [submodule "library/william-morris_the-well-at-the-worlds-end"]
 	path = library/william-morris_the-well-at-the-worlds-end
 	url = https://github.com/standardebooks/william-morris_the-well-at-the-worlds-end.git
 	shallow = true
+	update = none
 [submodule "library/edgar-rice-burroughs_thuvia-maid-of-mars"]
 	path = library/edgar-rice-burroughs_thuvia-maid-of-mars
 	url = https://github.com/standardebooks/edgar-rice-burroughs_thuvia-maid-of-mars.git
 	shallow = true
+	update = none
 [submodule "library/e-nesbit_five-children-and-it"]
 	path = library/e-nesbit_five-children-and-it
 	url = https://github.com/standardebooks/e-nesbit_five-children-and-it.git
 	shallow = true
+	update = none
 [submodule "library/david-lindsay_a-voyage-to-arcturus"]
 	path = library/david-lindsay_a-voyage-to-arcturus
 	url = https://github.com/standardebooks/david-lindsay_a-voyage-to-arcturus.git
 	shallow = true
+	update = none
 [submodule "library/george-macdonald_lilith"]
 	path = library/george-macdonald_lilith
 	url = https://github.com/standardebooks/george-macdonald_lilith.git
 	shallow = true
+	update = none
 [submodule "library/lord-dunsany_the-book-of-wonder_sidney-h-sime"]
 	path = library/lord-dunsany_the-book-of-wonder_sidney-h-sime
 	url = https://github.com/standardebooks/lord-dunsany_the-book-of-wonder_sidney-h-sime.git
 	shallow = true
+	update = none
 [submodule "library/alexandre-dumas_the-count-of-monte-cristo_chapman-and-hall"]
 	path = library/alexandre-dumas_the-count-of-monte-cristo_chapman-and-hall
 	url = https://github.com/standardebooks/alexandre-dumas_the-count-of-monte-cristo_chapman-and-hall.git
 	shallow = true
+	update = none
 [submodule "library/jane-austen_pride-and-prejudice"]
 	path = library/jane-austen_pride-and-prejudice
 	url = https://github.com/standardebooks/jane-austen_pride-and-prejudice.git
 	shallow = true
+	update = none
 [submodule "library/bram-stoker_dracula"]
 	path = library/bram-stoker_dracula
 	url = https://github.com/standardebooks/bram-stoker_dracula.git
 	shallow = true
+	update = none
 [submodule "library/oscar-wilde_the-picture-of-dorian-gray"]
 	path = library/oscar-wilde_the-picture-of-dorian-gray
 	url = https://github.com/standardebooks/oscar-wilde_the-picture-of-dorian-gray.git
 	shallow = true
+	update = none
 [submodule "library/herman-melville_moby-dick"]
 	path = library/herman-melville_moby-dick
 	url = https://github.com/standardebooks/herman-melville_moby-dick.git
 	shallow = true
+	update = none
 [submodule "library/f-scott-fitzgerald_the-great-gatsby"]
 	path = library/f-scott-fitzgerald_the-great-gatsby
 	url = https://github.com/standardebooks/f-scott-fitzgerald_the-great-gatsby.git
 	shallow = true
+	update = none
 [submodule "library/fyodor-dostoevsky_crime-and-punishment_constance-garnett"]
 	path = library/fyodor-dostoevsky_crime-and-punishment_constance-garnett
 	url = https://github.com/standardebooks/fyodor-dostoevsky_crime-and-punishment_constance-garnett.git
 	shallow = true
+	update = none
 [submodule "library/arthur-conan-doyle_the-adventures-of-sherlock-holmes"]
 	path = library/arthur-conan-doyle_the-adventures-of-sherlock-holmes
 	url = https://github.com/standardebooks/arthur-conan-doyle_the-adventures-of-sherlock-holmes.git
 	shallow = true
+	update = none
 [submodule "library/arthur-b-reeve_craig-kennedy-stories"]
 	path = library/arthur-b-reeve_craig-kennedy-stories
 	url = https://github.com/standardebooks/arthur-b-reeve_craig-kennedy-stories.git
 	shallow = true
+	update = none
 [submodule "library/charlotte-bronte_jane-eyre"]
 	path = library/charlotte-bronte_jane-eyre
 	url = https://github.com/standardebooks/charlotte-bronte_jane-eyre.git
 	shallow = true
+	update = none
 [submodule "library/kahlil-gibran_jesus-the-son-of-man"]
 	path = library/kahlil-gibran_jesus-the-son-of-man
 	url = https://github.com/standardebooks/kahlil-gibran_jesus-the-son-of-man.git
 	shallow = true
+	update = none
 [submodule "library/fyodor-dostoevsky_the-brothers-karamazov_constance-garnett"]
 	path = library/fyodor-dostoevsky_the-brothers-karamazov_constance-garnett
 	url = https://github.com/standardebooks/fyodor-dostoevsky_the-brothers-karamazov_constance-garnett.git
 	shallow = true
+	update = none
 [submodule "library/edgar-saltus_the-perfume-of-eros"]
 	path = library/edgar-saltus_the-perfume-of-eros
 	url = https://github.com/standardebooks/edgar-saltus_the-perfume-of-eros.git
 	shallow = true
+	update = none
 [submodule "library/joseph-conrad_the-rescue"]
 	path = library/joseph-conrad_the-rescue
 	url = https://github.com/standardebooks/joseph-conrad_the-rescue.git
 	shallow = true
+	update = none
 [submodule "library/walter-white_the-fire-in-the-flint"]
 	path = library/walter-white_the-fire-in-the-flint
 	url = https://github.com/standardebooks/walter-white_the-fire-in-the-flint.git
 	shallow = true
+	update = none
 [submodule "library/walter-white_flight"]
 	path = library/walter-white_flight
 	url = https://github.com/standardebooks/walter-white_flight.git
 	shallow = true
+	update = none
 [submodule "library/emily-bronte_wuthering-heights"]
 	path = library/emily-bronte_wuthering-heights
 	url = https://github.com/standardebooks/emily-bronte_wuthering-heights.git
 	shallow = true
+	update = none
 [submodule "library/arthur-conan-doyle_a-study-in-scarlet"]
 	path = library/arthur-conan-doyle_a-study-in-scarlet
 	url = https://github.com/standardebooks/arthur-conan-doyle_a-study-in-scarlet.git
 	shallow = true
+	update = none
 [submodule "library/agatha-christie_partners-in-crime"]
 	path = library/agatha-christie_partners-in-crime
 	url = https://github.com/standardebooks/agatha-christie_partners-in-crime.git
 	shallow = true
+	update = none
 [submodule "library/joseph-conrad_suspense"]
 	path = library/joseph-conrad_suspense
 	url = https://github.com/standardebooks/joseph-conrad_suspense.git
 	shallow = true
+	update = none
 [submodule "library/charles-kingsley_hypatia"]
 	path = library/charles-kingsley_hypatia
 	url = https://github.com/standardebooks/charles-kingsley_hypatia.git
 	shallow = true
+	update = none
 [submodule "library/james-joyce_ulysses"]
 	path = library/james-joyce_ulysses
 	url = https://github.com/standardebooks/james-joyce_ulysses.git
 	shallow = true
+	update = none
 [submodule "library/miguel-de-cervantes-saavedra_don-quixote_john-ormsby"]
 	path = library/miguel-de-cervantes-saavedra_don-quixote_john-ormsby
 	url = https://github.com/standardebooks/miguel-de-cervantes-saavedra_don-quixote_john-ormsby.git
 	shallow = true
+	update = none
 [submodule "library/leo-tolstoy_war-and-peace_louise-maude_aylmer-maude"]
 	path = library/leo-tolstoy_war-and-peace_louise-maude_aylmer-maude
 	url = https://github.com/standardebooks/leo-tolstoy_war-and-peace_louise-maude_aylmer-maude.git
 	shallow = true
+	update = none
 [submodule "library/wilkie-collins_basil"]
 	path = library/wilkie-collins_basil
 	url = https://github.com/standardebooks/wilkie-collins_basil.git
 	shallow = true
+	update = none
 [submodule "library/george-eliot_middlemarch"]
 	path = library/george-eliot_middlemarch
 	url = https://github.com/standardebooks/george-eliot_middlemarch.git
 	shallow = true
+	update = none
 [submodule "library/dante-alighieri_the-divine-comedy_henry-wadsworth-longfellow"]
 	path = library/dante-alighieri_the-divine-comedy_henry-wadsworth-longfellow
 	url = https://github.com/standardebooks/dante-alighieri_the-divine-comedy_henry-wadsworth-longfellow.git
 	shallow = true
+	update = none
 [submodule "library/mary-shelley_frankenstein"]
 	path = library/mary-shelley_frankenstein
 	url = https://github.com/standardebooks/mary-shelley_frankenstein.git
 	shallow = true
+	update = none
 [submodule "library/robert-louis-stevenson_the-strange-case-of-dr-jekyll-and-mr-hyde"]
 	path = library/robert-louis-stevenson_the-strange-case-of-dr-jekyll-and-mr-hyde
 	url = https://github.com/standardebooks/robert-louis-stevenson_the-strange-case-of-dr-jekyll-and-mr-hyde.git
 	shallow = true
+	update = none
 [submodule "library/robert-w-chambers_the-king-in-yellow"]
 	path = library/robert-w-chambers_the-king-in-yellow
 	url = https://github.com/standardebooks/robert-w-chambers_the-king-in-yellow.git
 	shallow = true
+	update = none
 [submodule "library/h-p-lovecraft_short-fiction"]
 	path = library/h-p-lovecraft_short-fiction
 	url = https://github.com/standardebooks/h-p-lovecraft_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/robert-hugh-benson_the-necromancers"]
 	path = library/robert-hugh-benson_the-necromancers
 	url = https://github.com/standardebooks/robert-hugh-benson_the-necromancers.git
 	shallow = true
+	update = none
 [submodule "library/henry-james_the-turn-of-the-screw"]
 	path = library/henry-james_the-turn-of-the-screw
 	url = https://github.com/standardebooks/henry-james_the-turn-of-the-screw.git
 	shallow = true
+	update = none
 [submodule "library/john-william-polidori_the-vampire"]
 	path = library/john-william-polidori_the-vampire
 	url = https://github.com/standardebooks/john-william-polidori_the-vampire.git
 	shallow = true
+	update = none
 [submodule "library/alexandre-dumas_the-wolf-leader_alfred-allinson"]
 	path = library/alexandre-dumas_the-wolf-leader_alfred-allinson
 	url = https://github.com/standardebooks/alexandre-dumas_the-wolf-leader_alfred-allinson.git
 	shallow = true
+	update = none
 [submodule "library/h-p-lovecraft_the-case-of-charles-dexter-ward"]
 	path = library/h-p-lovecraft_the-case-of-charles-dexter-ward
 	url = https://github.com/standardebooks/h-p-lovecraft_the-case-of-charles-dexter-ward.git
 	shallow = true
+	update = none
 [submodule "library/e-f-benson_ghost-stories"]
 	path = library/e-f-benson_ghost-stories
 	url = https://github.com/standardebooks/e-f-benson_ghost-stories.git
 	shallow = true
+	update = none
 [submodule "library/william-hope-hodgson_the-house-on-the-borderland"]
 	path = library/william-hope-hodgson_the-house-on-the-borderland
 	url = https://github.com/standardebooks/william-hope-hodgson_the-house-on-the-borderland.git
 	shallow = true
+	update = none
 [submodule "library/charles-brockden-brown_wieland"]
 	path = library/charles-brockden-brown_wieland
 	url = https://github.com/standardebooks/charles-brockden-brown_wieland.git
 	shallow = true
+	update = none
 [submodule "library/algernon-blackwood_john-silence-stories"]
 	path = library/algernon-blackwood_john-silence-stories
 	url = https://github.com/standardebooks/algernon-blackwood_john-silence-stories.git
 	shallow = true
+	update = none
 [submodule "library/arthur-machen_short-fiction"]
 	path = library/arthur-machen_short-fiction
 	url = https://github.com/standardebooks/arthur-machen_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/james-hogg_the-private-memoirs-and-confessions-of-a-justified-sinner"]
 	path = library/james-hogg_the-private-memoirs-and-confessions-of-a-justified-sinner
 	url = https://github.com/standardebooks/james-hogg_the-private-memoirs-and-confessions-of-a-justified-sinner.git
 	shallow = true
+	update = none
 [submodule "library/m-r-james_short-fiction"]
 	path = library/m-r-james_short-fiction
 	url = https://github.com/standardebooks/m-r-james_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/charles-robert-maturin_melmoth-the-wanderer"]
 	path = library/charles-robert-maturin_melmoth-the-wanderer
 	url = https://github.com/standardebooks/charles-robert-maturin_melmoth-the-wanderer.git
 	shallow = true
+	update = none
 [submodule "library/henry-kuttner_short-fiction"]
 	path = library/henry-kuttner_short-fiction
 	url = https://github.com/standardebooks/henry-kuttner_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/arthur-machen_the-three-impostors"]
 	path = library/arthur-machen_the-three-impostors
 	url = https://github.com/standardebooks/arthur-machen_the-three-impostors.git
 	shallow = true
+	update = none
 [submodule "library/j-sheridan-le-fanu_the-room-in-the-dragon-volant"]
 	path = library/j-sheridan-le-fanu_the-room-in-the-dragon-volant
 	url = https://github.com/standardebooks/j-sheridan-le-fanu_the-room-in-the-dragon-volant.git
 	shallow = true
+	update = none
 [submodule "library/manly-wade-wellman_short-fiction"]
 	path = library/manly-wade-wellman_short-fiction
 	url = https://github.com/standardebooks/manly-wade-wellman_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/w-somerset-maugham_the-magician"]
 	path = library/w-somerset-maugham_the-magician
 	url = https://github.com/standardebooks/w-somerset-maugham_the-magician.git
 	shallow = true
+	update = none
 [submodule "library/walter-de-la-mare_the-return"]
 	path = library/walter-de-la-mare_the-return
 	url = https://github.com/standardebooks/walter-de-la-mare_the-return.git
 	shallow = true
+	update = none
 [submodule "library/richard-marsh_the-beetle"]
 	path = library/richard-marsh_the-beetle
 	url = https://github.com/standardebooks/richard-marsh_the-beetle.git
 	shallow = true
+	update = none
 [submodule "library/frank-belknap-long_short-fiction"]
 	path = library/frank-belknap-long_short-fiction
 	url = https://github.com/standardebooks/frank-belknap-long_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/fyodor-dostoevsky_the-house-of-the-dead_constance-garnett"]
 	path = library/fyodor-dostoevsky_the-house-of-the-dead_constance-garnett
 	url = https://github.com/standardebooks/fyodor-dostoevsky_the-house-of-the-dead_constance-garnett.git
 	shallow = true
+	update = none
 [submodule "library/yung-wing_my-life-in-china-and-america"]
 	path = library/yung-wing_my-life-in-china-and-america
 	url = https://github.com/standardebooks/yung-wing_my-life-in-china-and-america.git
 	shallow = true
+	update = none
 [submodule "library/henry-david-thoreau_essays"]
 	path = library/henry-david-thoreau_essays
 	url = https://github.com/standardebooks/henry-david-thoreau_essays.git
 	shallow = true
+	update = none
 [submodule "library/robert-louis-stevenson_travel-essays"]
 	path = library/robert-louis-stevenson_travel-essays
 	url = https://github.com/standardebooks/robert-louis-stevenson_travel-essays.git
 	shallow = true
+	update = none
 [submodule "library/mark-twain_roughing-it"]
 	path = library/mark-twain_roughing-it
 	url = https://github.com/standardebooks/mark-twain_roughing-it.git
 	shallow = true
+	update = none
 [submodule "library/julius-caesar_commentaries-on-the-gallic-war_w-a-mcdevitte_w-s-bohn"]
 	path = library/julius-caesar_commentaries-on-the-gallic-war_w-a-mcdevitte_w-s-bohn
 	url = https://github.com/standardebooks/julius-caesar_commentaries-on-the-gallic-war_w-a-mcdevitte_w-s-bohn.git
 	shallow = true
+	update = none
 [submodule "library/solomon-northup_twelve-years-a-slave"]
 	path = library/solomon-northup_twelve-years-a-slave
 	url = https://github.com/standardebooks/solomon-northup_twelve-years-a-slave.git
 	shallow = true
+	update = none
 [submodule "library/apsley-cherry-garrard_the-worst-journey-in-the-world"]
 	path = library/apsley-cherry-garrard_the-worst-journey-in-the-world
 	url = https://github.com/standardebooks/apsley-cherry-garrard_the-worst-journey-in-the-world.git
 	shallow = true
+	update = none
 [submodule "library/joseph-conrad_the-mirror-of-the-sea"]
 	path = library/joseph-conrad_the-mirror-of-the-sea
 	url = https://github.com/standardebooks/joseph-conrad_the-mirror-of-the-sea.git
 	shallow = true
+	update = none
 [submodule "library/ernest-shackleton_south"]
 	path = library/ernest-shackleton_south
 	url = https://github.com/standardebooks/ernest-shackleton_south.git
 	shallow = true
+	update = none
 [submodule "library/edward-whymper_scrambles-amongst-the-alps-in-the-years-1860-69"]
 	path = library/edward-whymper_scrambles-amongst-the-alps-in-the-years-1860-69
 	url = https://github.com/standardebooks/edward-whymper_scrambles-amongst-the-alps-in-the-years-1860-69.git
 	shallow = true
+	update = none
 [submodule "library/joseph-conrad_a-personal-record"]
 	path = library/joseph-conrad_a-personal-record
 	url = https://github.com/standardebooks/joseph-conrad_a-personal-record.git
 	shallow = true
+	update = none
 [submodule "library/linda-brent_incidents-in-the-life-of-a-slave-girl"]
 	path = library/linda-brent_incidents-in-the-life-of-a-slave-girl
 	url = https://github.com/standardebooks/linda-brent_incidents-in-the-life-of-a-slave-girl.git
 	shallow = true
+	update = none
 [submodule "library/emma-goldman_my-disillusionment-in-russia"]
 	path = library/emma-goldman_my-disillusionment-in-russia
 	url = https://github.com/standardebooks/emma-goldman_my-disillusionment-in-russia.git
 	shallow = true
+	update = none
 [submodule "library/matthew-henson_a-negro-explorer-at-the-north-pole"]
 	path = library/matthew-henson_a-negro-explorer-at-the-north-pole
 	url = https://github.com/standardebooks/matthew-henson_a-negro-explorer-at-the-north-pole.git
 	shallow = true
+	update = none
 [submodule "library/olaudah-equiano_the-interesting-narrative-of-the-life-of-olaudah-equiano"]
 	path = library/olaudah-equiano_the-interesting-narrative-of-the-life-of-olaudah-equiano
 	url = https://github.com/standardebooks/olaudah-equiano_the-interesting-narrative-of-the-life-of-olaudah-equiano.git
 	shallow = true
+	update = none
 [submodule "library/philip-gibbs_now-it-can-be-told"]
 	path = library/philip-gibbs_now-it-can-be-told
 	url = https://github.com/standardebooks/philip-gibbs_now-it-can-be-told.git
 	shallow = true
+	update = none
 [submodule "library/william-f-cody_the-life-of-buffalo-bill"]
 	path = library/william-f-cody_the-life-of-buffalo-bill
 	url = https://github.com/standardebooks/william-f-cody_the-life-of-buffalo-bill.git
 	shallow = true
+	update = none
 [submodule "library/alexander-berkman_the-bolshevik-myth"]
 	path = library/alexander-berkman_the-bolshevik-myth
 	url = https://github.com/standardebooks/alexander-berkman_the-bolshevik-myth.git
 	shallow = true
+	update = none
 [submodule "library/fitz-hugh-ludlow_the-hashish-eater"]
 	path = library/fitz-hugh-ludlow_the-hashish-eater
 	url = https://github.com/standardebooks/fitz-hugh-ludlow_the-hashish-eater.git
 	shallow = true
+	update = none
 [submodule "library/paul-dukes_red-dusk-and-the-morrow"]
 	path = library/paul-dukes_red-dusk-and-the-morrow
 	url = https://github.com/standardebooks/paul-dukes_red-dusk-and-the-morrow.git
 	shallow = true
+	update = none
 [submodule "library/charles-dickens_the-mystery-of-edwin-drood"]
 	path = library/charles-dickens_the-mystery-of-edwin-drood
 	url = https://github.com/standardebooks/charles-dickens_the-mystery-of-edwin-drood.git
 	shallow = true
+	update = none
 [submodule "library/agatha-christie_the-murder-of-roger-ackroyd"]
 	path = library/agatha-christie_the-murder-of-roger-ackroyd
 	url = https://github.com/standardebooks/agatha-christie_the-murder-of-roger-ackroyd.git
 	shallow = true
+	update = none
 [submodule "library/arthur-conan-doyle_the-hound-of-the-baskervilles"]
 	path = library/arthur-conan-doyle_the-hound-of-the-baskervilles
 	url = https://github.com/standardebooks/arthur-conan-doyle_the-hound-of-the-baskervilles.git
 	shallow = true
+	update = none
 [submodule "library/dashiell-hammett_the-maltese-falcon"]
 	path = library/dashiell-hammett_the-maltese-falcon
 	url = https://github.com/standardebooks/dashiell-hammett_the-maltese-falcon.git
 	shallow = true
+	update = none
 [submodule "library/arthur-conan-doyle_the-sign-of-the-four"]
 	path = library/arthur-conan-doyle_the-sign-of-the-four
 	url = https://github.com/standardebooks/arthur-conan-doyle_the-sign-of-the-four.git
 	shallow = true
+	update = none
 [submodule "library/agatha-christie_the-mysterious-affair-at-styles"]
 	path = library/agatha-christie_the-mysterious-affair-at-styles
 	url = https://github.com/standardebooks/agatha-christie_the-mysterious-affair-at-styles.git
 	shallow = true
+	update = none
 [submodule "library/agatha-christie_the-murder-at-the-vicarage"]
 	path = library/agatha-christie_the-murder-at-the-vicarage
 	url = https://github.com/standardebooks/agatha-christie_the-murder-at-the-vicarage.git
 	shallow = true
+	update = none
 [submodule "library/arthur-conan-doyle_the-casebook-of-sherlock-holmes"]
 	path = library/arthur-conan-doyle_the-casebook-of-sherlock-holmes
 	url = https://github.com/standardebooks/arthur-conan-doyle_the-casebook-of-sherlock-holmes.git
 	shallow = true
+	update = none
 [submodule "library/arthur-conan-doyle_the-memoirs-of-sherlock-holmes"]
 	path = library/arthur-conan-doyle_the-memoirs-of-sherlock-holmes
 	url = https://github.com/standardebooks/arthur-conan-doyle_the-memoirs-of-sherlock-holmes.git
 	shallow = true
+	update = none
 [submodule "library/agatha-christie_the-mystery-of-the-blue-train"]
 	path = library/agatha-christie_the-mystery-of-the-blue-train
 	url = https://github.com/standardebooks/agatha-christie_the-mystery-of-the-blue-train.git
 	shallow = true
+	update = none
 [submodule "library/arthur-conan-doyle_the-return-of-sherlock-holmes"]
 	path = library/arthur-conan-doyle_the-return-of-sherlock-holmes
 	url = https://github.com/standardebooks/arthur-conan-doyle_the-return-of-sherlock-holmes.git
 	shallow = true
+	update = none
 [submodule "library/arthur-conan-doyle_the-valley-of-fear"]
 	path = library/arthur-conan-doyle_the-valley-of-fear
 	url = https://github.com/standardebooks/arthur-conan-doyle_the-valley-of-fear.git
 	shallow = true
+	update = none
 [submodule "library/agatha-christie_the-murder-on-the-links"]
 	path = library/agatha-christie_the-murder-on-the-links
 	url = https://github.com/standardebooks/agatha-christie_the-murder-on-the-links.git
 	shallow = true
+	update = none
 [submodule "library/agatha-christie_poirot-investigates"]
 	path = library/agatha-christie_poirot-investigates
 	url = https://github.com/standardebooks/agatha-christie_poirot-investigates.git
 	shallow = true
+	update = none
 [submodule "library/arthur-conan-doyle_his-last-bow"]
 	path = library/arthur-conan-doyle_his-last-bow
 	url = https://github.com/standardebooks/arthur-conan-doyle_his-last-bow.git
 	shallow = true
+	update = none
 [submodule "library/gaston-leroux_the-phantom-of-the-opera_alexander-teixeira-de-mattos"]
 	path = library/gaston-leroux_the-phantom-of-the-opera_alexander-teixeira-de-mattos
 	url = https://github.com/standardebooks/gaston-leroux_the-phantom-of-the-opera_alexander-teixeira-de-mattos.git
 	shallow = true
+	update = none
 [submodule "library/agatha-christie_the-secret-adversary"]
 	path = library/agatha-christie_the-secret-adversary
 	url = https://github.com/standardebooks/agatha-christie_the-secret-adversary.git
 	shallow = true
+	update = none
 [submodule "library/agatha-christie_the-seven-dials-mystery"]
 	path = library/agatha-christie_the-seven-dials-mystery
 	url = https://github.com/standardebooks/agatha-christie_the-seven-dials-mystery.git
 	shallow = true
+	update = none
 [submodule "library/agatha-christie_the-big-four"]
 	path = library/agatha-christie_the-big-four
 	url = https://github.com/standardebooks/agatha-christie_the-big-four.git
 	shallow = true
+	update = none
 [submodule "library/g-k-chesterton_the-innocence-of-father-brown"]
 	path = library/g-k-chesterton_the-innocence-of-father-brown
 	url = https://github.com/standardebooks/g-k-chesterton_the-innocence-of-father-brown.git
 	shallow = true
+	update = none
 [submodule "library/agatha-christie_the-secret-of-chimneys"]
 	path = library/agatha-christie_the-secret-of-chimneys
 	url = https://github.com/standardebooks/agatha-christie_the-secret-of-chimneys.git
 	shallow = true
+	update = none
 [submodule "library/dorothy-l-sayers_robert-eustace_the-documents-in-the-case"]
 	path = library/dorothy-l-sayers_robert-eustace_the-documents-in-the-case
 	url = https://github.com/standardebooks/dorothy-l-sayers_robert-eustace_the-documents-in-the-case.git
 	shallow = true
+	update = none
 [submodule "library/max-weber_the-protestant-ethic-and-the-spirit-of-capitalism_talcott-parsons"]
 	path = library/max-weber_the-protestant-ethic-and-the-spirit-of-capitalism_talcott-parsons
 	url = https://github.com/standardebooks/max-weber_the-protestant-ethic-and-the-spirit-of-capitalism_talcott-parsons.git
 	shallow = true
+	update = none
 [submodule "library/sun-tzu_the-art-of-war_lionel-giles"]
 	path = library/sun-tzu_the-art-of-war_lionel-giles
 	url = https://github.com/standardebooks/sun-tzu_the-art-of-war_lionel-giles.git
 	shallow = true
+	update = none
 [submodule "library/henry-david-thoreau_walden"]
 	path = library/henry-david-thoreau_walden
 	url = https://github.com/standardebooks/henry-david-thoreau_walden.git
 	shallow = true
+	update = none
 [submodule "library/edward-gibbon_the-history-of-the-decline-and-fall-of-the-roman-empire"]
 	path = library/edward-gibbon_the-history-of-the-decline-and-fall-of-the-roman-empire
 	url = https://github.com/standardebooks/edward-gibbon_the-history-of-the-decline-and-fall-of-the-roman-empire.git
 	shallow = true
+	update = none
 [submodule "library/friedrich-engels_the-condition-of-the-working-class-in-england_florence-kelley-wischnewetzky"]
 	path = library/friedrich-engels_the-condition-of-the-working-class-in-england_florence-kelley-wischnewetzky
 	url = https://github.com/standardebooks/friedrich-engels_the-condition-of-the-working-class-in-england_florence-kelley-wischnewetzky.git
 	shallow = true
+	update = none
 [submodule "library/augustine-of-hippo_the-city-of-god_marcus-dods_george-wilson_j-j-smith"]
 	path = library/augustine-of-hippo_the-city-of-god_marcus-dods_george-wilson_j-j-smith
 	url = https://github.com/standardebooks/augustine-of-hippo_the-city-of-god_marcus-dods_george-wilson_j-j-smith.git
 	shallow = true
+	update = none
 [submodule "library/d-l-moody_the-way-to-god-and-how-to-find-it"]
 	path = library/d-l-moody_the-way-to-god-and-how-to-find-it
 	url = https://github.com/standardebooks/d-l-moody_the-way-to-god-and-how-to-find-it.git
 	shallow = true
+	update = none
 [submodule "library/charles-darwin_the-origin-of-species"]
 	path = library/charles-darwin_the-origin-of-species
 	url = https://github.com/standardebooks/charles-darwin_the-origin-of-species.git
 	shallow = true
+	update = none
 [submodule "library/bertrand-russell_the-problems-of-philosophy"]
 	path = library/bertrand-russell_the-problems-of-philosophy
 	url = https://github.com/standardebooks/bertrand-russell_the-problems-of-philosophy.git
 	shallow = true
+	update = none
 [submodule "library/thomas-hobbes_leviathan"]
 	path = library/thomas-hobbes_leviathan
 	url = https://github.com/standardebooks/thomas-hobbes_leviathan.git
 	shallow = true
+	update = none
 [submodule "library/jean-jacques-rousseau_the-social-contract_g-d-h-cole"]
 	path = library/jean-jacques-rousseau_the-social-contract_g-d-h-cole
 	url = https://github.com/standardebooks/jean-jacques-rousseau_the-social-contract_g-d-h-cole.git
 	shallow = true
+	update = none
 [submodule "library/herodotus_histories_g-c-macaulay"]
 	path = library/herodotus_histories_g-c-macaulay
 	url = https://github.com/standardebooks/herodotus_histories_g-c-macaulay.git
 	shallow = true
+	update = none
 [submodule "library/alexander-hamilton_john-jay_james-madison_the-federalist-papers"]
 	path = library/alexander-hamilton_john-jay_james-madison_the-federalist-papers
 	url = https://github.com/standardebooks/alexander-hamilton_john-jay_james-madison_the-federalist-papers.git
 	shallow = true
+	update = none
 [submodule "library/leo-tolstoy_the-kingdom-of-god-is-within-you_leo-wiener"]
 	path = library/leo-tolstoy_the-kingdom-of-god-is-within-you_leo-wiener
 	url = https://github.com/standardebooks/leo-tolstoy_the-kingdom-of-god-is-within-you_leo-wiener.git
 	shallow = true
+	update = none
 [submodule "library/ralph-waldo-emerson_essays"]
 	path = library/ralph-waldo-emerson_essays
 	url = https://github.com/standardebooks/ralph-waldo-emerson_essays.git
 	shallow = true
+	update = none
 [submodule "library/thucydides_history-of-the-peloponnesian-war_richard-crawley"]
 	path = library/thucydides_history-of-the-peloponnesian-war_richard-crawley
 	url = https://github.com/standardebooks/thucydides_history-of-the-peloponnesian-war_richard-crawley.git
 	shallow = true
+	update = none
 [submodule "library/william-james_the-varieties-of-religious-experience"]
 	path = library/william-james_the-varieties-of-religious-experience
 	url = https://github.com/standardebooks/william-james_the-varieties-of-religious-experience.git
 	shallow = true
+	update = none
 [submodule "library/john-locke_two-treatises-of-government"]
 	path = library/john-locke_two-treatises-of-government
 	url = https://github.com/standardebooks/john-locke_two-treatises-of-government.git
 	shallow = true
+	update = none
 [submodule "library/w-e-b-du-bois_the-souls-of-black-folk"]
 	path = library/w-e-b-du-bois_the-souls-of-black-folk
 	url = https://github.com/standardebooks/w-e-b-du-bois_the-souls-of-black-folk.git
 	shallow = true
+	update = none
 [submodule "library/g-k-chesterton_whats-wrong-with-the-world"]
 	path = library/g-k-chesterton_whats-wrong-with-the-world
 	url = https://github.com/standardebooks/g-k-chesterton_whats-wrong-with-the-world.git
 	shallow = true
+	update = none
 [submodule "library/charles-darwin_the-voyage-of-the-beagle"]
 	path = library/charles-darwin_the-voyage-of-the-beagle
 	url = https://github.com/standardebooks/charles-darwin_the-voyage-of-the-beagle.git
 	shallow = true
+	update = none
 [submodule "library/norman-angell_the-great-illusion"]
 	path = library/norman-angell_the-great-illusion
 	url = https://github.com/standardebooks/norman-angell_the-great-illusion.git
 	shallow = true
+	update = none
 [submodule "library/marcus-aurelius_meditations_george-long"]
 	path = library/marcus-aurelius_meditations_george-long
 	url = https://github.com/standardebooks/marcus-aurelius_meditations_george-long.git
 	shallow = true
+	update = none
 [submodule "library/niccolo-machiavelli_the-prince_w-k-marriott"]
 	path = library/niccolo-machiavelli_the-prince_w-k-marriott
 	url = https://github.com/standardebooks/niccolo-machiavelli_the-prince_w-k-marriott.git
 	shallow = true
+	update = none
 [submodule "library/confucius_analects_james-legge"]
 	path = library/confucius_analects_james-legge
 	url = https://github.com/standardebooks/confucius_analects_james-legge.git
 	shallow = true
+	update = none
 [submodule "library/plato_dialogues_benjamin-jowett"]
 	path = library/plato_dialogues_benjamin-jowett
 	url = https://github.com/standardebooks/plato_dialogues_benjamin-jowett.git
 	shallow = true
+	update = none
 [submodule "library/adam-smith_the-wealth-of-nations"]
 	path = library/adam-smith_the-wealth-of-nations
 	url = https://github.com/standardebooks/adam-smith_the-wealth-of-nations.git
 	shallow = true
+	update = none
 [submodule "library/laozi_tao-te-ching_james-legge"]
 	path = library/laozi_tao-te-ching_james-legge
 	url = https://github.com/standardebooks/laozi_tao-te-ching_james-legge.git
 	shallow = true
+	update = none
 [submodule "library/karl-marx_friedrich-engels_the-communist-manifesto_samuel-moore"]
 	path = library/karl-marx_friedrich-engels_the-communist-manifesto_samuel-moore
 	url = https://github.com/standardebooks/karl-marx_friedrich-engels_the-communist-manifesto_samuel-moore.git
 	shallow = true
+	update = none
 [submodule "library/friedrich-nietzsche_beyond-good-and-evil_helen-zimmern"]
 	path = library/friedrich-nietzsche_beyond-good-and-evil_helen-zimmern
 	url = https://github.com/standardebooks/friedrich-nietzsche_beyond-good-and-evil_helen-zimmern.git
 	shallow = true
+	update = none
 [submodule "library/aristotle_nicomachean-ethics_f-h-peters"]
 	path = library/aristotle_nicomachean-ethics_f-h-peters
 	url = https://github.com/standardebooks/aristotle_nicomachean-ethics_f-h-peters.git
 	shallow = true
+	update = none
 [submodule "library/epictetus_discourses_george-long"]
 	path = library/epictetus_discourses_george-long
 	url = https://github.com/standardebooks/epictetus_discourses_george-long.git
 	shallow = true
+	update = none
 [submodule "library/seneca_dialogues_aubrey-stewart"]
 	path = library/seneca_dialogues_aubrey-stewart
 	url = https://github.com/standardebooks/seneca_dialogues_aubrey-stewart.git
 	shallow = true
+	update = none
 [submodule "library/friedrich-nietzsche_thus-spake-zarathustra_thomas-common"]
 	path = library/friedrich-nietzsche_thus-spake-zarathustra_thomas-common
 	url = https://github.com/standardebooks/friedrich-nietzsche_thus-spake-zarathustra_thomas-common.git
 	shallow = true
+	update = none
 [submodule "library/epictetus_short-works_george-long"]
 	path = library/epictetus_short-works_george-long
 	url = https://github.com/standardebooks/epictetus_short-works_george-long.git
 	shallow = true
+	update = none
 [submodule "library/rene-descartes_philosophical-works_john-veitch"]
 	path = library/rene-descartes_philosophical-works_john-veitch
 	url = https://github.com/standardebooks/rene-descartes_philosophical-works_john-veitch.git
 	shallow = true
+	update = none
 [submodule "library/hermann-hesse_demian_n-h-priday"]
 	path = library/hermann-hesse_demian_n-h-priday
 	url = https://github.com/standardebooks/hermann-hesse_demian_n-h-priday.git
 	shallow = true
+	update = none
 [submodule "library/friedrich-nietzsche_the-genealogy-of-morals_horace-b-samuel"]
 	path = library/friedrich-nietzsche_the-genealogy-of-morals_horace-b-samuel
 	url = https://github.com/standardebooks/friedrich-nietzsche_the-genealogy-of-morals_horace-b-samuel.git
 	shallow = true
+	update = none
 [submodule "library/john-stuart-mill_on-liberty"]
 	path = library/john-stuart-mill_on-liberty
 	url = https://github.com/standardebooks/john-stuart-mill_on-liberty.git
 	shallow = true
+	update = none
 [submodule "library/leo-tolstoy_a-confession_aylmer-maude"]
 	path = library/leo-tolstoy_a-confession_aylmer-maude
 	url = https://github.com/standardebooks/leo-tolstoy_a-confession_aylmer-maude.git
 	shallow = true
+	update = none
 [submodule "library/david-hume_an-enquiry-concerning-human-understanding"]
 	path = library/david-hume_an-enquiry-concerning-human-understanding
 	url = https://github.com/standardebooks/david-hume_an-enquiry-concerning-human-understanding.git
 	shallow = true
+	update = none
 [submodule "library/boethius_the-consolation-of-philosophy_h-r-james"]
 	path = library/boethius_the-consolation-of-philosophy_h-r-james
 	url = https://github.com/standardebooks/boethius_the-consolation-of-philosophy_h-r-james.git
 	shallow = true
+	update = none
 [submodule "library/homer_the-odyssey_william-cullen-bryant"]
 	path = library/homer_the-odyssey_william-cullen-bryant
 	url = https://github.com/standardebooks/homer_the-odyssey_william-cullen-bryant.git
 	shallow = true
+	update = none
 [submodule "library/homer_the-iliad_william-cullen-bryant"]
 	path = library/homer_the-iliad_william-cullen-bryant
 	url = https://github.com/standardebooks/homer_the-iliad_william-cullen-bryant.git
 	shallow = true
+	update = none
 [submodule "library/maria-lowell_poetry"]
 	path = library/maria-lowell_poetry
 	url = https://github.com/standardebooks/maria-lowell_poetry.git
 	shallow = true
+	update = none
 [submodule "library/john-milton_paradise-lost"]
 	path = library/john-milton_paradise-lost
 	url = https://github.com/standardebooks/john-milton_paradise-lost.git
 	shallow = true
+	update = none
 [submodule "library/virgil_the-aeneid_john-dryden"]
 	path = library/virgil_the-aeneid_john-dryden
 	url = https://github.com/standardebooks/virgil_the-aeneid_john-dryden.git
 	shallow = true
+	update = none
 [submodule "library/geoffrey-chaucer_the-canterbury-tales"]
 	path = library/geoffrey-chaucer_the-canterbury-tales
 	url = https://github.com/standardebooks/geoffrey-chaucer_the-canterbury-tales.git
 	shallow = true
+	update = none
 [submodule "library/anonymous_beowulf_john-lesslie-hall"]
 	path = library/anonymous_beowulf_john-lesslie-hall
 	url = https://github.com/standardebooks/anonymous_beowulf_john-lesslie-hall.git
 	shallow = true
+	update = none
 [submodule "library/anonymous_sir-gawain-and-the-green-knight_s-o-andrew"]
 	path = library/anonymous_sir-gawain-and-the-green-knight_s-o-andrew
 	url = https://github.com/standardebooks/anonymous_sir-gawain-and-the-green-knight_s-o-andrew.git
 	shallow = true
+	update = none
 [submodule "library/edgar-allan-poe_poetry"]
 	path = library/edgar-allan-poe_poetry
 	url = https://github.com/standardebooks/edgar-allan-poe_poetry.git
 	shallow = true
+	update = none
 [submodule "library/walt-whitman_leaves-of-grass"]
 	path = library/walt-whitman_leaves-of-grass
 	url = https://github.com/standardebooks/walt-whitman_leaves-of-grass.git
 	shallow = true
+	update = none
 [submodule "library/robert-louis-stevenson_poetry"]
 	path = library/robert-louis-stevenson_poetry
 	url = https://github.com/standardebooks/robert-louis-stevenson_poetry.git
 	shallow = true
+	update = none
 [submodule "library/ovid_metamorphoses_various-translators"]
 	path = library/ovid_metamorphoses_various-translators
 	url = https://github.com/standardebooks/ovid_metamorphoses_various-translators.git
 	shallow = true
+	update = none
 [submodule "library/t-s-eliot_poetry"]
 	path = library/t-s-eliot_poetry
 	url = https://github.com/standardebooks/t-s-eliot_poetry.git
 	shallow = true
+	update = none
 [submodule "library/w-b-yeats_poetry"]
 	path = library/w-b-yeats_poetry
 	url = https://github.com/standardebooks/w-b-yeats_poetry.git
 	shallow = true
+	update = none
 [submodule "library/john-keats_poetry"]
 	path = library/john-keats_poetry
 	url = https://github.com/standardebooks/john-keats_poetry.git
 	shallow = true
+	update = none
 [submodule "library/william-shakespeare_poetry"]
 	path = library/william-shakespeare_poetry
 	url = https://github.com/standardebooks/william-shakespeare_poetry.git
 	shallow = true
+	update = none
 [submodule "library/anonymous_the-pearl_sophie-jewett"]
 	path = library/anonymous_the-pearl_sophie-jewett
 	url = https://github.com/standardebooks/anonymous_the-pearl_sophie-jewett.git
 	shallow = true
+	update = none
 [submodule "library/robert-frost_north-of-boston"]
 	path = library/robert-frost_north-of-boston
 	url = https://github.com/standardebooks/robert-frost_north-of-boston.git
 	shallow = true
+	update = none
 [submodule "library/william-wordsworth_samuel-taylor-coleridge_lyrical-ballads"]
 	path = library/william-wordsworth_samuel-taylor-coleridge_lyrical-ballads
 	url = https://github.com/standardebooks/william-wordsworth_samuel-taylor-coleridge_lyrical-ballads.git
 	shallow = true
+	update = none
 [submodule "library/lord-byron_don-juan"]
 	path = library/lord-byron_don-juan
 	url = https://github.com/standardebooks/lord-byron_don-juan.git
 	shallow = true
+	update = none
 [submodule "library/apollonius-of-rhodes_the-argonautica_arthur-s-way"]
 	path = library/apollonius-of-rhodes_the-argonautica_arthur-s-way
 	url = https://github.com/standardebooks/apollonius-of-rhodes_the-argonautica_arthur-s-way.git
 	shallow = true
+	update = none
 [submodule "library/oscar-wilde_poetry"]
 	path = library/oscar-wilde_poetry
 	url = https://github.com/standardebooks/oscar-wilde_poetry.git
 	shallow = true
+	update = none
 [submodule "library/edmund-spenser_the-faerie-queene"]
 	path = library/edmund-spenser_the-faerie-queene
 	url = https://github.com/standardebooks/edmund-spenser_the-faerie-queene.git
 	shallow = true
+	update = none
 [submodule "library/rabindranath-tagore_gitanjali"]
 	path = library/rabindranath-tagore_gitanjali
 	url = https://github.com/standardebooks/rabindranath-tagore_gitanjali.git
 	shallow = true
+	update = none
 [submodule "library/alfred-lord-tennyson_idylls-of-the-king"]
 	path = library/alfred-lord-tennyson_idylls-of-the-king
 	url = https://github.com/standardebooks/alfred-lord-tennyson_idylls-of-the-king.git
 	shallow = true
+	update = none
 [submodule "library/langston-hughes_poetry"]
 	path = library/langston-hughes_poetry
 	url = https://github.com/standardebooks/langston-hughes_poetry.git
 	shallow = true
+	update = none
 [submodule "library/anonymous_the-nibelungenlied_alice-horton"]
 	path = library/anonymous_the-nibelungenlied_alice-horton
 	url = https://github.com/standardebooks/anonymous_the-nibelungenlied_alice-horton.git
 	shallow = true
+	update = none
 [submodule "library/robert-frost_new-hampshire"]
 	path = library/robert-frost_new-hampshire
 	url = https://github.com/standardebooks/robert-frost_new-hampshire.git
 	shallow = true
+	update = none
 [submodule "library/ameen-rihani_the-book-of-khalid"]
 	path = library/ameen-rihani_the-book-of-khalid
 	url = https://github.com/standardebooks/ameen-rihani_the-book-of-khalid.git
 	shallow = true
+	update = none
 [submodule "library/jonathan-swift_gullivers-travels"]
 	path = library/jonathan-swift_gullivers-travels
 	url = https://github.com/standardebooks/jonathan-swift_gullivers-travels.git
 	shallow = true
+	update = none
 [submodule "library/jane-austen_northanger-abbey"]
 	path = library/jane-austen_northanger-abbey
 	url = https://github.com/standardebooks/jane-austen_northanger-abbey.git
 	shallow = true
+	update = none
 [submodule "library/voltaire_candide_the-modern-library"]
 	path = library/voltaire_candide_the-modern-library
 	url = https://github.com/standardebooks/voltaire_candide_the-modern-library.git
 	shallow = true
+	update = none
 [submodule "library/evelyn-waugh_vile-bodies"]
 	path = library/evelyn-waugh_vile-bodies
 	url = https://github.com/standardebooks/evelyn-waugh_vile-bodies.git
 	shallow = true
+	update = none
 [submodule "library/jack-london_martin-eden"]
 	path = library/jack-london_martin-eden
 	url = https://github.com/standardebooks/jack-london_martin-eden.git
 	shallow = true
+	update = none
 [submodule "library/rudolph-fisher_the-walls-of-jericho"]
 	path = library/rudolph-fisher_the-walls-of-jericho
 	url = https://github.com/standardebooks/rudolph-fisher_the-walls-of-jericho.git
 	shallow = true
+	update = none
 [submodule "library/aldous-huxley_point-counter-point"]
 	path = library/aldous-huxley_point-counter-point
 	url = https://github.com/standardebooks/aldous-huxley_point-counter-point.git
 	shallow = true
+	update = none
 [submodule "library/ambrose-bierce_the-devils-dictionary"]
 	path = library/ambrose-bierce_the-devils-dictionary
 	url = https://github.com/standardebooks/ambrose-bierce_the-devils-dictionary.git
 	shallow = true
+	update = none
 [submodule "library/george-schuyler_black-no-more"]
 	path = library/george-schuyler_black-no-more
 	url = https://github.com/standardebooks/george-schuyler_black-no-more.git
 	shallow = true
+	update = none
 [submodule "library/fanny-burney_evelina"]
 	path = library/fanny-burney_evelina
 	url = https://github.com/standardebooks/fanny-burney_evelina.git
 	shallow = true
+	update = none
 [submodule "library/e-m-forster_where-angels-fear-to-tread"]
 	path = library/e-m-forster_where-angels-fear-to-tread
 	url = https://github.com/standardebooks/e-m-forster_where-angels-fear-to-tread.git
 	shallow = true
+	update = none
 [submodule "library/ring-lardner_jack-keefe-stories"]
 	path = library/ring-lardner_jack-keefe-stories
 	url = https://github.com/standardebooks/ring-lardner_jack-keefe-stories.git
 	shallow = true
+	update = none
 [submodule "library/sinclair-lewis_main-street"]
 	path = library/sinclair-lewis_main-street
 	url = https://github.com/standardebooks/sinclair-lewis_main-street.git
 	shallow = true
+	update = none
 [submodule "library/william-makepeace-thackeray_the-luck-of-barry-lyndon"]
 	path = library/william-makepeace-thackeray_the-luck-of-barry-lyndon
 	url = https://github.com/standardebooks/william-makepeace-thackeray_the-luck-of-barry-lyndon.git
 	shallow = true
+	update = none
 [submodule "library/aldous-huxley_crome-yellow"]
 	path = library/aldous-huxley_crome-yellow
 	url = https://github.com/standardebooks/aldous-huxley_crome-yellow.git
 	shallow = true
+	update = none
 [submodule "library/p-g-wodehouse_the-coming-of-bill"]
 	path = library/p-g-wodehouse_the-coming-of-bill
 	url = https://github.com/standardebooks/p-g-wodehouse_the-coming-of-bill.git
 	shallow = true
+	update = none
 [submodule "library/thomas-carlyle_sartor-resartus"]
 	path = library/thomas-carlyle_sartor-resartus
 	url = https://github.com/standardebooks/thomas-carlyle_sartor-resartus.git
 	shallow = true
+	update = none
 [submodule "library/edward-bellamy_looking-backward"]
 	path = library/edward-bellamy_looking-backward
 	url = https://github.com/standardebooks/edward-bellamy_looking-backward.git
 	shallow = true
+	update = none
 [submodule "library/max-beerbohm_zuleika-dobson"]
 	path = library/max-beerbohm_zuleika-dobson
 	url = https://github.com/standardebooks/max-beerbohm_zuleika-dobson.git
 	shallow = true
+	update = none
 [submodule "library/noel-loomis_short-science-fiction"]
 	path = library/noel-loomis_short-science-fiction
 	url = https://github.com/standardebooks/noel-loomis_short-science-fiction.git
 	shallow = true
+	update = none
 [submodule "library/h-g-wells_the-time-machine"]
 	path = library/h-g-wells_the-time-machine
 	url = https://github.com/standardebooks/h-g-wells_the-time-machine.git
 	shallow = true
+	update = none
 [submodule "library/h-g-wells_the-war-of-the-worlds"]
 	path = library/h-g-wells_the-war-of-the-worlds
 	url = https://github.com/standardebooks/h-g-wells_the-war-of-the-worlds.git
 	shallow = true
+	update = none
 [submodule "library/harry-harrison_short-fiction"]
 	path = library/harry-harrison_short-fiction
 	url = https://github.com/standardebooks/harry-harrison_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/isaac-asimov_short-science-fiction"]
 	path = library/isaac-asimov_short-science-fiction
 	url = https://github.com/standardebooks/isaac-asimov_short-science-fiction.git
 	shallow = true
+	update = none
 [submodule "library/h-g-wells_the-invisible-man"]
 	path = library/h-g-wells_the-invisible-man
 	url = https://github.com/standardebooks/h-g-wells_the-invisible-man.git
 	shallow = true
+	update = none
 [submodule "library/philip-k-dick_short-fiction"]
 	path = library/philip-k-dick_short-fiction
 	url = https://github.com/standardebooks/philip-k-dick_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/ray-bradbury_short-fiction"]
 	path = library/ray-bradbury_short-fiction
 	url = https://github.com/standardebooks/ray-bradbury_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/h-g-wells_the-island-of-doctor-moreau"]
 	path = library/h-g-wells_the-island-of-doctor-moreau
 	url = https://github.com/standardebooks/h-g-wells_the-island-of-doctor-moreau.git
 	shallow = true
+	update = none
 [submodule "library/olaf-stapledon_last-and-first-men"]
 	path = library/olaf-stapledon_last-and-first-men
 	url = https://github.com/standardebooks/olaf-stapledon_last-and-first-men.git
 	shallow = true
+	update = none
 [submodule "library/yevgeny-zamyatin_we_gregory-zilboorg"]
 	path = library/yevgeny-zamyatin_we_gregory-zilboorg
 	url = https://github.com/standardebooks/yevgeny-zamyatin_we_gregory-zilboorg.git
 	shallow = true
+	update = none
 [submodule "library/mary-shelley_the-last-man"]
 	path = library/mary-shelley_the-last-man
 	url = https://github.com/standardebooks/mary-shelley_the-last-man.git
 	shallow = true
+	update = none
 [submodule "library/harry-harrison_the-stainless-steel-rat"]
 	path = library/harry-harrison_the-stainless-steel-rat
 	url = https://github.com/standardebooks/harry-harrison_the-stainless-steel-rat.git
 	shallow = true
+	update = none
 [submodule "library/h-g-wells_short-fiction"]
 	path = library/h-g-wells_short-fiction
 	url = https://github.com/standardebooks/h-g-wells_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/charlotte-perkins-gilman_moving-the-mountain"]
 	path = library/charlotte-perkins-gilman_moving-the-mountain
 	url = https://github.com/standardebooks/charlotte-perkins-gilman_moving-the-mountain.git
 	shallow = true
+	update = none
 [submodule "library/h-g-wells_the-first-men-in-the-moon"]
 	path = library/h-g-wells_the-first-men-in-the-moon
 	url = https://github.com/standardebooks/h-g-wells_the-first-men-in-the-moon.git
 	shallow = true
+	update = none
 [submodule "library/h-g-wells_in-the-days-of-the-comet"]
 	path = library/h-g-wells_in-the-days-of-the-comet
 	url = https://github.com/standardebooks/h-g-wells_in-the-days-of-the-comet.git
 	shallow = true
+	update = none
 [submodule "library/harry-harrison_planet-of-the-damned"]
 	path = library/harry-harrison_planet-of-the-damned
 	url = https://github.com/standardebooks/harry-harrison_planet-of-the-damned.git
 	shallow = true
+	update = none
 [submodule "library/robert-sheckley_short-fiction"]
 	path = library/robert-sheckley_short-fiction
 	url = https://github.com/standardebooks/robert-sheckley_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/edgar-rice-burroughs_the-land-that-time-forgot"]
 	path = library/edgar-rice-burroughs_the-land-that-time-forgot
 	url = https://github.com/standardebooks/edgar-rice-burroughs_the-land-that-time-forgot.git
 	shallow = true
+	update = none
 [submodule "library/h-g-wells_the-food-of-the-gods"]
 	path = library/h-g-wells_the-food-of-the-gods
 	url = https://github.com/standardebooks/h-g-wells_the-food-of-the-gods.git
 	shallow = true
+	update = none
 [submodule "library/robert-e-howard_conan-stories"]
 	path = library/robert-e-howard_conan-stories
 	url = https://github.com/standardebooks/robert-e-howard_conan-stories.git
 	shallow = true
+	update = none
 [submodule "library/leo-tolstoy_short-fiction_various-translators"]
 	path = library/leo-tolstoy_short-fiction_various-translators
 	url = https://github.com/standardebooks/leo-tolstoy_short-fiction_various-translators.git
 	shallow = true
+	update = none
 [submodule "library/maurice-leblanc_the-extraordinary-adventures-of-arsene-lupin-gentleman-burglar_george-morehead"]
 	path = library/maurice-leblanc_the-extraordinary-adventures-of-arsene-lupin-gentleman-burglar_george-morehead
 	url = https://github.com/standardebooks/maurice-leblanc_the-extraordinary-adventures-of-arsene-lupin-gentleman-burglar_george-morehead.git
 	shallow = true
+	update = none
 [submodule "library/ernest-hemingway_short-fiction"]
 	path = library/ernest-hemingway_short-fiction
 	url = https://github.com/standardebooks/ernest-hemingway_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/james-joyce_dubliners"]
 	path = library/james-joyce_dubliners
 	url = https://github.com/standardebooks/james-joyce_dubliners.git
 	shallow = true
+	update = none
 [submodule "library/kahlil-gibran_the-prophet"]
 	path = library/kahlil-gibran_the-prophet
 	url = https://github.com/standardebooks/kahlil-gibran_the-prophet.git
 	shallow = true
+	update = none
 [submodule "library/aesop_fables_v-s-vernon-jones"]
 	path = library/aesop_fables_v-s-vernon-jones
 	url = https://github.com/standardebooks/aesop_fables_v-s-vernon-jones.git
 	shallow = true
+	update = none
 [submodule "library/rudyard-kipling_the-jungle-book"]
 	path = library/rudyard-kipling_the-jungle-book
 	url = https://github.com/standardebooks/rudyard-kipling_the-jungle-book.git
 	shallow = true
+	update = none
 [submodule "library/anton-chekhov_short-fiction_constance-garnett"]
 	path = library/anton-chekhov_short-fiction_constance-garnett
 	url = https://github.com/standardebooks/anton-chekhov_short-fiction_constance-garnett.git
 	shallow = true
+	update = none
 [submodule "library/j-sheridan-le-fanu_short-fiction"]
 	path = library/j-sheridan-le-fanu_short-fiction
 	url = https://github.com/standardebooks/j-sheridan-le-fanu_short-fiction.git
 	shallow = true
+	update = none
 [submodule "library/hermann-hesse_siddhartha_various-translators"]
 	path = library/hermann-hesse_siddhartha_various-translators
 	url = https://github.com/standardebooks/hermann-hesse_siddhartha_various-translators.git
 	shallow = true
+	update = none
 [submodule "library/john-bunyan_the-pilgrims-progress"]
 	path = library/john-bunyan_the-pilgrims-progress
 	url = https://github.com/standardebooks/john-bunyan_the-pilgrims-progress.git
 	shallow = true
+	update = none
 [submodule "library/a-w-tozer_the-pursuit-of-god"]
 	path = library/a-w-tozer_the-pursuit-of-god
 	url = https://github.com/standardebooks/a-w-tozer_the-pursuit-of-god.git
 	shallow = true
+	update = none
 [submodule "library/thomas-a-kempis_the-imitation-of-christ_william-benham"]
 	path = library/thomas-a-kempis_the-imitation-of-christ_william-benham
 	url = https://github.com/standardebooks/thomas-a-kempis_the-imitation-of-christ_william-benham.git
 	shallow = true
+	update = none
 [submodule "library/g-k-chesterton_orthodoxy"]
 	path = library/g-k-chesterton_orthodoxy
 	url = https://github.com/standardebooks/g-k-chesterton_orthodoxy.git
 	shallow = true
+	update = none
 [submodule "library/g-k-chesterton_the-everlasting-man"]
 	path = library/g-k-chesterton_the-everlasting-man
 	url = https://github.com/standardebooks/g-k-chesterton_the-everlasting-man.git
 	shallow = true
+	update = none
 [submodule "library/r-h-tawney_religion-and-the-rise-of-capitalism"]
 	path = library/r-h-tawney_religion-and-the-rise-of-capitalism
 	url = https://github.com/standardebooks/r-h-tawney_religion-and-the-rise-of-capitalism.git
 	shallow = true
+	update = none
 [submodule "library/g-k-chesterton_heretics"]
 	path = library/g-k-chesterton_heretics
 	url = https://github.com/standardebooks/g-k-chesterton_heretics.git
 	shallow = true
+	update = none
 [submodule "library/hilaire-belloc_the-path-to-rome"]
 	path = library/hilaire-belloc_the-path-to-rome
 	url = https://github.com/standardebooks/hilaire-belloc_the-path-to-rome.git
 	shallow = true
+	update = none
 [submodule "library/george-grey_polynesian-mythology"]
 	path = library/george-grey_polynesian-mythology
 	url = https://github.com/standardebooks/george-grey_polynesian-mythology.git
 	shallow = true
+	update = none
 [submodule "library/anonymous_barlaam-and-ioasaph_george-ratcliffe-woodward_harold-mattingly"]
 	path = library/anonymous_barlaam-and-ioasaph_george-ratcliffe-woodward_harold-mattingly
 	url = https://github.com/standardebooks/anonymous_barlaam-and-ioasaph_george-ratcliffe-woodward_harold-mattingly.git
 	shallow = true
+	update = none
 [submodule "library/evelyn-underhill_practical-mysticism"]
 	path = library/evelyn-underhill_practical-mysticism
 	url = https://github.com/standardebooks/evelyn-underhill_practical-mysticism.git
 	shallow = true
+	update = none
 [submodule "library/may-sinclair_mary-olivier-a-life"]
 	path = library/may-sinclair_mary-olivier-a-life
 	url = https://github.com/standardebooks/may-sinclair_mary-olivier-a-life.git
 	shallow = true
+	update = none
 [submodule "library/george-macdonald_unspoken-sermons"]
 	path = library/george-macdonald_unspoken-sermons
 	url = https://github.com/standardebooks/george-macdonald_unspoken-sermons.git
 	shallow = true
+	update = none
 [submodule "library/philip-james-bailey_festus"]
 	path = library/philip-james-bailey_festus
 	url = https://github.com/standardebooks/philip-james-bailey_festus.git
 	shallow = true
+	update = none
 [submodule "library/katharine-a-carl_with-the-empress-dowager-of-china"]
 	path = library/katharine-a-carl_with-the-empress-dowager-of-china
 	url = https://github.com/standardebooks/katharine-a-carl_with-the-empress-dowager-of-china.git
 	shallow = true
+	update = none
 [submodule "library/mark-twain_the-innocents-abroad"]
 	path = library/mark-twain_the-innocents-abroad
 	url = https://github.com/standardebooks/mark-twain_the-innocents-abroad.git
 	shallow = true
+	update = none
 [submodule "library/hilaire-belloc_the-cruise-of-the-nona"]
 	path = library/hilaire-belloc_the-cruise-of-the-nona
 	url = https://github.com/standardebooks/hilaire-belloc_the-cruise-of-the-nona.git
 	shallow = true
+	update = none
 [submodule "library/theodore-roosevelt_through-the-brazilian-wilderness"]
 	path = library/theodore-roosevelt_through-the-brazilian-wilderness
 	url = https://github.com/standardebooks/theodore-roosevelt_through-the-brazilian-wilderness.git
 	shallow = true
+	update = none
 [submodule "library/jules-verne_the-giant-raft_w-j-gordon"]
 	path = library/jules-verne_the-giant-raft_w-j-gordon
 	url = https://github.com/standardebooks/jules-verne_the-giant-raft_w-j-gordon.git
 	shallow = true
+	update = none
 [submodule "library/richard-henry-dana-jr_two-years-before-the-mast"]
 	path = library/richard-henry-dana-jr_two-years-before-the-mast
 	url = https://github.com/standardebooks/richard-henry-dana-jr_two-years-before-the-mast.git
 	shallow = true
+	update = none
 [submodule "library/w-somerset-maugham_on-a-chinese-screen"]
 	path = library/w-somerset-maugham_on-a-chinese-screen
 	url = https://github.com/standardebooks/w-somerset-maugham_on-a-chinese-screen.git
 	shallow = true
+	update = none
 [submodule "library/hilaire-belloc_the-four-men"]
 	path = library/hilaire-belloc_the-four-men
 	url = https://github.com/standardebooks/hilaire-belloc_the-four-men.git
 	shallow = true
+	update = none
 [submodule "library/e-f-knight_the-cruise-of-the-alerte"]
 	path = library/e-f-knight_the-cruise-of-the-alerte
 	url = https://github.com/standardebooks/e-f-knight_the-cruise-of-the-alerte.git
 	shallow = true
+	update = none
 [submodule "library/alexander-mackenzie_journals"]
 	path = library/alexander-mackenzie_journals
 	url = https://github.com/standardebooks/alexander-mackenzie_journals.git
 	shallow = true
+	update = none
 [submodule "library/mary-wollstonecraft_letters-written-during-a-short-residence-in-sweden-norway-and-denmark"]
 	path = library/mary-wollstonecraft_letters-written-during-a-short-residence-in-sweden-norway-and-denmark
 	url = https://github.com/standardebooks/mary-wollstonecraft_letters-written-during-a-short-residence-in-sweden-norway-and-denmark.git
 	shallow = true
+	update = none
 [submodule "library/richard-henry-dana-jr_to-cuba-and-back"]
 	path = library/richard-henry-dana-jr_to-cuba-and-back
 	url = https://github.com/standardebooks/richard-henry-dana-jr_to-cuba-and-back.git
 	shallow = true
+	update = none

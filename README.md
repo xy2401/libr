@@ -69,7 +69,7 @@ python site.py serve --port 8000 --skip-build
 - 构建输出目录：`dist`
 - 根目录：项目根目录
 
-构建时会并发浅层检出 402 个书籍仓库，并且只展开 `src/epub`，然后生成、校验并发布 `dist`。
+`.gitmodules` 将子模块的默认更新策略设为 `none`，避免 Cloudflare 在运行构建命令之前串行检出全部书籍。构建命令随后通过 `sync-library` 并发浅层检出 402 个书籍仓库，并且只展开 `src/epub`，然后生成、校验并发布 `dist`。
 
 `.github/workflows/deploy-pages.yml` 保留为手动备用部署，不会在推送时自动触发。如果以后需要使用它，在 GitHub Actions 页面手动运行，并配置：
 

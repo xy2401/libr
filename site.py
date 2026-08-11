@@ -456,7 +456,7 @@ def sync_library(jobs: int) -> None:
                 updated += result == "updated"
             except Exception as exc:
                 errors.append(f"{repo}: {exc}")
-            if index % 50 == 0:
+            if index % 10 == 0:
                 info(f"已检查 {index}/{len(tasks)} 本")
     if errors:
         raise SiteError(f"书库同步失败 {len(errors)} 本；" + "；".join(errors[:5]))
