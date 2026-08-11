@@ -58,11 +58,11 @@ class SiteError(RuntimeError):
 
 
 def info(message: str) -> None:
-    print(f"[site] {message}")
+    print(f"[site] {message}", flush=True)
 
 
 def warn(message: str) -> None:
-    print(f"[site] 警告: {message}", file=sys.stderr)
+    print(f"[site] 警告: {message}", file=sys.stderr, flush=True)
 
 
 def ensure_inside_root(path: Path) -> Path:
@@ -390,6 +390,16 @@ def library_gitlinks() -> dict[str, str]:
     return links
 
 
+def is_book_checkout(target: Path) -> bool:
+    """Return whether target is its own Git worktree, not an empty gitlink directory."""
+    if not (target / ".git").exists():
+        return False
+    top_level = run_git("rev-parse", "--show-toplevel", cwd=target, check=False)
+    if top_level.returncode:
+        return False
+    return Path(top_level.stdout.strip()).resolve() == target.resolve()
+
+
 def sync_one_book(book: dict, commit: str) -> str:
     repo = book["repo_name"]
     target = ensure_inside_root(ROOT / "library" / repo)
@@ -397,13 +407,16 @@ def sync_one_book(book: dict, commit: str) -> str:
     if target.exists():
         if not target.is_dir():
             raise SiteError(f"library/{repo} 已存在但不是目录")
-        current = run_git("rev-parse", "HEAD", cwd=target, check=False)
-        if current.returncode:
+        if not is_book_checkout(target):
             if any(target.iterdir()):
                 raise SiteError(f"library/{repo} 已存在但不是有效的 Git 仓库")
             target.rmdir()
-        elif current.stdout.strip() == commit and asset_dir.is_dir():
-            return "cached"
+        else:
+            current = run_git("rev-parse", "HEAD", cwd=target, check=False)
+            if current.returncode:
+                raise SiteError(f"library/{repo} 无法读取当前提交")
+            if current.stdout.strip() == commit and asset_dir.is_dir():
+                return "cached"
     if not target.exists():
         target.parent.mkdir(parents=True, exist_ok=True)
         run_git(
@@ -544,7 +557,7 @@ def main() -> int:
             deploy_site(output_path(args.output), args.project_name, args.branch)
         return 0
     except (SiteError, OSError, subprocess.CalledProcessError) as exc:
-        print(f"[site] 错误: {exc}", file=sys.stderr)
+        print(f"[site] 错误: {exc}", file=sys.stderr, flush=True)
         return 1
 
 
